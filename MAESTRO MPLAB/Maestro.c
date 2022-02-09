@@ -38,6 +38,7 @@
 #include "SPI.h"
 #include "LCD.h"
 #include "Oscilador.h"
+#include "7SEG-hex.h"
 
 //-----------------Definición de frecuencia de cristal---------------
 #define _XTAL_FREQ 4000000
@@ -45,11 +46,12 @@
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-
+uint8_t val_ADC = 0;
+char ADC_dig[];
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
-
+void divisor_hex(uint8_t a, char dig[]);            // Función para dividir valores en dígitos y guardarlos en array
 
 
 //-------------Funciones que retornan variables-----------------------
@@ -63,8 +65,17 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    
     while(1){
+        //**********************************************************************
+        // COMUNICACIÓN CON PRIMER ESCLAVO
+        //**********************************************************************
+        
+        PORTCbits.RC2 = 0;                          // Se selecciona el esclavo 1
+        __delay_ms(1);
+        
+        val_ADC = spiRead();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        divisor_hex(val_ADC, ADC_dig);              // Dividir por dígitos la variable de val_ADC para 
+        
         
     }
 }
@@ -93,8 +104,15 @@ void setup(void){
     //Configuración de oscilador
     initOsc(_4MHz);                                 // Oscilador a 8 mega hertz
     
-    //Config de SPI (Configuración de maestro a 4 MHz, datos )
+    //Config de SPI (Configuración de maestro a 4 MHz, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
+}
+
+void divisor_hex(uint8_t a, char dig[]){
+    for(int i = 0; i<3 ; i++){                      // De i = 0 hasta i = 2
+        dig[i] = a % 16;                            // array[i] = cont_vol mod 16(retornar residuo). Devuelve digito por dígito de un número hexadecimal.
+        a = (a - dig[i])/16;                        // b = valor sin último digito.
+    }
 }
 

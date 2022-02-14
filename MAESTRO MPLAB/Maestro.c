@@ -51,7 +51,6 @@ char ADC_dig[];
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
-void divisor_hex(uint8_t a, char dig[]);            // Función para dividir valores en dígitos y guardarlos en array
 
 
 //-------------Funciones que retornan variables-----------------------
@@ -102,17 +101,11 @@ void setup(void){
     PORTCbits.RC2 = 1;                              // RC2 se activa para que el pin RC5 del esclavo 1 lo niegue y esté deseleccionado el mismo
     
     //Configuración de oscilador
-    initOsc(_4MHz);                                 // Oscilador a 8 mega hertz
+    initOsc(_4MHz);                                 // Oscilador a 4 mega hertz
     
     //Config de SPI (Configuración de maestro a 4 MHz, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
 }
 
-void divisor_hex(uint8_t a, char dig[]){
-    for(int i = 0; i<3 ; i++){                      // De i = 0 hasta i = 2
-        dig[i] = a % 16;                            // array[i] = cont_vol mod 16(retornar residuo). Devuelve digito por dígito de un número hexadecimal.
-        a = (a - dig[i])/16;                        // b = valor sin último digito.
-    }
-}
 

@@ -23,8 +23,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "46 ./SPI.h
 [; ;./SPI.h: 46: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
-"54 Maestro.c
-[; ;Maestro.c: 54: void divisor_hex(uint8_t a, char dig[]);
+"16 ./7SEG-hex.h
+[; ;./7SEG-hex.h: 16: void divisor_hex(uint8_t a, char dig[]);
 [v _divisor_hex `(v ~T0 @X0 0 ef2`uc`*uc ]
 "3387 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
@@ -62,8 +62,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "48 ./Oscilador.h
 [; ;./Oscilador.h: 48: void initOsc(uint8_t Valor);
 [v _initOsc `(v ~T0 @X0 0 ef1`uc ]
-"108 Maestro.c
-[; ;Maestro.c: 108:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"107 Maestro.c
+[; ;Maestro.c: 107:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E1557 32 33 34 35 36 37 .. ]
 [n E1557 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1565 0 128 .. ]
@@ -343,135 +343,101 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Maestro.c: 50: char ADC_dig[];
 [v _ADC_dig `uc ~T0 @X0 -> -> 1 `i `ux e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"60
-[; ;Maestro.c: 60: void __attribute__((picinterrupt(("")))) isr(void){
+"59
+[; ;Maestro.c: 59: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"63
-[; ;Maestro.c: 63: }
+"62
+[; ;Maestro.c: 62: }
 [e :UE 143 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"66
-[; ;Maestro.c: 66: void main(void) {
+"65
+[; ;Maestro.c: 65: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"67
-[; ;Maestro.c: 67:     setup();
+"66
+[; ;Maestro.c: 66:     setup();
 [e ( _setup ..  ]
-"68
-[; ;Maestro.c: 68:     while(1){
+"67
+[; ;Maestro.c: 67:     while(1){
 [e :U 146 ]
 {
-"73
-[; ;Maestro.c: 73:         PORTCbits.RC2 = 0;
+"72
+[; ;Maestro.c: 72:         PORTCbits.RC2 = 0;
 [e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
-"74
-[; ;Maestro.c: 74:         _delay((unsigned long)((1)*(4000000/4000.0)));
+"73
+[; ;Maestro.c: 73:         _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"76
-[; ;Maestro.c: 76:         val_ADC = spiRead();
+"75
+[; ;Maestro.c: 75:         val_ADC = spiRead();
 [e = _val_ADC -> ( _spiRead ..  `uc ]
-"77
-[; ;Maestro.c: 77:         divisor_hex(val_ADC, ADC_dig);
+"76
+[; ;Maestro.c: 76:         divisor_hex(val_ADC, ADC_dig);
 [e ( _divisor_hex (2 , _val_ADC &U _ADC_dig ]
-"80
-[; ;Maestro.c: 80:     }
+"79
+[; ;Maestro.c: 79:     }
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"81
-[; ;Maestro.c: 81: }
+"80
+[; ;Maestro.c: 80: }
 [e :UE 144 ]
 }
-"84
-[; ;Maestro.c: 84: void setup(void){
+"83
+[; ;Maestro.c: 83: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"87
-[; ;Maestro.c: 87:     ANSEL = 0;
+"86
+[; ;Maestro.c: 86:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"88
-[; ;Maestro.c: 88:     ANSELH = 0;
+"87
+[; ;Maestro.c: 87:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"90
-[; ;Maestro.c: 90:     TRISA = 0;
+"89
+[; ;Maestro.c: 89:     TRISA = 0;
 [e = _TRISA -> -> 0 `i `uc ]
-"91
-[; ;Maestro.c: 91:     TRISB = 0;
+"90
+[; ;Maestro.c: 90:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
-"92
-[; ;Maestro.c: 92:     TRISD = 0;
+"91
+[; ;Maestro.c: 91:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"93
-[; ;Maestro.c: 93:     TRISE = 0;
+"92
+[; ;Maestro.c: 92:     TRISE = 0;
 [e = _TRISE -> -> 0 `i `uc ]
-"95
-[; ;Maestro.c: 95:     PORTA = 0;
+"94
+[; ;Maestro.c: 94:     PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"96
-[; ;Maestro.c: 96:     PORTD = 0;
+"95
+[; ;Maestro.c: 95:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"97
-[; ;Maestro.c: 97:     PORTE = 0;
+"96
+[; ;Maestro.c: 96:     PORTE = 0;
 [e = _PORTE -> -> 0 `i `uc ]
-"98
-[; ;Maestro.c: 98:     PORTB = 0;
+"97
+[; ;Maestro.c: 97:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"101
-[; ;Maestro.c: 101:     TRISC2 = 0;
+"100
+[; ;Maestro.c: 100:     TRISC2 = 0;
 [e = _TRISC2 -> -> 0 `i `b ]
-"102
-[; ;Maestro.c: 102:     PORTCbits.RC2 = 1;
+"101
+[; ;Maestro.c: 101:     PORTCbits.RC2 = 1;
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"105
-[; ;Maestro.c: 105:     initOsc(4);
+"104
+[; ;Maestro.c: 104:     initOsc(4);
 [e ( _initOsc (1 -> -> 4 `i `uc ]
-"108
-[; ;Maestro.c: 108:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"107
+[; ;Maestro.c: 107:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [e ( _spiInit (4 , , , . `E1557 0 . `E1565 0 . `E1569 1 . `E1573 0 ]
-"110
-[; ;Maestro.c: 110: }
+"109
+[; ;Maestro.c: 109: }
 [e :UE 148 ]
-}
-"112
-[; ;Maestro.c: 112: void divisor_hex(uint8_t a, char dig[]){
-[v _divisor_hex `(v ~T0 @X0 1 ef2`uc`*uc ]
-{
-[e :U _divisor_hex ]
-[v _a `uc ~T0 @X0 1 r1 ]
-[v _dig `*uc ~T0 @X0 1 r2 ]
-[f ]
-"113
-[; ;Maestro.c: 113:     for(int i = 0; i<3 ; i++){
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 3 `i 150  ]
-[e $U 151  ]
-[e :U 150 ]
-{
-"114
-[; ;Maestro.c: 114:         dig[i] = a % 16;
-[e = *U + _dig * -> _i `x -> -> # *U _dig `i `x -> % -> _a `i -> 16 `i `uc ]
-"115
-[; ;Maestro.c: 115:         a = (a - dig[i])/16;
-[e = _a -> / - -> _a `i -> *U + _dig * -> _i `x -> -> # *U _dig `i `x `i -> 16 `i `uc ]
-"116
-[; ;Maestro.c: 116:     }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 3 `i 150  ]
-[e :U 151 ]
-}
-"117
-[; ;Maestro.c: 117: }
-[e :UE 149 ]
 }

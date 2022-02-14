@@ -8,6 +8,8 @@
 
 #include <xc.h>
 
+#include "7SEG-hex.h"
+
 int tabla_hex(int a){
     switch (a){                                     // Ingresar valor de "a" a switch case
         case 0:                                     // Si a = 0
@@ -61,5 +63,19 @@ int tabla_hex(int a){
         default:
             break;
             
+    }
+}
+
+void divisor_hex(uint8_t a, char dig[]){            // Divide un número para obtener sus dígitos hexadecimales
+    for(int i = 0; i<3 ; i++){                      // De i = 0 hasta i = 2
+        dig[i] = a % 16;                            // array[i] = cont_vol mod 16(retornar residuo). Devuelve digito por dígito de un número hexadecimal.
+        a = (a - dig[i])/16;                        // a = valor sin último digito.
+    }
+}
+
+void divisor_dec(uint8_t b, char dig1[]){            // Divide un número para obtener sus dígitos decimales
+    for(int n = 0; n<3 ; n++){                      // De i = 0 hasta i = 2
+        dig1[n] = b % 10;                            // array[i] = cont_vol mod 10(retornar residuo). Devuelve digito por dígito de un número decimal.
+        b = (b - dig1[n])/10;                        // a = valor sin último digito.
     }
 }

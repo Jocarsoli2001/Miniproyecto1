@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\MAESTRO_MPLAB.production.sym \
   --cmf=dist/default/production\MAESTRO_MPLAB.production.cmf -z -Q16F887 \
-  -oC:\Users\jocar\AppData\Local\Temp\xcAshtg.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\jocar\AppData\Local\Temp\xcAsfq0.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/MAESTRO_MPLAB.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\jocar\AppData\Local\Temp\xcAshtg.o \
+  -pfunctab=ENTRY -k C:\Users\jocar\AppData\Local\Temp\xcAsfq0.o \
   dist/default/production\MAESTRO_MPLAB.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\jocar\AppData\Local\Temp\xcAshtg.o
+C:\Users\jocar\AppData\Local\Temp\xcAsfq0.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -329,9 +329,13 @@ Maestro.c
 		_main          		CODE           	00ED	0000	40
 		_isr           		CODE           	0161	0000	7
 		_setup         		CODE           	0115	0000	38
+
+Maestro.c estimated size: 85
+
+7SEG-hex.c
 		_divisor_hex   		CODE           	007E	0000	63
 
-Maestro.c estimated size: 148
+7SEG-hex.c estimated size: 63
 
 Oscilador.c
 		_initOsc       		CODE           	00BD	0000	48

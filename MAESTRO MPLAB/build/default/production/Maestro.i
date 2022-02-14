@@ -2929,14 +2929,10 @@ void initOsc(uint8_t Valor);
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 6 "./7SEG-hex.h" 2
-
-
-
-
-
-
-
+# 15 "./7SEG-hex.h"
 int tabla_hex(int a);
+void divisor_hex(uint8_t a, char dig[]);
+void divisor_dec(uint8_t b, char dig1[]);
 # 41 "Maestro.c" 2
 
 
@@ -2951,7 +2947,6 @@ char ADC_dig[];
 
 
 void setup(void);
-void divisor_hex(uint8_t a, char dig[]);
 
 
 
@@ -3007,11 +3002,4 @@ void setup(void){
 
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
-}
-
-void divisor_hex(uint8_t a, char dig[]){
-    for(int i = 0; i<3 ; i++){
-        dig[i] = a % 16;
-        a = (a - dig[i])/16;
-    }
 }

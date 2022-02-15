@@ -48,10 +48,13 @@
 //-----------------------Variables------------------------------------
 uint8_t val_ADC = 0;
 char ADC_dig[];
+uint8_t uni_ADC = 0;
+uint8_t dec_ADC = 0;
+uint8_t cen_ADC = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
-
+int tabla_numASCII(int a);
 
 //-------------Funciones que retornan variables-----------------------
 
@@ -73,8 +76,27 @@ void main(void) {
         __delay_ms(1);
         
         val_ADC = spiRead();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
-        divisor_hex(val_ADC, ADC_dig);              // Dividir por dígitos la variable de val_ADC para 
+        divisor_hex(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
         
+        uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
+        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
+        cen_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de centenas a caracter ASCII
+        
+        
+        //**********************************************************************
+        // COMUNICACIÓN CON SEGUNDO ESCLAVO
+        //**********************************************************************
+        
+        
+        //**********************************************************************
+        // IMPRESIÓN DE VALORES A LCD
+        //**********************************************************************
+        set_cursor(1,1);                            // Setear cursor a primera línea                           
+        Escribir_stringLCD("ADC:");                 // Escribir el menú
+        set_cursor(2,1);                            // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
         
     }
 }
@@ -109,3 +131,39 @@ void setup(void){
 }
 
 
+int tabla_numASCII(int a){
+    switch(a){
+        case 0:                                     // Si a = 0
+            return 48;                              // devolver valor 48 (0 en ASCII)
+            break;
+        case 1:                                     // Si a = 1
+            return 49;                              // devolver valor 49 (1 en ASCII)
+            break;
+        case 2:                                     // Si a = 2
+            return 50;                              // devolver valor 50 (2 en ASCII)
+            break;
+        case 3:                                     // Si a = 3
+            return 51;                              // devolver valor 51 (3 en ASCII)
+            break;
+        case 4:                                     // Si a = 4
+            return 52;                              // devolver valor 52 (4 en ASCII)
+            break;
+        case 5:                                     // Si a = 5
+            return 53;                              // devolver valor 53 (5 en ASCII)
+            break;
+        case 6:                                     // Si a = 6
+            return 54;                              // devolver valor 54 (6 en ASCII)
+            break;
+        case 7:                                     // Si a = 7
+            return 55;                              // devolver valor 55 (7 en ASCII)
+            break;
+        case 8:                                     // Si a = 8
+            return 56;                              // devolver valor 56 (8 en ASCII)
+            break;
+        case 9:                                     // Si a = 9
+            return 57;                              // devolver valor 57 (9 en ASCII)
+            break;
+        default:
+            break;
+    }
+}

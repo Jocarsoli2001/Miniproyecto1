@@ -2903,7 +2903,10 @@ char spiRead();
 # 38 "Maestro.c" 2
 
 # 1 "./LCD.h" 1
-# 59 "./LCD.h"
+# 35 "./LCD.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
+# 35 "./LCD.h" 2
+# 65 "./LCD.h"
 void Escribir_comandoLCD(unsigned char);
 void Escribir_datosLCD(char);
 void Iniciar_LCD(void);
@@ -2911,6 +2914,7 @@ void Escribir_stringLCD(const char*);
 void Limpiar_pantallaLCD(void);
 void prender_ELCD(void);
 void set_cursor(char linea, char posicion);
+void Escribir_caracterLCD(uint8_t a);
 # 39 "Maestro.c" 2
 
 # 1 "./Oscilador.h" 1
@@ -2944,10 +2948,13 @@ void divisor_dec(uint8_t b, char dig1[]);
 
 uint8_t val_ADC = 0;
 char ADC_dig[];
+uint8_t uni_ADC = 0;
+uint8_t dec_ADC = 0;
+uint8_t cen_ADC = 0;
 
 
 void setup(void);
-
+int tabla_numASCII(int a);
 
 
 
@@ -2971,6 +2978,16 @@ void main(void) {
         val_ADC = spiRead();
         divisor_hex(val_ADC, ADC_dig);
 
+        uni_ADC = tabla_numASCII(ADC_dig[0]);
+        dec_ADC = tabla_numASCII(ADC_dig[1]);
+        cen_ADC = tabla_numASCII(ADC_dig[2]);
+# 94 "Maestro.c"
+        set_cursor(1,1);
+        Escribir_stringLCD("ADC:");
+        set_cursor(2,1);
+        Escribir_caracterLCD(uni_ADC);
+        Escribir_caracterLCD(dec_ADC);
+        Escribir_caracterLCD(cen_ADC);
 
     }
 }
@@ -3002,4 +3019,42 @@ void setup(void){
 
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
+}
+
+
+int tabla_numASCII(int a){
+    switch(a){
+        case 0:
+            return 48;
+            break;
+        case 1:
+            return 49;
+            break;
+        case 2:
+            return 50;
+            break;
+        case 3:
+            return 51;
+            break;
+        case 4:
+            return 52;
+            break;
+        case 5:
+            return 53;
+            break;
+        case 6:
+            return 54;
+            break;
+        case 7:
+            return 55;
+            break;
+        case 8:
+            return 56;
+            break;
+        case 9:
+            return 57;
+            break;
+        default:
+            break;
+    }
 }

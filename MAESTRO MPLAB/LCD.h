@@ -31,6 +31,12 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.
 
+#include <xc.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //----------------------------Constantes--------------------------------------
 // Frecuencia para delay
 #ifndef _XTAL_FREQ
@@ -63,4 +69,5 @@ void Escribir_stringLCD(const char*);
 void Limpiar_pantallaLCD(void);
 void prender_ELCD(void);
 void set_cursor(char linea, char posicion);
+void Escribir_caracterLCD(uint8_t a);
 

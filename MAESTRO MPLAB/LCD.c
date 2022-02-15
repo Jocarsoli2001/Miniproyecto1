@@ -1,6 +1,6 @@
 /*
  * File:   LCD.c
- * Author: José Sanoli
+ * Author: Josï¿½ Sanoli
  *
  * Created on 31 de enero de 2022, 15:29
  */
@@ -9,7 +9,7 @@
 #include "LCD.h"
 
 void prender_ELCD(void){
-    LCD_EN = 1;                                  //Pulso a pin E para dejar pasar datos del data bus a la LCD
+    LCD_EN = 1;                                                 //Pulso a pin E para dejar pasar datos del data bus a la LCD
     __delay_us(500);
     LCD_EN = 0;
 }
@@ -40,13 +40,13 @@ void Iniciar_LCD(void){
     
     // Reset
     __delay_us (100);
-    Escribir_comandoLCD(0b00111000);                        // 2 lineas y espacios de 5x8 pixeles
+    Escribir_comandoLCD(0b00111000);                            // 2 lineas y espacios de 5x8 pixeles
     __delay_us (100);
-    Escribir_comandoLCD(0b00001000);                        // Apagar visualizador
+    Escribir_comandoLCD(0b00001000);                            // Apagar visualizador
     __delay_us (100);
-    Escribir_comandoLCD(0b00000001);                        // Borrar visualizador
+    Escribir_comandoLCD(0b00000001);                            // Borrar visualizador
     __delay_us (100);
-    Escribir_comandoLCD(0b00000110);                        // Modo de entrada con incremento y desplazamiento desactivado
+    Escribir_comandoLCD(0b00000110);                            // Modo de entrada con incremento y desplazamiento desactivado
     __delay_us (100);
     Escribir_comandoLCD(0b00001100);                      
     return;
@@ -56,8 +56,16 @@ void Escribir_stringLCD(const char *d){
     LCD_RS = 1; LCD_RW = 0;
     
     for (char i=0; d[i]!='\0'; i++){   
-        Escribir_comandoLCD(d[i]);                          // Envía el código ASCII de la letra en la posición i hacia los puertos D           
+        Escribir_comandoLCD(d[i]);                              // Envï¿½a el cï¿½digo ASCII de la letra en la posiciï¿½n i hacia los puertos D           
     }   
+}
+
+void Escribir_caracterLCD(uint8_t a){                           // FunciÃ³n para poder escribir un solo caracter en la LCD
+    LCD_RS = 1; LCD_RW = 0;
+    
+    Escribir_comandoLCD(a);                                     
+    
+    prender_ELCD();
 }
 
 void Limpiar_pantallaLCD(void){
@@ -69,17 +77,17 @@ void Limpiar_pantallaLCD(void){
 }
 
 void set_cursor(char linea, char posicion){
-    LCD_RS = 0; LCD_RW = 0;                                     // Necesario para "Desplazar Cursor" y "Cambiar Dirección DDRAM"
+    LCD_RS = 0; LCD_RW = 0;                                     // Necesario para "Desplazar Cursor" y "Cambiar Direcciï¿½n DDRAM"
     
-    // Escribir en primera o segunda línea de LCD
-    if (linea == 1){ Escribir_comandoLCD(0b10000000);}          // Colocarse en última posición de segunda línea y sumar posiciones para subir a primera línea 
-    else if (linea == 2){ Escribir_comandoLCD(0b11000000);}     // Colocarse en última posición de primera línea y sumar posiciones para bajar a segunda línea
+    // Escribir en primera o segunda lï¿½nea de LCD
+    if (linea == 1){ Escribir_comandoLCD(0b10000000);}          // Colocarse en ï¿½ltima posiciï¿½n de segunda lï¿½nea y sumar posiciones para subir a primera lï¿½nea 
+    else if (linea == 2){ Escribir_comandoLCD(0b11000000);}     // Colocarse en ï¿½ltima posiciï¿½n de primera lï¿½nea y sumar posiciones para bajar a segunda lï¿½nea
 
     __delay_ms(40);                                             // Delay para permitir que la LCD finalice operaciones
     
     if (posicion != 0){                                         // Si las posiciones a mover son diferentes a 0, entonces
         while(posicion > 0){
-            Escribir_comandoLCD(0b00010100);                    // Se desplaza 1 posición (0001) a la derecha (****01)
+            Escribir_comandoLCD(0b00010100);                    // Se desplaza 1 posiciï¿½n (0001) a la derecha (****01)
             posicion--;                                         // Posiciones disminuye en 1
         }
 

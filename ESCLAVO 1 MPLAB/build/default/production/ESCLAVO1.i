@@ -1,4 +1,4 @@
-# 1 "Maestro.c"
+# 1 "ESCLAVO1.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Maestro.c" 2
-# 11 "Maestro.c"
+# 1 "ESCLAVO1.c" 2
+# 11 "ESCLAVO1.c"
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -2509,7 +2509,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 31 "Maestro.c" 2
+# 31 "ESCLAVO1.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 3
@@ -2644,7 +2644,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 32 "Maestro.c" 2
+# 32 "ESCLAVO1.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2743,7 +2743,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 33 "Maestro.c" 2
+# 33 "ESCLAVO1.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdlib.h" 1 3
 
@@ -2828,7 +2828,7 @@ extern char * ltoa(char * buf, long val, int base);
 extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
-# 34 "Maestro.c" 2
+# 34 "ESCLAVO1.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 1 3
 # 14 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\string.h" 3
@@ -2861,7 +2861,7 @@ extern char * strchr(const char *, int);
 extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
-# 35 "Maestro.c" 2
+# 35 "ESCLAVO1.c" 2
 
 
 
@@ -2900,22 +2900,7 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 38 "Maestro.c" 2
-
-# 1 "./LCD.h" 1
-# 35 "./LCD.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
-# 35 "./LCD.h" 2
-# 65 "./LCD.h"
-void Escribir_comandoLCD(unsigned char);
-void Escribir_datosLCD(char);
-void Iniciar_LCD(void);
-void Escribir_stringLCD(const char*);
-void Limpiar_pantallaLCD(void);
-void prender_ELCD(void);
-void set_cursor(char linea, char posicion);
-void Escribir_caracterLCD(uint8_t a);
-# 39 "Maestro.c" 2
+# 38 "ESCLAVO1.c" 2
 
 # 1 "./Oscilador.h" 1
 # 35 "./Oscilador.h"
@@ -2923,74 +2908,50 @@ void Escribir_caracterLCD(uint8_t a);
 # 35 "./Oscilador.h" 2
 # 48 "./Oscilador.h"
 void initOsc(uint8_t Valor);
-# 40 "Maestro.c" 2
+# 39 "ESCLAVO1.c" 2
 
-# 1 "./7SEG-hex.h" 1
-
-
-
-
-
+# 1 "./ADC.h" 1
+# 40 "./ADC.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
-# 6 "./7SEG-hex.h" 2
-# 15 "./7SEG-hex.h"
-int tabla_hex(int a);
-void divisor_hex(uint8_t a, char dig[]);
-void divisor_dec(uint8_t b, char dig1[]);
-# 41 "Maestro.c" 2
+# 40 "./ADC.h" 2
+# 53 "./ADC.h"
+uint8_t cont1 = 0;
+uint8_t cont2 = 0;
+uint8_t uni = 0;
+uint8_t dec = 0;
+uint8_t cen = 0;
 
 
-
-
-
-
-
-
-uint8_t val_ADC = 0;
-char ADC_dig[];
-uint8_t uni_ADC = 0;
-uint8_t dec_ADC = 0;
-uint8_t cen_ADC = 0;
-
-
+void ADC(void);
+void conversion(void);
+void config_ADC(int channel);
+# 40 "ESCLAVO1.c" 2
+# 51 "ESCLAVO1.c"
 void setup(void);
-int tabla_numASCII(int a);
-# 68 "Maestro.c"
+
+
+
+
+void __attribute__((picinterrupt(("")))) isr(void){
+    if(SSPIF == 1){
+        spiWrite(cont1);
+        SSPIF = 0;
+    }
+    if(PIR1bits.ADIF){
+        ADC();
+        PIR1bits.ADIF = 0;
+    }
+}
+
+
 void main(void) {
     setup();
-    Iniciar_LCD();
-    Limpiar_pantallaLCD();
-    set_cursor(1,0);
-    Escribir_stringLCD("Hola");
-    set_cursor(2,2);
-    Escribir_stringLCD("Jose Santizo");
-    _delay((unsigned long)((5000)*(4000000/4000.0)));
-    Limpiar_pantallaLCD();
+    ADCON0bits.GO == 1;
     while(1){
 
 
 
-
-        PORTCbits.RC2 = 0;
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-
-        val_ADC = spiRead();
-
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-        PORTCbits.RC2 = 1;
-
-        divisor_dec(val_ADC, ADC_dig);
-
-        uni_ADC = tabla_numASCII(ADC_dig[0]);
-        dec_ADC = tabla_numASCII(ADC_dig[1]);
-        cen_ADC = tabla_numASCII(ADC_dig[2]);
-# 106 "Maestro.c"
-        set_cursor(1,1);
-        Escribir_stringLCD("ADC:");
-        set_cursor(2,1);
-        Escribir_caracterLCD(uni_ADC);
-        Escribir_caracterLCD(dec_ADC);
-        Escribir_caracterLCD(cen_ADC);
+        conversion();
 
     }
 }
@@ -2999,65 +2960,38 @@ void main(void) {
 void setup(void){
 
 
-    ANSEL = 0;
+    ANSEL = 0b0001;
     ANSELH = 0;
 
-    TRISA = 0;
+    TRISA = 0b0001;
     TRISB = 0;
     TRISD = 0;
     TRISE = 0;
 
-    PORTA = 0;
     PORTD = 0;
     PORTE = 0;
     PORTB = 0;
 
 
-    TRISC2 = 0;
-    PORTCbits.RC2 = 1;
+    TRISAbits.TRISA5 = 1;
 
 
     initOsc(4);
 
 
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-
-}
+    config_ADC(0);
 
 
-int tabla_numASCII(int a){
-    switch(a){
-        case 0:
-            return 48;
-            break;
-        case 1:
-            return 49;
-            break;
-        case 2:
-            return 50;
-            break;
-        case 3:
-            return 51;
-            break;
-        case 4:
-            return 52;
-            break;
-        case 5:
-            return 53;
-            break;
-        case 6:
-            return 54;
-            break;
-        case 7:
-            return 55;
-            break;
-        case 8:
-            return 56;
-            break;
-        case 9:
-            return 57;
-            break;
-        default:
-            break;
-    }
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
+
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    PIR1bits.ADIF = 0;
+    PIE1bits.ADIE = 1;
+    PIR1bits.RCIF = 0;
+    PIE1bits.RCIE = 1;
+
 }

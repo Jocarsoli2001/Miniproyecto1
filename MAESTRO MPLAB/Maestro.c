@@ -59,14 +59,22 @@ int tabla_numASCII(int a);
 //-------------Funciones que retornan variables-----------------------
 
 //----------------------Interrupciones--------------------------------
-void __interrupt() isr(void){
-    
-    
-}
+//void __interrupt() isr(void){
+//    
+//    
+//}
 
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
+    Iniciar_LCD();                                  // Se inicializa la LCD en 8 bits
+    Limpiar_pantallaLCD();                          // 
+    set_cursor(1,0);
+    Escribir_stringLCD("Hola");
+    set_cursor(2,2);
+    Escribir_stringLCD("Jose Santizo");
+    __delay_ms(5000);
+    Limpiar_pantallaLCD();
     while(1){
         //**********************************************************************
         // COMUNICACIÓN CON PRIMER ESCLAVO
@@ -76,7 +84,11 @@ void main(void) {
         __delay_ms(1);
         
         val_ADC = spiRead();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
-        divisor_hex(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
+        
+        __delay_ms(1);
+        PORTCbits.RC2 = 1;
+        
+        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
         
         uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
         dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII

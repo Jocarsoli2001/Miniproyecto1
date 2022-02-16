@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"129 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"141 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [e E1557 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,8 +45,8 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"69 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\7SEG-hex.c
-[v _divisor_hex divisor_hex `(v  1 e 1 0 ]
+"76 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\7SEG-hex.c
+[v _divisor_dec divisor_dec `(v  1 e 1 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awmod.c
@@ -63,19 +63,21 @@ SPI_ACTIVE_2_IDLE 64
 [v _prender_ELCD prender_ELCD `(v  1 e 1 0 ]
 "17
 [v _Escribir_comandoLCD Escribir_comandoLCD `(v  1 e 1 0 ]
+"30
+[v _Iniciar_LCD Iniciar_LCD `(v  1 e 1 0 ]
 "55
 [v _Escribir_stringLCD Escribir_stringLCD `(v  1 e 1 0 ]
 "63
 [v _Escribir_caracterLCD Escribir_caracterLCD `(v  1 e 1 0 ]
+"71
+[v _Limpiar_pantallaLCD Limpiar_pantallaLCD `(v  1 e 1 0 ]
 "79
 [v _set_cursor set_cursor `(v  1 e 1 0 ]
-"62 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
-[v _isr isr `II(v  1 e 1 0 ]
-"68
+"68 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [v _main main `(v  1 e 1 0 ]
-"105
+"117
 [v _setup setup `(v  1 e 1 0 ]
-"134
+"146
 [v _tabla_numASCII tabla_numASCII `(i  1 e 2 0 ]
 "12 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Oscilador.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -89,7 +91,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S303 . 1 `uc 1 RB0 1 0 :1:0 
+[s S308 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -99,9 +101,9 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S312 . 1 `S303 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES312  1 e 1 @6 ]
-[s S26 . 1 `uc 1 RC0 1 0 :1:0 
+[u S317 . 1 `S308 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES317  1 e 1 @6 ]
+[s S51 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -111,11 +113,11 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S35 . 1 `S26 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES35  1 e 1 @7 ]
+[u S60 . 1 `S51 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES60  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S280 . 1 `uc 1 RD0 1 0 :1:0 
+[s S285 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -125,8 +127,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RD7 1 0 :1:7 
 ]
 "369
-[u S289 . 1 `S280 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES289  1 e 1 @8 ]
+[u S294 . 1 `S285 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES294  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "843
@@ -141,23 +143,23 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S367 . 1 `uc 1 SCS 1 0 :1:0 
+[s S372 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S373 . 1 `uc 1 . 1 0 :4:0 
+[s S378 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S378 . 1 `S367 1 . 1 0 `S373 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES378  1 e 1 @143 ]
+[u S383 . 1 `S372 1 . 1 0 `S378 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES383  1 e 1 @143 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S171 . 1 `uc 1 BF 1 0 :1:0 
+[s S176 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -167,39 +169,39 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S180 . 1 `uc 1 . 1 0 :2:0 
+[s S185 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S185 . 1 `uc 1 . 1 0 :2:0 
+[s S190 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S191 . 1 `uc 1 . 1 0 :2:0 
+[s S196 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S196 . 1 `uc 1 . 1 0 :2:0 
+[s S201 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S201 . 1 `uc 1 . 1 0 :2:0 
+[s S206 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S206 . 1 `uc 1 . 1 0 :2:0 
+[s S211 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S211 . 1 `S171 1 . 1 0 `S180 1 . 1 0 `S185 1 . 1 0 `S191 1 . 1 0 `S196 1 . 1 0 `S201 1 . 1 0 `S206 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES211  1 e 1 @148 ]
+[u S216 . 1 `S176 1 . 1 0 `S185 1 . 1 0 `S190 1 . 1 0 `S196 1 . 1 0 `S201 1 . 1 0 `S206 1 . 1 0 `S211 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES216  1 e 1 @148 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -223,13 +225,13 @@ SPI_ACTIVE_2_IDLE 64
 "68
 [v _main main `(v  1 e 1 0 ]
 {
-"102
+"114
 } 0
-"134
+"146
 [v _tabla_numASCII tabla_numASCII `(i  1 e 2 0 ]
 {
-[v tabla_numASCII@a a `i  1 p 2 2 ]
-"169
+[v tabla_numASCII@a a `i  1 p 2 0 ]
+"181
 } 0
 "45 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\SPI.c
 [v _spiRead spiRead `(uc  1 e 1 0 ]
@@ -241,21 +243,21 @@ SPI_ACTIVE_2_IDLE 64
 {
 "30
 } 0
-"105 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"117 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"131
+"143
 } 0
 "10 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 {
 [v spiInit@sType sType `E1264  1 a 1 wreg ]
 [v spiInit@sType sType `E1264  1 a 1 wreg ]
-[v spiInit@sDataSample sDataSample `E1272  1 p 1 2 ]
-[v spiInit@sClockIdle sClockIdle `E1276  1 p 1 3 ]
-[v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 4 ]
+[v spiInit@sDataSample sDataSample `E1272  1 p 1 0 ]
+[v spiInit@sClockIdle sClockIdle `E1276  1 p 1 1 ]
+[v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 2 ]
 "12
-[v spiInit@sType sType `E1264  1 a 1 5 ]
+[v spiInit@sType sType `E1264  1 a 1 3 ]
 "25
 } 0
 "12 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Oscilador.c
@@ -264,7 +266,7 @@ SPI_ACTIVE_2_IDLE 64
 [v initOsc@Valor Valor `uc  1 a 1 wreg ]
 [v initOsc@Valor Valor `uc  1 a 1 wreg ]
 "14
-[v initOsc@Valor Valor `uc  1 a 1 2 ]
+[v initOsc@Valor Valor `uc  1 a 1 0 ]
 "38
 } 0
 "79 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
@@ -272,44 +274,65 @@ SPI_ACTIVE_2_IDLE 64
 {
 [v set_cursor@linea linea `uc  1 a 1 wreg ]
 [v set_cursor@linea linea `uc  1 a 1 wreg ]
-[v set_cursor@posicion posicion `uc  1 p 1 4 ]
-[v set_cursor@linea linea `uc  1 a 1 7 ]
+[v set_cursor@posicion posicion `uc  1 p 1 2 ]
+[v set_cursor@linea linea `uc  1 a 1 5 ]
 "97
 } 0
-"69 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\7SEG-hex.c
-[v _divisor_hex divisor_hex `(v  1 e 1 0 ]
+"76 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\7SEG-hex.c
+[v _divisor_dec divisor_dec `(v  1 e 1 0 ]
 {
-[v divisor_hex@a a `uc  1 a 1 wreg ]
-"70
-[v divisor_hex@i i `i  1 a 2 5 ]
-"69
-[v divisor_hex@a a `uc  1 a 1 wreg ]
-[v divisor_hex@dig dig `*.1uc  1 p 1 7 ]
-[v divisor_hex@a a `uc  1 a 1 4 ]
-"74
+[v divisor_dec@b b `uc  1 a 1 wreg ]
+"77
+[v divisor_dec@n n `i  1 a 2 1 ]
+"76
+[v divisor_dec@b b `uc  1 a 1 wreg ]
+[v divisor_dec@dig1 dig1 `*.4uc  1 p 1 9 ]
+[v divisor_dec@b b `uc  1 a 1 0 ]
+"81
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 2 ]
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 1 ]
-[v ___awdiv@counter counter `uc  1 a 1 0 ]
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
 "5
-[v ___awdiv@divisor divisor `i  1 p 2 2 ]
-[v ___awdiv@dividend dividend `i  1 p 2 4 ]
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"55 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
+"71 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
+[v _Limpiar_pantallaLCD Limpiar_pantallaLCD `(v  1 e 1 0 ]
+{
+"77
+} 0
+"30
+[v _Iniciar_LCD Iniciar_LCD `(v  1 e 1 0 ]
+{
+"53
+} 0
+"55
 [v _Escribir_stringLCD Escribir_stringLCD `(v  1 e 1 0 ]
 {
 [v Escribir_stringLCD@d d `*.24DCuc  1 a 1 wreg ]
 "58
-[v Escribir_stringLCD@i i `uc  1 a 1 6 ]
+[v Escribir_stringLCD@i i `uc  1 a 1 3 ]
 "55
 [v Escribir_stringLCD@d d `*.24DCuc  1 a 1 wreg ]
-[v Escribir_stringLCD@d d `*.24DCuc  1 a 1 5 ]
+[v Escribir_stringLCD@d d `*.24DCuc  1 a 1 4 ]
 "61
 } 0
 "63
@@ -317,7 +340,7 @@ SPI_ACTIVE_2_IDLE 64
 {
 [v Escribir_caracterLCD@a a `uc  1 a 1 wreg ]
 [v Escribir_caracterLCD@a a `uc  1 a 1 wreg ]
-[v Escribir_caracterLCD@a a `uc  1 a 1 4 ]
+[v Escribir_caracterLCD@a a `uc  1 a 1 2 ]
 "69
 } 0
 "17
@@ -325,16 +348,11 @@ SPI_ACTIVE_2_IDLE 64
 {
 [v Escribir_comandoLCD@Comando Comando `uc  1 a 1 wreg ]
 [v Escribir_comandoLCD@Comando Comando `uc  1 a 1 wreg ]
-[v Escribir_comandoLCD@Comando Comando `uc  1 a 1 3 ]
+[v Escribir_comandoLCD@Comando Comando `uc  1 a 1 1 ]
 "28
 } 0
 "11
 [v _prender_ELCD prender_ELCD `(v  1 e 1 0 ]
 {
 "15
-} 0
-"62 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
-[v _isr isr `II(v  1 e 1 0 ]
-{
-"65
 } 0

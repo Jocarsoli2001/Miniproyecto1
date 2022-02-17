@@ -45,7 +45,7 @@
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-
+uint8_t read = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -55,6 +55,7 @@ void setup(void);                                   // Función de setup
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
     if(SSPIF == 1){                                 // Interrupción de MSSP
+        read = spiRead();
         spiWrite(cont1);                            // Leer valor de ADRESH (cont1) y mandarlo por SPI
         SSPIF = 0;
     }

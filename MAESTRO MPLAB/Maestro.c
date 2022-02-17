@@ -88,11 +88,12 @@ void main(void) {
         PORTCbits.RC2 = 0;                          // Se selecciona el esclavo 1
         __delay_ms(1);
         
+        spiWrite(1);
         val_ADC = spiRead();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
         
         __delay_ms(1);
         PORTCbits.RC2 = 1;
-        
+//        
         divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
         
         uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
@@ -109,7 +110,7 @@ void main(void) {
         // IMPRESIÓN DE VALORES A LCD
         //**********************************************************************
         
-        set_cursor(2,1);                            // Setear cursor a segunda línea
+        set_cursor(2,0);                            // Setear cursor a segunda línea
         Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
         Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
         Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC

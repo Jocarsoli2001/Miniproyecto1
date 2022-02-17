@@ -2926,7 +2926,17 @@ void ADC(void);
 void conversion(void);
 void config_ADC(int channel);
 # 40 "ESCLAVO1.c" 2
-# 51 "ESCLAVO1.c"
+
+
+
+
+
+
+
+
+uint8_t read = 0;
+
+
 void setup(void);
 
 
@@ -2934,6 +2944,7 @@ void setup(void);
 
 void __attribute__((picinterrupt(("")))) isr(void){
     if(SSPIF == 1){
+        read = spiRead();
         spiWrite(cont1);
         SSPIF = 0;
     }

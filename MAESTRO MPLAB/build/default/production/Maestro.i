@@ -2988,6 +2988,7 @@ void main(void) {
         PORTCbits.RC2 = 0;
         _delay((unsigned long)((1)*(4000000/4000.0)));
 
+        spiWrite(1);
         val_ADC = spiRead();
 
         _delay((unsigned long)((1)*(4000000/4000.0)));
@@ -2998,8 +2999,8 @@ void main(void) {
         uni_ADC = tabla_numASCII(ADC_dig[0]);
         dec_ADC = tabla_numASCII(ADC_dig[1]);
         cen_ADC = tabla_numASCII(ADC_dig[2]);
-# 112 "Maestro.c"
-        set_cursor(2,1);
+# 113 "Maestro.c"
+        set_cursor(2,0);
         Escribir_caracterLCD(uni_ADC);
         Escribir_caracterLCD(dec_ADC);
         Escribir_caracterLCD(cen_ADC);

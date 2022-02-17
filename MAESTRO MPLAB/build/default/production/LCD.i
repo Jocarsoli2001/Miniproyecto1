@@ -2866,7 +2866,7 @@ void Escribir_caracterLCD(uint8_t a);
 
 void prender_ELCD(void){
     PORTDbits.RD5 = 1;
-    _delay((unsigned long)((500)*(4000000/4000000.0)));
+    _delay((unsigned long)((500)*(8000000/4000000.0)));
     PORTDbits.RD5 = 0;
 }
 
@@ -2887,23 +2887,23 @@ void Iniciar_LCD(void){
     PORTCbits.RC7 = 0;
     PORTDbits.RD4 = 0;
 
-    _delay((unsigned long)((14)*(4000000/4000.0)));
+    _delay((unsigned long)((14)*(8000000/4000.0)));
     Escribir_comandoLCD(0b00110000);
-    _delay((unsigned long)((4)*(4000000/4000.0)));
+    _delay((unsigned long)((4)*(8000000/4000.0)));
     Escribir_comandoLCD(0b00110000);
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00110000);
 
 
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00111000);
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00001000);
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00000001);
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00000110);
-    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    _delay((unsigned long)((100)*(8000000/4000000.0)));
     Escribir_comandoLCD(0b00001100);
     return;
 }
@@ -2926,7 +2926,7 @@ void Limpiar_pantallaLCD(void){
     PORTCbits.RC7 = 0; PORTDbits.RD4 = 0;
 
     Escribir_comandoLCD(0b00000001);
-    _delay((unsigned long)((10)*(4000000/4000.0)));
+    _delay((unsigned long)((10)*(8000000/4000.0)));
     Escribir_comandoLCD(0b00000010);
 }
 
@@ -2937,7 +2937,7 @@ void set_cursor(char linea, char posicion){
     if (linea == 1){ Escribir_comandoLCD(0b10000000);}
     else if (linea == 2){ Escribir_comandoLCD(0b11000000);}
 
-    _delay((unsigned long)((40)*(4000000/4000.0)));
+    _delay((unsigned long)((40)*(8000000/4000.0)));
 
     if (posicion != 0){
         while(posicion > 0){
@@ -2945,7 +2945,7 @@ void set_cursor(char linea, char posicion){
             posicion--;
         }
 
-        _delay((unsigned long)((40)*(4000000/4000.0)));
+        _delay((unsigned long)((40)*(8000000/4000.0)));
     }
 
 }

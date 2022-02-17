@@ -32,7 +32,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "307
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 307: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x007)));
 [v _PORTCbits `VS9 ~T0 @X0 0 e@7 ]
-"46 ./SPI.h
+"44 ./SPI.h
+[; ;./SPI.h: 44: void spiWrite(char);
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
+"46
 [; ;./SPI.h: 46: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
 "17 ./7SEG-hex.h
@@ -86,8 +89,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "48 ./Oscilador.h
 [; ;./Oscilador.h: 48: void initOsc(uint8_t Valor);
 [v _initOsc `(v ~T0 @X0 0 ef1`uc ]
-"147 Maestro.c
-[; ;Maestro.c: 147:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"148 Maestro.c
+[; ;Maestro.c: 148:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E1557 32 33 34 35 36 37 .. ]
 [n E1557 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E1565 0 128 .. ]
@@ -458,225 +461,228 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Maestro.c: 89:         _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "91
-[; ;Maestro.c: 91:         val_ADC = spiRead();
+[; ;Maestro.c: 91:         spiWrite(1);
+[e ( _spiWrite (1 -> -> 1 `i `uc ]
+"92
+[; ;Maestro.c: 92:         val_ADC = spiRead();
 [e = _val_ADC -> ( _spiRead ..  `uc ]
-"93
-[; ;Maestro.c: 93:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "94
-[; ;Maestro.c: 94:         PORTCbits.RC2 = 1;
+[; ;Maestro.c: 94:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"95
+[; ;Maestro.c: 95:         PORTCbits.RC2 = 1;
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"96
-[; ;Maestro.c: 96:         divisor_dec(val_ADC, ADC_dig);
+"97
+[; ;Maestro.c: 97:         divisor_dec(val_ADC, ADC_dig);
 [e ( _divisor_dec (2 , _val_ADC &U _ADC_dig ]
-"98
-[; ;Maestro.c: 98:         uni_ADC = tabla_numASCII(ADC_dig[0]);
-[e = _uni_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 0 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
 "99
-[; ;Maestro.c: 99:         dec_ADC = tabla_numASCII(ADC_dig[1]);
-[e = _dec_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
+[; ;Maestro.c: 99:         uni_ADC = tabla_numASCII(ADC_dig[0]);
+[e = _uni_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 0 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
 "100
-[; ;Maestro.c: 100:         cen_ADC = tabla_numASCII(ADC_dig[2]);
+[; ;Maestro.c: 100:         dec_ADC = tabla_numASCII(ADC_dig[1]);
+[e = _dec_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
+"101
+[; ;Maestro.c: 101:         cen_ADC = tabla_numASCII(ADC_dig[2]);
 [e = _cen_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
-"112
-[; ;Maestro.c: 112:         set_cursor(2,1);
-[e ( _set_cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
 "113
-[; ;Maestro.c: 113:         Escribir_caracterLCD(uni_ADC);
-[e ( _Escribir_caracterLCD (1 _uni_ADC ]
+[; ;Maestro.c: 113:         set_cursor(2,0);
+[e ( _set_cursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
 "114
-[; ;Maestro.c: 114:         Escribir_caracterLCD(dec_ADC);
-[e ( _Escribir_caracterLCD (1 _dec_ADC ]
+[; ;Maestro.c: 114:         Escribir_caracterLCD(uni_ADC);
+[e ( _Escribir_caracterLCD (1 _uni_ADC ]
 "115
-[; ;Maestro.c: 115:         Escribir_caracterLCD(cen_ADC);
+[; ;Maestro.c: 115:         Escribir_caracterLCD(dec_ADC);
+[e ( _Escribir_caracterLCD (1 _dec_ADC ]
+"116
+[; ;Maestro.c: 116:         Escribir_caracterLCD(cen_ADC);
 [e ( _Escribir_caracterLCD (1 _cen_ADC ]
-"117
-[; ;Maestro.c: 117:     }
+"118
+[; ;Maestro.c: 118:     }
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"118
-[; ;Maestro.c: 118: }
+"119
+[; ;Maestro.c: 119: }
 [e :UE 144 ]
 }
-"121
-[; ;Maestro.c: 121: void setup(void){
+"122
+[; ;Maestro.c: 122: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"124
-[; ;Maestro.c: 124:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
 "125
-[; ;Maestro.c: 125:     ANSELH = 0;
+[; ;Maestro.c: 125:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
+"126
+[; ;Maestro.c: 126:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"127
-[; ;Maestro.c: 127:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
 "128
-[; ;Maestro.c: 128:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;Maestro.c: 128:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "129
-[; ;Maestro.c: 129:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;Maestro.c: 129:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
 "130
-[; ;Maestro.c: 130:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;Maestro.c: 130:     TRISC = 0;
+[e = _TRISC -> -> 0 `i `uc ]
 "131
-[; ;Maestro.c: 131:     TRISE = 0;
+[; ;Maestro.c: 131:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
+"132
+[; ;Maestro.c: 132:     TRISE = 0;
 [e = _TRISE -> -> 0 `i `uc ]
-"133
-[; ;Maestro.c: 133:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
 "134
-[; ;Maestro.c: 134:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;Maestro.c: 134:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
 "135
-[; ;Maestro.c: 135:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Maestro.c: 135:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "136
-[; ;Maestro.c: 136:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;Maestro.c: 136:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
 "137
-[; ;Maestro.c: 137:     PORTB = 0;
+[; ;Maestro.c: 137:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
+"138
+[; ;Maestro.c: 138:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"140
-[; ;Maestro.c: 140:     TRISC2 = 0;
-[e = _TRISC2 -> -> 0 `i `b ]
 "141
-[; ;Maestro.c: 141:     PORTCbits.RC2 = 1;
+[; ;Maestro.c: 141:     TRISC2 = 0;
+[e = _TRISC2 -> -> 0 `i `b ]
+"142
+[; ;Maestro.c: 142:     PORTCbits.RC2 = 1;
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"144
-[; ;Maestro.c: 144:     initOsc(4);
+"145
+[; ;Maestro.c: 145:     initOsc(4);
 [e ( _initOsc (1 -> -> 4 `i `uc ]
-"147
-[; ;Maestro.c: 147:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"148
+[; ;Maestro.c: 148:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [e ( _spiInit (4 , , , . `E1557 0 . `E1565 0 . `E1569 1 . `E1573 0 ]
-"149
-[; ;Maestro.c: 149: }
+"150
+[; ;Maestro.c: 150: }
 [e :UE 148 ]
 }
-"152
-[; ;Maestro.c: 152: uint8_t tabla_numASCII(uint8_t a){
+"153
+[; ;Maestro.c: 153: uint8_t tabla_numASCII(uint8_t a){
 [v _tabla_numASCII `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _tabla_numASCII ]
 [v _a `uc ~T0 @X0 1 r1 ]
 [f ]
-"153
-[; ;Maestro.c: 153:     switch(a){
+"154
+[; ;Maestro.c: 154:     switch(a){
 [e $U 151  ]
 {
-"154
-[; ;Maestro.c: 154:         case 0:
-[e :U 152 ]
 "155
-[; ;Maestro.c: 155:             return 48;
+[; ;Maestro.c: 155:         case 0:
+[e :U 152 ]
+"156
+[; ;Maestro.c: 156:             return 48;
 [e ) -> -> 48 `i `uc ]
 [e $UE 149  ]
-"156
-[; ;Maestro.c: 156:             break;
-[e $U 150  ]
 "157
-[; ;Maestro.c: 157:         case 1:
-[e :U 153 ]
+[; ;Maestro.c: 157:             break;
+[e $U 150  ]
 "158
-[; ;Maestro.c: 158:             return 49;
+[; ;Maestro.c: 158:         case 1:
+[e :U 153 ]
+"159
+[; ;Maestro.c: 159:             return 49;
 [e ) -> -> 49 `i `uc ]
 [e $UE 149  ]
-"159
-[; ;Maestro.c: 159:             break;
-[e $U 150  ]
 "160
-[; ;Maestro.c: 160:         case 2:
-[e :U 154 ]
+[; ;Maestro.c: 160:             break;
+[e $U 150  ]
 "161
-[; ;Maestro.c: 161:             return 50;
+[; ;Maestro.c: 161:         case 2:
+[e :U 154 ]
+"162
+[; ;Maestro.c: 162:             return 50;
 [e ) -> -> 50 `i `uc ]
 [e $UE 149  ]
-"162
-[; ;Maestro.c: 162:             break;
-[e $U 150  ]
 "163
-[; ;Maestro.c: 163:         case 3:
-[e :U 155 ]
+[; ;Maestro.c: 163:             break;
+[e $U 150  ]
 "164
-[; ;Maestro.c: 164:             return 51;
+[; ;Maestro.c: 164:         case 3:
+[e :U 155 ]
+"165
+[; ;Maestro.c: 165:             return 51;
 [e ) -> -> 51 `i `uc ]
 [e $UE 149  ]
-"165
-[; ;Maestro.c: 165:             break;
-[e $U 150  ]
 "166
-[; ;Maestro.c: 166:         case 4:
-[e :U 156 ]
+[; ;Maestro.c: 166:             break;
+[e $U 150  ]
 "167
-[; ;Maestro.c: 167:             return 52;
+[; ;Maestro.c: 167:         case 4:
+[e :U 156 ]
+"168
+[; ;Maestro.c: 168:             return 52;
 [e ) -> -> 52 `i `uc ]
 [e $UE 149  ]
-"168
-[; ;Maestro.c: 168:             break;
-[e $U 150  ]
 "169
-[; ;Maestro.c: 169:         case 5:
-[e :U 157 ]
+[; ;Maestro.c: 169:             break;
+[e $U 150  ]
 "170
-[; ;Maestro.c: 170:             return 53;
+[; ;Maestro.c: 170:         case 5:
+[e :U 157 ]
+"171
+[; ;Maestro.c: 171:             return 53;
 [e ) -> -> 53 `i `uc ]
 [e $UE 149  ]
-"171
-[; ;Maestro.c: 171:             break;
-[e $U 150  ]
 "172
-[; ;Maestro.c: 172:         case 6:
-[e :U 158 ]
+[; ;Maestro.c: 172:             break;
+[e $U 150  ]
 "173
-[; ;Maestro.c: 173:             return 54;
+[; ;Maestro.c: 173:         case 6:
+[e :U 158 ]
+"174
+[; ;Maestro.c: 174:             return 54;
 [e ) -> -> 54 `i `uc ]
 [e $UE 149  ]
-"174
-[; ;Maestro.c: 174:             break;
-[e $U 150  ]
 "175
-[; ;Maestro.c: 175:         case 7:
-[e :U 159 ]
+[; ;Maestro.c: 175:             break;
+[e $U 150  ]
 "176
-[; ;Maestro.c: 176:             return 55;
+[; ;Maestro.c: 176:         case 7:
+[e :U 159 ]
+"177
+[; ;Maestro.c: 177:             return 55;
 [e ) -> -> 55 `i `uc ]
 [e $UE 149  ]
-"177
-[; ;Maestro.c: 177:             break;
-[e $U 150  ]
 "178
-[; ;Maestro.c: 178:         case 8:
-[e :U 160 ]
+[; ;Maestro.c: 178:             break;
+[e $U 150  ]
 "179
-[; ;Maestro.c: 179:             return 56;
+[; ;Maestro.c: 179:         case 8:
+[e :U 160 ]
+"180
+[; ;Maestro.c: 180:             return 56;
 [e ) -> -> 56 `i `uc ]
 [e $UE 149  ]
-"180
-[; ;Maestro.c: 180:             break;
-[e $U 150  ]
 "181
-[; ;Maestro.c: 181:         case 9:
-[e :U 161 ]
+[; ;Maestro.c: 181:             break;
+[e $U 150  ]
 "182
-[; ;Maestro.c: 182:             return 57;
+[; ;Maestro.c: 182:         case 9:
+[e :U 161 ]
+"183
+[; ;Maestro.c: 183:             return 57;
 [e ) -> -> 57 `i `uc ]
 [e $UE 149  ]
-"183
-[; ;Maestro.c: 183:             break;
-[e $U 150  ]
 "184
-[; ;Maestro.c: 184:         default:
-[e :U 162 ]
-"185
-[; ;Maestro.c: 185:             break;
+[; ;Maestro.c: 184:             break;
 [e $U 150  ]
+"185
+[; ;Maestro.c: 185:         default:
+[e :U 162 ]
 "186
-[; ;Maestro.c: 186:     }
+[; ;Maestro.c: 186:             break;
+[e $U 150  ]
+"187
+[; ;Maestro.c: 187:     }
 }
 [e $U 150  ]
 [e :U 151 ]
@@ -692,8 +698,8 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 9 `i 161
  162 ]
 [e :U 150 ]
-"187
-[; ;Maestro.c: 187: }
+"188
+[; ;Maestro.c: 188: }
 [e :UE 149 ]
 }
 [a 2C 74 111 115 101 32 83 97 110 116 105 122 111 0 ]

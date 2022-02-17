@@ -11,39 +11,22 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <pic16f887.h>
     
-typedef enum 
-{
-    SPI_MASTER_OSC_DIV4  = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2      = 0b00100011,
-    SPI_SLAVE_SS_EN      = 0b00100100,
-    SPI_SLAVE_SS_DIS     = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE   = 0b00000000,
-    SPI_DATA_SAMPLE_END      = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH  = 0b00010000,
-    SPI_CLOCK_IDLE_LOW   = 0b00000000        
-}Spi_Clock_polarity;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE    = 0b00000000,
-    SPI_ACTIVE_2_IDLE    = 0b01000000
-}Spi_Clock_edge;
+typedef enum{
+    SPI_MASTER_FOSC4    = 0b00000000,   // Master SPI con Clock = FOSC/4
+    SPI_MASTER_FOSC16   = 0b00000001,   // Master SPI con Clock = FOSC/16
+    SPI_MASTER_FOSC64   = 0b00000010,   // Master SPI con Clock = FOSC/64
+    SPI_MASTER_TMR2     = 0b00000011,   // Master SPI con Clock = TMR2/2
+    SPI_SLAVE_SS_EN     = 0b00000100,   // Slave SPI con Clock = SCK | SS pin = ON
+    SPI_SLAVE_SS_DIS    = 0b00000101,   // Slave SPI con Clock = SCK | SS pin = OFF
+    I2C_SLAVE_7BIT_AD   = 0b00000110,   // Slave I2C con dirección de 7 bits
+    I2C_SLAVE_10BIT_AD  = 0b00000111,   // Slave I2C con dirección de 10 bits
+    I2C_MASTER_FOSC     = 0b00001000    // Master I2C con Clock = FOSC/4(SSPADD+1)
+}MSSP_Mode;
 
 
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
-void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+void InitMSSP(MSSP_Mode Modo);
+void WriteMSSP(char Data);
+char ReadMSSP();
 
 #endif	/* SPI_H */
 

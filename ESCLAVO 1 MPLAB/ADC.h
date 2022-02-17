@@ -50,11 +50,8 @@
 #define _CH7 7
 
 //-------------------------Variables-----------------------------------------------
-uint8_t cont1 = 0;
-uint8_t cont2 = 0;
-uint8_t uni = 0;
-uint8_t dec = 0;
-uint8_t cen = 0;
+char cont1 = 0;
+char cont2 = 0;
 
 //-------------------------Función para obtener valor de ADC-----------------------
 void ADC(void);                         // Función para extraer valor de POT

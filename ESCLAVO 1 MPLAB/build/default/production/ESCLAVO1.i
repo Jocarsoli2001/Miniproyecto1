@@ -2867,39 +2867,22 @@ extern char * strrichr(const char *, int);
 
 # 1 "./SPI.h" 1
 # 14 "./SPI.h"
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_polarity;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Clock_edge;
+typedef enum{
+    SPI_MASTER_FOSC4 = 0b00000000,
+    SPI_MASTER_FOSC16 = 0b00000001,
+    SPI_MASTER_FOSC64 = 0b00000010,
+    SPI_MASTER_TMR2 = 0b00000011,
+    SPI_SLAVE_SS_EN = 0b00000100,
+    SPI_SLAVE_SS_DIS = 0b00000101,
+    I2C_SLAVE_7BIT_AD = 0b00000110,
+    I2C_SLAVE_10BIT_AD = 0b00000111,
+    I2C_MASTER_FOSC = 0b00001000
+}MSSP_Mode;
 
 
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
-void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+void InitMSSP(MSSP_Mode Modo);
+void WriteMSSP(char Data);
+char ReadMSSP();
 # 38 "ESCLAVO1.c" 2
 
 # 1 "./Oscilador.h" 1
@@ -2915,11 +2898,8 @@ void initOsc(uint8_t Valor);
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.32\\pic\\include\\c90\\stdint.h" 1 3
 # 40 "./ADC.h" 2
 # 53 "./ADC.h"
-uint8_t cont1 = 0;
-uint8_t cont2 = 0;
-uint8_t uni = 0;
-uint8_t dec = 0;
-uint8_t cen = 0;
+char cont1 = 0;
+char cont2 = 0;
 
 
 void ADC(void);
@@ -2934,7 +2914,7 @@ void config_ADC(int channel);
 
 
 
-uint8_t read = 0;
+char read;
 
 
 void setup(void);
@@ -2943,11 +2923,6 @@ void setup(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
-    if(SSPIF == 1){
-        read = spiRead();
-        spiWrite(cont1);
-        SSPIF = 0;
-    }
     if(PIR1bits.ADIF){
         ADC();
         PIR1bits.ADIF = 0;
@@ -2958,11 +2933,20 @@ void __attribute__((picinterrupt(("")))) isr(void){
 void main(void) {
     setup();
     ADCON0bits.GO = 1;
+    read = 0;
     while(1){
 
 
 
+
         conversion();
+
+
+
+
+        read = ReadMSSP();
+
+        WriteMSSP(cont1);
 
     }
 }
@@ -2971,22 +2955,17 @@ void main(void) {
 void setup(void){
 
 
-    ANSEL = 0b0001;
+    ANSEL = 0b0011;
     ANSELH = 0;
 
-    TRISA = 0b0001;
+    TRISA = 0b0011;
     TRISB = 0;
     TRISD = 0;
-    TRISC = 0;
     TRISE = 0;
 
     PORTD = 0;
-    PORTC = 0;
     PORTE = 0;
     PORTB = 0;
-
-
-    TRISAbits.TRISA5 = 1;
 
 
     initOsc(4);
@@ -2995,13 +2974,11 @@ void setup(void){
     config_ADC(0);
 
 
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    InitMSSP(SPI_SLAVE_SS_EN);
 
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-    PIR1bits.SSPIF = 0;
-    PIE1bits.SSPIE = 1;
     PIR1bits.ADIF = 0;
     PIE1bits.ADIE = 1;
 

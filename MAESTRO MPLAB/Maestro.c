@@ -43,20 +43,21 @@
 //-----------------Definición de frecuencia de cristal---------------
 #define _XTAL_FREQ 4000000
 
+#define SS1 PORTCbits.RC2                            // Slave select = pin RC2
+
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-uint8_t val_ADC = 0;
+char val_ADC;
 char ADC_dig[];
-uint8_t uni_ADC = 0;
-uint8_t dec_ADC = 0;
-uint8_t cen_ADC = 0;
-uint8_t num = 0;
-uint8_t trad = 0;
+char dig_ADC = 0;
+char uni_ADC = 0;
+char dec_ADC = 0;
+char cen_ADC = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
-uint8_t tabla_numASCII(uint8_t a);
+char tabla_numASCII(char a);
 
 //-------------Funciones que retornan variables-----------------------
 
@@ -69,36 +70,38 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    Iniciar_LCD();                                  // Se inicializa la LCD en 8 bits
-    Limpiar_pantallaLCD();                          // 
-    set_cursor(1,0);
-    Escribir_stringLCD("Hola");
-    set_cursor(2,2);
-    Escribir_stringLCD("Jose Santizo");
-    __delay_ms(5000);
-    Limpiar_pantallaLCD();
+//    Iniciar_LCD();                                  // Se inicializa la LCD en 8 bits
+//    Limpiar_pantallaLCD();
+    val_ADC = 0;
     while(1){
-        set_cursor(1,0);                            // Setear cursor a primera línea                           
-        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
+//        set_cursor(1,0);                            // Setear cursor a primera línea                           
+//        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
+        
+        
         
         //**********************************************************************
         // COMUNICACIÓN CON PRIMER ESCLAVO
         //**********************************************************************
         
-        PORTCbits.RC2 = 0;                          // Se selecciona el esclavo 1
+        SS1 = 0;                          // Se selecciona el esclavo 1
         __delay_ms(1);
         
-        spiWrite(1);
-        val_ADC = spiRead();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        WriteMSSP(1);
+        PORTB = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
         
         __delay_ms(1);
-        PORTCbits.RC2 = 1;
-//        
-        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
+        SS1 = 1;
         
-        uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
-        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
-        cen_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de centenas a caracter ASCII
+//        dig_ADC = tabla_numASCII(val_ADC);
+        
+//        set_cursor(2,0);
+//        Escribir_stringLCD(dig_ADC);
+        
+//        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
+        
+//        uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
+//        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
+//        cen_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de centenas a caracter ASCII
         
         
         //**********************************************************************
@@ -110,11 +113,11 @@ void main(void) {
         // IMPRESIÓN DE VALORES A LCD
         //**********************************************************************
         
-        set_cursor(2,0);                            // Setear cursor a segunda línea
-        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
-        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
-        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
-//        
+//        set_cursor(2,0);                            // Setear cursor a segunda línea
+//        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
+//        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
+//        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
+        
     }
 }
 
@@ -127,13 +130,11 @@ void setup(void){
     
     TRISA = 0;                                      // PORTA como salida
     TRISB = 0;                                      // PORTB como salida
-    TRISC = 0;
     TRISD = 0;                                      // PORTD como salida
     TRISE = 0;                                      // PORTE como salida
     
     PORTA = 0;                                      // Limpiar PORTA
     PORTD = 0;                                      // Limpiar PORTD
-    PORTC = 0;
     PORTE = 0;                                      // Limpiar PORTE
     PORTB = 0;                                      // Limpiar PORTB
     
@@ -145,12 +146,12 @@ void setup(void){
     initOsc(_4MHz);                                 // Oscilador a 4 mega hertz
     
     //Config de SPI (Configuración de maestro a 4 MHz, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    InitMSSP(SPI_MASTER_FOSC4);
     
 }
 
 
-uint8_t tabla_numASCII(uint8_t a){
+char tabla_numASCII(char a){
     switch(a){
         case 0:                                     // Si a = 0
             return 48;                              // devolver valor 48 (0 en ASCII)

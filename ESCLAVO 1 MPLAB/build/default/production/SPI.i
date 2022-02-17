@@ -2500,79 +2500,75 @@ extern __bank0 __bit __timeout;
 
 
 
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_polarity;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Clock_edge;
+typedef enum{
+    SPI_MASTER_FOSC4 = 0b00000000,
+    SPI_MASTER_FOSC16 = 0b00000001,
+    SPI_MASTER_FOSC64 = 0b00000010,
+    SPI_MASTER_TMR2 = 0b00000011,
+    SPI_SLAVE_SS_EN = 0b00000100,
+    SPI_SLAVE_SS_DIS = 0b00000101,
+    I2C_SLAVE_7BIT_AD = 0b00000110,
+    I2C_SLAVE_10BIT_AD = 0b00000111,
+    I2C_MASTER_FOSC = 0b00001000
+}MSSP_Mode;
 
 
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
-void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+void InitMSSP(MSSP_Mode Modo);
+void WriteMSSP(char Data);
+char ReadMSSP();
 # 8 "SPI.c" 2
 
 
-void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_polarity sClockIdle, Spi_Clock_edge sTransmitEdge)
-{
-    TRISC5 = 0;
-    if(sType & 0b00000100)
-    {
-        SSPSTAT = sTransmitEdge;
-        TRISC3 = 1;
+void InitMSSP(MSSP_Mode Modo){
+
+
+
+    SSPCONbits.SSPEN = 0;
+
+    SSPCONbits.SSPEN = 1;
+
+
+    TRISCbits.TRISC5 = 0;
+    TRISCbits.TRISC4 = 1;
+    if (Modo < 0b00000110){
+
+        if (Modo < 0b00000100){
+            TRISCbits.TRISC3 = 0;
+        }
+        else {
+            TRISCbits.TRISC3 = 1;
+        }
+
     }
-    else
-    {
-        SSPSTAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
-    }
 
-    SSPCON = sType | sClockIdle;
+    if (Modo == 0b00000100){ TRISAbits.TRISA5 = 1;}
+
+
+
+    SSPCON = SSPCON | Modo;
+
+    PIE1bits.SSPIE = 0;
+
+
+
+    SSPCONbits.CKP = 0;
+
+
+    SSPSTATbits.CKE = 1;
+
+    SSPSTATbits.SMP = 0;
 }
 
-static void spiReceiveWait()
-{
-    while ( !SSPSTATbits.BF );
+
+void WriteMSSP(char Data){
+
+
+
+    SSPBUF = Data;
 }
 
-void spiWrite(char dat)
-{
-    SSPBUF = dat;
-}
 
-unsigned spiDataReady()
-{
-    if(SSPSTATbits.BF)
-        return 1;
-    else
-        return 0;
-}
-
-char spiRead()
-{
-    spiReceiveWait();
+char ReadMSSP(){
+    while(SSPSTATbits.BF == 0){}
     return(SSPBUF);
 }

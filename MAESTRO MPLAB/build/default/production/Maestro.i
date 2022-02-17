@@ -2867,39 +2867,22 @@ extern char * strrichr(const char *, int);
 
 # 1 "./SPI.h" 1
 # 14 "./SPI.h"
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_polarity;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Clock_edge;
+typedef enum{
+    SPI_MASTER_FOSC4 = 0b00000000,
+    SPI_MASTER_FOSC16 = 0b00000001,
+    SPI_MASTER_FOSC64 = 0b00000010,
+    SPI_MASTER_TMR2 = 0b00000011,
+    SPI_SLAVE_SS_EN = 0b00000100,
+    SPI_SLAVE_SS_DIS = 0b00000101,
+    I2C_SLAVE_7BIT_AD = 0b00000110,
+    I2C_SLAVE_10BIT_AD = 0b00000111,
+    I2C_MASTER_FOSC = 0b00001000
+}MSSP_Mode;
 
 
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
-void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+void InitMSSP(MSSP_Mode Modo);
+void WriteMSSP(char Data);
+char ReadMSSP();
 # 38 "Maestro.c" 2
 
 # 1 "./LCD.h" 1
@@ -2938,25 +2921,17 @@ int tabla_hex(int a);
 void divisor_hex(uint8_t a, char dig[]);
 void divisor_dec(uint8_t b, char dig1[]);
 # 41 "Maestro.c" 2
-
-
-
-
-
-
-
-
-uint8_t val_ADC = 0;
+# 51 "Maestro.c"
+char val_ADC;
 char ADC_dig[];
-uint8_t uni_ADC = 0;
-uint8_t dec_ADC = 0;
-uint8_t cen_ADC = 0;
-uint8_t num = 0;
-uint8_t trad = 0;
+char dig_ADC = 0;
+char uni_ADC = 0;
+char dec_ADC = 0;
+char cen_ADC = 0;
 
 
 void setup(void);
-uint8_t tabla_numASCII(uint8_t a);
+char tabla_numASCII(char a);
 
 
 
@@ -2969,42 +2944,20 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
-    Iniciar_LCD();
-    Limpiar_pantallaLCD();
-    set_cursor(1,0);
-    Escribir_stringLCD("Hola");
-    set_cursor(2,2);
-    Escribir_stringLCD("Jose Santizo");
-    _delay((unsigned long)((5000)*(4000000/4000.0)));
-    Limpiar_pantallaLCD();
+
+
+    val_ADC = 0;
     while(1){
-        set_cursor(1,0);
-        Escribir_stringLCD("S1:    S2:   S3:");
-
-
-
-
-
+# 86 "Maestro.c"
         PORTCbits.RC2 = 0;
         _delay((unsigned long)((1)*(4000000/4000.0)));
 
-        spiWrite(1);
-        val_ADC = spiRead();
+        WriteMSSP(1);
+        PORTB = ReadMSSP();
 
         _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTCbits.RC2 = 1;
-
-        divisor_dec(val_ADC, ADC_dig);
-
-        uni_ADC = tabla_numASCII(ADC_dig[0]);
-        dec_ADC = tabla_numASCII(ADC_dig[1]);
-        cen_ADC = tabla_numASCII(ADC_dig[2]);
-# 113 "Maestro.c"
-        set_cursor(2,0);
-        Escribir_caracterLCD(uni_ADC);
-        Escribir_caracterLCD(dec_ADC);
-        Escribir_caracterLCD(cen_ADC);
-
+# 121 "Maestro.c"
     }
 }
 
@@ -3017,13 +2970,11 @@ void setup(void){
 
     TRISA = 0;
     TRISB = 0;
-    TRISC = 0;
     TRISD = 0;
     TRISE = 0;
 
     PORTA = 0;
     PORTD = 0;
-    PORTC = 0;
     PORTE = 0;
     PORTB = 0;
 
@@ -3035,12 +2986,12 @@ void setup(void){
     initOsc(4);
 
 
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    InitMSSP(SPI_MASTER_FOSC4);
 
 }
 
 
-uint8_t tabla_numASCII(uint8_t a){
+char tabla_numASCII(char a){
     switch(a){
         case 0:
             return 48;

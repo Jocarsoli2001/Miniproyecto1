@@ -45,7 +45,7 @@
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-uint8_t read = 0;
+char read;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -54,11 +54,6 @@ void setup(void);                                   // Función de setup
 
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
-    if(SSPIF == 1){                                 // Interrupción de MSSP
-        read = spiRead();
-        spiWrite(cont1);                            // Leer valor de ADRESH (cont1) y mandarlo por SPI
-        SSPIF = 0;
-    }
     if(PIR1bits.ADIF){                              // Interrupción de ADC
         ADC();                                      // Guarda valor de ADRESH en cont1 o cont2, dependiendo del canal seleccionado
         PIR1bits.ADIF = 0;                          // Apagar bandera de interrupción de ADC
@@ -68,12 +63,21 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    ADCON0bits.GO = 1;                             // Iniciar conversión de ADC
+    ADCON0bits.GO = 1;                              // Iniciar conversión de ADC
+    read = 0;
     while(1){
+        
         //**********************************************************************
         // CONVERSIÓN DE POTENCIÓMETRO DE ADC (VER ADC.C)
         //**********************************************************************
-        conversion();
+        conversion();                               // Rutin para obtener valores de ADC
+        
+        //**********************************************************************
+        // LECTURA DE MSPP
+        //**********************************************************************
+        read = ReadMSSP();                          // Read = Lectura de SPI
+        
+        WriteMSSP(cont1);
         
     }
 }
@@ -82,22 +86,17 @@ void main(void) {
 void setup(void){
     
     //Configuración de entradas y salidas
-    ANSEL = 0b0001;                                 // Pines digitales
+    ANSEL = 0b0011;                                 // Pines digitales
     ANSELH = 0;
     
-    TRISA = 0b0001;                                 // PORTA como entradas analógicas
+    TRISA = 0b0011;                                 // PORTA como entradas analógicas
     TRISB = 0;                                      // PORTB como salida
     TRISD = 0;                                      // PORTD como salida
-    TRISC = 0;
     TRISE = 0;                                      // PORTE como salida
     
     PORTD = 0;                                      // Limpiar PORTD
-    PORTC = 0;
     PORTE = 0;                                      // Limpiar PORTE
     PORTB = 0;                                      // Limpiar PORTB
-    
-    //Habilitar slave select
-    TRISAbits.TRISA5 = 1;                           // Slave Select
     
     //Configuración de oscilador
     initOsc(_4MHz);                                 // Oscilador a 4 mega hertz
@@ -106,13 +105,11 @@ void setup(void){
     config_ADC(_CH0);
     
     //Config de SPI (Configuración de esclavo activada, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    InitMSSP(SPI_SLAVE_SS_EN);
     
     //Configuración de interrupciones
     INTCONbits.GIE = 1;                             // Habilitamos interrupciones
     INTCONbits.PEIE = 1;                            // Habilitamos interrupciones PEIE
-    PIR1bits.SSPIF = 0;                             // Borramos bandera interrupción MSSP
-    PIE1bits.SSPIE = 1;                             // Habilitamos interrupción MSSP
     PIR1bits.ADIF = 0;                              // Limpiar bandera de interrupción del ADC
     PIE1bits.ADIE = 1;                              // Interrupción ADC = enabled
     

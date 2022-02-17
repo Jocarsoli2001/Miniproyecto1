@@ -2734,11 +2734,8 @@ extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 # 41 "./ADC.h" 2
 # 53 "./ADC.h"
-uint8_t cont1 = 0;
-uint8_t cont2 = 0;
-uint8_t uni = 0;
-uint8_t dec = 0;
-uint8_t cen = 0;
+char cont1 = 0;
+char cont2 = 0;
 
 
 void ADC(void);

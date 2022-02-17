@@ -275,33 +275,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "53 ./ADC.h
-[; ;./ADC.h: 53: uint8_t cont1 = 0;
+[; ;./ADC.h: 53: char cont1 = 0;
 [v _cont1 `uc ~T0 @X0 1 e ]
 [i _cont1
 -> -> 0 `i `uc
 ]
 "54
-[; ;./ADC.h: 54: uint8_t cont2 = 0;
+[; ;./ADC.h: 54: char cont2 = 0;
 [v _cont2 `uc ~T0 @X0 1 e ]
 [i _cont2
--> -> 0 `i `uc
-]
-"55
-[; ;./ADC.h: 55: uint8_t uni = 0;
-[v _uni `uc ~T0 @X0 1 e ]
-[i _uni
--> -> 0 `i `uc
-]
-"56
-[; ;./ADC.h: 56: uint8_t dec = 0;
-[v _dec `uc ~T0 @X0 1 e ]
-[i _dec
--> -> 0 `i `uc
-]
-"57
-[; ;./ADC.h: 57: uint8_t cen = 0;
-[v _cen `uc ~T0 @X0 1 e ]
-[i _cen
 -> -> 0 `i `uc
 ]
 "11 ADC.c
@@ -316,7 +298,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "13
 [; ;ADC.c: 13:         cont1 = ADRESH;
-[e = _cont1 _ADRESH ]
+[e = _cont1 -> _ADRESH `uc ]
 "14
 [; ;ADC.c: 14:     }
 }
@@ -328,7 +310,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "16
 [; ;ADC.c: 16:         cont2 = ADRESH;
-[e = _cont2 _ADRESH ]
+[e = _cont2 -> _ADRESH `uc ]
 "17
 [; ;ADC.c: 17:     }
 }

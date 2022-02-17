@@ -2,25 +2,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
 [p mainexit ]
-"58 Maestro.c
-[; ;Maestro.c: 58: void setup(void);
+"59 Maestro.c
+[; ;Maestro.c: 59: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
-"67 ./LCD.h
-[; ;./LCD.h: 67: void Iniciar_LCD(void);
-[v _Iniciar_LCD `(v ~T0 @X0 0 ef ]
-"69
-[; ;./LCD.h: 69: void Limpiar_pantallaLCD(void);
-[v _Limpiar_pantallaLCD `(v ~T0 @X0 0 ef ]
-"71
-[; ;./LCD.h: 71: void set_cursor(char linea, char posicion);
-[v _set_cursor `(v ~T0 @X0 0 ef2`uc`uc ]
-"68
-[; ;./LCD.h: 68: void Escribir_stringLCD(const char*);
-[v _Escribir_stringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
-[v F1256 `(v ~T0 @X0 1 tf1`ul ]
-"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
-[v __delay `JF1256 ~T0 @X0 0 e ]
-[p i __delay ]
 "296 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 296:     struct {
 [s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -32,21 +16,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "307
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 307: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x007)));
 [v _PORTCbits `VS9 ~T0 @X0 0 e@7 ]
-"44 ./SPI.h
-[; ;./SPI.h: 44: void spiWrite(char);
-[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
-"46
-[; ;./SPI.h: 46: char spiRead();
-[v _spiRead `(uc ~T0 @X0 0 e? ]
-"17 ./7SEG-hex.h
-[; ;./7SEG-hex.h: 17: void divisor_dec(uint8_t b, char dig1[]);
-[v _divisor_dec `(v ~T0 @X0 0 ef2`uc`*uc ]
-"59 Maestro.c
-[; ;Maestro.c: 59: uint8_t tabla_numASCII(uint8_t a);
-[v _tabla_numASCII `(uc ~T0 @X0 0 ef1`uc ]
-"72 ./LCD.h
-[; ;./LCD.h: 72: void Escribir_caracterLCD(uint8_t a);
-[v _Escribir_caracterLCD `(v ~T0 @X0 0 ef1`uc ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
+"28 ./SPI.h
+[; ;./SPI.h: 28: void WriteMSSP(char Data);
+[v _WriteMSSP `(v ~T0 @X0 0 ef1`uc ]
+"228 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
+[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"29 ./SPI.h
+[; ;./SPI.h: 29: char ReadMSSP();
+[v _ReadMSSP `(uc ~T0 @X0 0 e? ]
 "3387 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
@@ -59,9 +41,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1478
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"1540
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1540: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
@@ -74,34 +53,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "352
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"290
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
 "414
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
 [v _PORTE `Vuc ~T0 @X0 0 e@9 ]
-"228
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "4454
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4454: extern volatile __bit TRISC2 __attribute__((address(0x43A)));
 [v _TRISC2 `Vb ~T0 @X0 0 e@1082 ]
 "48 ./Oscilador.h
 [; ;./Oscilador.h: 48: void initOsc(uint8_t Valor);
 [v _initOsc `(v ~T0 @X0 0 ef1`uc ]
-"148 Maestro.c
-[; ;Maestro.c: 148:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[c E1557 32 33 34 35 36 37 .. ]
-[n E1557 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E1565 0 128 .. ]
-[n E1565 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E1569 16 0 .. ]
-[n E1569 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E1573 0 64 .. ]
-[n E1573 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
-"43 ./SPI.h
-[; ;./SPI.h: 43: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_polarity, Spi_Clock_edge);
-[v _spiInit `(v ~T0 @X0 0 ef4`E1557`E1565`E1569`E1573 ]
+"149 Maestro.c
+[; ;Maestro.c: 149:     InitMSSP(SPI_MASTER_FOSC4);
+[c E1557 0 1 2 3 4 5 6 7 8 .. ]
+[n E1557 . SPI_MASTER_FOSC4 SPI_MASTER_FOSC16 SPI_MASTER_FOSC64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS I2C_SLAVE_7BIT_AD I2C_SLAVE_10BIT_AD I2C_MASTER_FOSC  ]
+"27 ./SPI.h
+[; ;./SPI.h: 27: void InitMSSP(MSSP_Mode Modo);
+[v _InitMSSP `(v ~T0 @X0 0 ef1`E1557 ]
 "11 Maestro.c
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "12
@@ -360,329 +327,263 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"49 Maestro.c
-[; ;Maestro.c: 49: uint8_t val_ADC = 0;
+"51 Maestro.c
+[; ;Maestro.c: 51: char val_ADC;
 [v _val_ADC `uc ~T0 @X0 1 e ]
-[i _val_ADC
+"52
+[; ;Maestro.c: 52: char ADC_dig[];
+[v _ADC_dig `uc ~T0 @X0 -> -> 1 `i `ux e ]
+"53
+[; ;Maestro.c: 53: char dig_ADC = 0;
+[v _dig_ADC `uc ~T0 @X0 1 e ]
+[i _dig_ADC
 -> -> 0 `i `uc
 ]
-"50
-[; ;Maestro.c: 50: char ADC_dig[];
-[v _ADC_dig `uc ~T0 @X0 -> -> 1 `i `ux e ]
-"51
-[; ;Maestro.c: 51: uint8_t uni_ADC = 0;
+"54
+[; ;Maestro.c: 54: char uni_ADC = 0;
 [v _uni_ADC `uc ~T0 @X0 1 e ]
 [i _uni_ADC
 -> -> 0 `i `uc
 ]
-"52
-[; ;Maestro.c: 52: uint8_t dec_ADC = 0;
+"55
+[; ;Maestro.c: 55: char dec_ADC = 0;
 [v _dec_ADC `uc ~T0 @X0 1 e ]
 [i _dec_ADC
 -> -> 0 `i `uc
 ]
-"53
-[; ;Maestro.c: 53: uint8_t cen_ADC = 0;
+"56
+[; ;Maestro.c: 56: char cen_ADC = 0;
 [v _cen_ADC `uc ~T0 @X0 1 e ]
 [i _cen_ADC
 -> -> 0 `i `uc
 ]
-"54
-[; ;Maestro.c: 54: uint8_t num = 0;
-[v _num `uc ~T0 @X0 1 e ]
-[i _num
--> -> 0 `i `uc
-]
-"55
-[; ;Maestro.c: 55: uint8_t trad = 0;
-[v _trad `uc ~T0 @X0 1 e ]
-[i _trad
--> -> 0 `i `uc
-]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"64
-[; ;Maestro.c: 64: void __attribute__((picinterrupt(("")))) isr(void){
+"65
+[; ;Maestro.c: 65: void __attribute__((picinterrupt(("")))) isr(void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"67
-[; ;Maestro.c: 67: }
+"68
+[; ;Maestro.c: 68: }
 [e :UE 143 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"70
-[; ;Maestro.c: 70: void main(void) {
+"71
+[; ;Maestro.c: 71: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"71
-[; ;Maestro.c: 71:     setup();
-[e ( _setup ..  ]
 "72
-[; ;Maestro.c: 72:     Iniciar_LCD();
-[e ( _Iniciar_LCD ..  ]
-"73
-[; ;Maestro.c: 73:     Limpiar_pantallaLCD();
-[e ( _Limpiar_pantallaLCD ..  ]
-"74
-[; ;Maestro.c: 74:     set_cursor(1,0);
-[e ( _set_cursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;Maestro.c: 72:     setup();
+[e ( _setup ..  ]
 "75
-[; ;Maestro.c: 75:     Escribir_stringLCD("Hola");
-[e ( _Escribir_stringLCD (1 :s 1C ]
+[; ;Maestro.c: 75:     val_ADC = 0;
+[e = _val_ADC -> -> 0 `i `uc ]
 "76
-[; ;Maestro.c: 76:     set_cursor(2,2);
-[e ( _set_cursor (2 , -> -> 2 `i `uc -> -> 2 `i `uc ]
-"77
-[; ;Maestro.c: 77:     Escribir_stringLCD("Jose Santizo");
-[e ( _Escribir_stringLCD (1 :s 2C ]
-"78
-[; ;Maestro.c: 78:     _delay((unsigned long)((5000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"79
-[; ;Maestro.c: 79:     Limpiar_pantallaLCD();
-[e ( _Limpiar_pantallaLCD ..  ]
-"80
-[; ;Maestro.c: 80:     while(1){
+[; ;Maestro.c: 76:     while(1){
 [e :U 146 ]
 {
-"81
-[; ;Maestro.c: 81:         set_cursor(1,0);
-[e ( _set_cursor (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"82
-[; ;Maestro.c: 82:         Escribir_stringLCD("S1:    S2:   S3:");
-[e ( _Escribir_stringLCD (1 :s 3C ]
-"88
-[; ;Maestro.c: 88:         PORTCbits.RC2 = 0;
+"86
+[; ;Maestro.c: 86:         PORTCbits.RC2 = 0;
 [e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
+"87
+[; ;Maestro.c: 87:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "89
-[; ;Maestro.c: 89:         _delay((unsigned long)((1)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"91
-[; ;Maestro.c: 91:         spiWrite(1);
-[e ( _spiWrite (1 -> -> 1 `i `uc ]
+[; ;Maestro.c: 89:         WriteMSSP(1);
+[e ( _WriteMSSP (1 -> -> 1 `i `uc ]
+"90
+[; ;Maestro.c: 90:         PORTB = ReadMSSP();
+[e = _PORTB -> ( _ReadMSSP ..  `uc ]
 "92
-[; ;Maestro.c: 92:         val_ADC = spiRead();
-[e = _val_ADC -> ( _spiRead ..  `uc ]
-"94
-[; ;Maestro.c: 94:         _delay((unsigned long)((1)*(4000000/4000.0)));
+[; ;Maestro.c: 92:         _delay((unsigned long)((1)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"95
-[; ;Maestro.c: 95:         PORTCbits.RC2 = 1;
+"93
+[; ;Maestro.c: 93:         PORTCbits.RC2 = 1;
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"97
-[; ;Maestro.c: 97:         divisor_dec(val_ADC, ADC_dig);
-[e ( _divisor_dec (2 , _val_ADC &U _ADC_dig ]
-"99
-[; ;Maestro.c: 99:         uni_ADC = tabla_numASCII(ADC_dig[0]);
-[e = _uni_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 0 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
-"100
-[; ;Maestro.c: 100:         dec_ADC = tabla_numASCII(ADC_dig[1]);
-[e = _dec_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 1 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
-"101
-[; ;Maestro.c: 101:         cen_ADC = tabla_numASCII(ADC_dig[2]);
-[e = _cen_ADC ( _tabla_numASCII (1 -> *U + &U _ADC_dig * -> -> -> 2 `i `ui `ux -> -> # *U &U _ADC_dig `ui `ux `uc ]
-"113
-[; ;Maestro.c: 113:         set_cursor(2,0);
-[e ( _set_cursor (2 , -> -> 2 `i `uc -> -> 0 `i `uc ]
-"114
-[; ;Maestro.c: 114:         Escribir_caracterLCD(uni_ADC);
-[e ( _Escribir_caracterLCD (1 _uni_ADC ]
-"115
-[; ;Maestro.c: 115:         Escribir_caracterLCD(dec_ADC);
-[e ( _Escribir_caracterLCD (1 _dec_ADC ]
-"116
-[; ;Maestro.c: 116:         Escribir_caracterLCD(cen_ADC);
-[e ( _Escribir_caracterLCD (1 _cen_ADC ]
-"118
-[; ;Maestro.c: 118:     }
+"121
+[; ;Maestro.c: 121:     }
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"119
-[; ;Maestro.c: 119: }
+"122
+[; ;Maestro.c: 122: }
 [e :UE 144 ]
 }
-"122
-[; ;Maestro.c: 122: void setup(void){
+"125
+[; ;Maestro.c: 125: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"125
-[; ;Maestro.c: 125:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"126
-[; ;Maestro.c: 126:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
 "128
-[; ;Maestro.c: 128:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
+[; ;Maestro.c: 128:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
 "129
-[; ;Maestro.c: 129:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
-"130
-[; ;Maestro.c: 130:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;Maestro.c: 129:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "131
-[; ;Maestro.c: 131:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;Maestro.c: 131:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "132
-[; ;Maestro.c: 132:     TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;Maestro.c: 132:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"133
+[; ;Maestro.c: 133:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "134
-[; ;Maestro.c: 134:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
-"135
-[; ;Maestro.c: 135:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;Maestro.c: 134:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
 "136
-[; ;Maestro.c: 136:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Maestro.c: 136:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
 "137
-[; ;Maestro.c: 137:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;Maestro.c: 137:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "138
-[; ;Maestro.c: 138:     PORTB = 0;
+[; ;Maestro.c: 138:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
+"139
+[; ;Maestro.c: 139:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"141
-[; ;Maestro.c: 141:     TRISC2 = 0;
-[e = _TRISC2 -> -> 0 `i `b ]
 "142
-[; ;Maestro.c: 142:     PORTCbits.RC2 = 1;
+[; ;Maestro.c: 142:     TRISC2 = 0;
+[e = _TRISC2 -> -> 0 `i `b ]
+"143
+[; ;Maestro.c: 143:     PORTCbits.RC2 = 1;
 [e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"145
-[; ;Maestro.c: 145:     initOsc(4);
+"146
+[; ;Maestro.c: 146:     initOsc(4);
 [e ( _initOsc (1 -> -> 4 `i `uc ]
-"148
-[; ;Maestro.c: 148:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E1557 0 . `E1565 0 . `E1569 1 . `E1573 0 ]
-"150
-[; ;Maestro.c: 150: }
+"149
+[; ;Maestro.c: 149:     InitMSSP(SPI_MASTER_FOSC4);
+[e ( _InitMSSP (1 . `E1557 0 ]
+"151
+[; ;Maestro.c: 151: }
 [e :UE 148 ]
 }
-"153
-[; ;Maestro.c: 153: uint8_t tabla_numASCII(uint8_t a){
+"154
+[; ;Maestro.c: 154: char tabla_numASCII(char a){
 [v _tabla_numASCII `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _tabla_numASCII ]
 [v _a `uc ~T0 @X0 1 r1 ]
 [f ]
-"154
-[; ;Maestro.c: 154:     switch(a){
+"155
+[; ;Maestro.c: 155:     switch(a){
 [e $U 151  ]
 {
-"155
-[; ;Maestro.c: 155:         case 0:
-[e :U 152 ]
 "156
-[; ;Maestro.c: 156:             return 48;
+[; ;Maestro.c: 156:         case 0:
+[e :U 152 ]
+"157
+[; ;Maestro.c: 157:             return 48;
 [e ) -> -> 48 `i `uc ]
 [e $UE 149  ]
-"157
-[; ;Maestro.c: 157:             break;
-[e $U 150  ]
 "158
-[; ;Maestro.c: 158:         case 1:
-[e :U 153 ]
+[; ;Maestro.c: 158:             break;
+[e $U 150  ]
 "159
-[; ;Maestro.c: 159:             return 49;
+[; ;Maestro.c: 159:         case 1:
+[e :U 153 ]
+"160
+[; ;Maestro.c: 160:             return 49;
 [e ) -> -> 49 `i `uc ]
 [e $UE 149  ]
-"160
-[; ;Maestro.c: 160:             break;
-[e $U 150  ]
 "161
-[; ;Maestro.c: 161:         case 2:
-[e :U 154 ]
+[; ;Maestro.c: 161:             break;
+[e $U 150  ]
 "162
-[; ;Maestro.c: 162:             return 50;
+[; ;Maestro.c: 162:         case 2:
+[e :U 154 ]
+"163
+[; ;Maestro.c: 163:             return 50;
 [e ) -> -> 50 `i `uc ]
 [e $UE 149  ]
-"163
-[; ;Maestro.c: 163:             break;
-[e $U 150  ]
 "164
-[; ;Maestro.c: 164:         case 3:
-[e :U 155 ]
+[; ;Maestro.c: 164:             break;
+[e $U 150  ]
 "165
-[; ;Maestro.c: 165:             return 51;
+[; ;Maestro.c: 165:         case 3:
+[e :U 155 ]
+"166
+[; ;Maestro.c: 166:             return 51;
 [e ) -> -> 51 `i `uc ]
 [e $UE 149  ]
-"166
-[; ;Maestro.c: 166:             break;
-[e $U 150  ]
 "167
-[; ;Maestro.c: 167:         case 4:
-[e :U 156 ]
+[; ;Maestro.c: 167:             break;
+[e $U 150  ]
 "168
-[; ;Maestro.c: 168:             return 52;
+[; ;Maestro.c: 168:         case 4:
+[e :U 156 ]
+"169
+[; ;Maestro.c: 169:             return 52;
 [e ) -> -> 52 `i `uc ]
 [e $UE 149  ]
-"169
-[; ;Maestro.c: 169:             break;
-[e $U 150  ]
 "170
-[; ;Maestro.c: 170:         case 5:
-[e :U 157 ]
+[; ;Maestro.c: 170:             break;
+[e $U 150  ]
 "171
-[; ;Maestro.c: 171:             return 53;
+[; ;Maestro.c: 171:         case 5:
+[e :U 157 ]
+"172
+[; ;Maestro.c: 172:             return 53;
 [e ) -> -> 53 `i `uc ]
 [e $UE 149  ]
-"172
-[; ;Maestro.c: 172:             break;
-[e $U 150  ]
 "173
-[; ;Maestro.c: 173:         case 6:
-[e :U 158 ]
+[; ;Maestro.c: 173:             break;
+[e $U 150  ]
 "174
-[; ;Maestro.c: 174:             return 54;
+[; ;Maestro.c: 174:         case 6:
+[e :U 158 ]
+"175
+[; ;Maestro.c: 175:             return 54;
 [e ) -> -> 54 `i `uc ]
 [e $UE 149  ]
-"175
-[; ;Maestro.c: 175:             break;
-[e $U 150  ]
 "176
-[; ;Maestro.c: 176:         case 7:
-[e :U 159 ]
+[; ;Maestro.c: 176:             break;
+[e $U 150  ]
 "177
-[; ;Maestro.c: 177:             return 55;
+[; ;Maestro.c: 177:         case 7:
+[e :U 159 ]
+"178
+[; ;Maestro.c: 178:             return 55;
 [e ) -> -> 55 `i `uc ]
 [e $UE 149  ]
-"178
-[; ;Maestro.c: 178:             break;
-[e $U 150  ]
 "179
-[; ;Maestro.c: 179:         case 8:
-[e :U 160 ]
+[; ;Maestro.c: 179:             break;
+[e $U 150  ]
 "180
-[; ;Maestro.c: 180:             return 56;
+[; ;Maestro.c: 180:         case 8:
+[e :U 160 ]
+"181
+[; ;Maestro.c: 181:             return 56;
 [e ) -> -> 56 `i `uc ]
 [e $UE 149  ]
-"181
-[; ;Maestro.c: 181:             break;
-[e $U 150  ]
 "182
-[; ;Maestro.c: 182:         case 9:
-[e :U 161 ]
+[; ;Maestro.c: 182:             break;
+[e $U 150  ]
 "183
-[; ;Maestro.c: 183:             return 57;
+[; ;Maestro.c: 183:         case 9:
+[e :U 161 ]
+"184
+[; ;Maestro.c: 184:             return 57;
 [e ) -> -> 57 `i `uc ]
 [e $UE 149  ]
-"184
-[; ;Maestro.c: 184:             break;
-[e $U 150  ]
 "185
-[; ;Maestro.c: 185:         default:
-[e :U 162 ]
-"186
-[; ;Maestro.c: 186:             break;
+[; ;Maestro.c: 185:             break;
 [e $U 150  ]
+"186
+[; ;Maestro.c: 186:         default:
+[e :U 162 ]
 "187
-[; ;Maestro.c: 187:     }
+[; ;Maestro.c: 187:             break;
+[e $U 150  ]
+"188
+[; ;Maestro.c: 188:     }
 }
 [e $U 150  ]
 [e :U 151 ]
@@ -698,10 +599,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 9 `i 161
  162 ]
 [e :U 150 ]
-"188
-[; ;Maestro.c: 188: }
+"189
+[; ;Maestro.c: 189: }
 [e :UE 149 ]
 }
-[a 2C 74 111 115 101 32 83 97 110 116 105 122 111 0 ]
-[a 1C 72 111 108 97 0 ]
-[a 3C 83 49 58 32 32 32 32 83 50 58 32 32 32 83 51 58 0 ]

@@ -2884,7 +2884,7 @@ void Escribir_comandoLCD(unsigned char Comando){
 }
 
 void Iniciar_LCD(void){
-    PORTCbits.RC7 = 0;
+    PORTDbits.RD3 = 0;
     PORTDbits.RD4 = 0;
 
     _delay((unsigned long)((14)*(8000000/4000.0)));
@@ -2909,7 +2909,7 @@ void Iniciar_LCD(void){
 }
 
 void Escribir_stringLCD(const char *d){
-    PORTCbits.RC7 = 1; PORTDbits.RD4 = 0;
+    PORTDbits.RD3 = 1; PORTDbits.RD4 = 0;
 
     for (char i=0; d[i]!='\0'; i++){
         Escribir_comandoLCD(d[i]);
@@ -2917,13 +2917,13 @@ void Escribir_stringLCD(const char *d){
 }
 
 void Escribir_caracterLCD(uint8_t a){
-    PORTCbits.RC7 = 1; PORTDbits.RD4 = 0;
+    PORTDbits.RD3 = 1; PORTDbits.RD4 = 0;
 
     Escribir_comandoLCD(a);
 }
 
 void Limpiar_pantallaLCD(void){
-    PORTCbits.RC7 = 0; PORTDbits.RD4 = 0;
+    PORTDbits.RD3 = 0; PORTDbits.RD4 = 0;
 
     Escribir_comandoLCD(0b00000001);
     _delay((unsigned long)((10)*(8000000/4000.0)));
@@ -2931,7 +2931,7 @@ void Limpiar_pantallaLCD(void){
 }
 
 void set_cursor(char linea, char posicion){
-    PORTCbits.RC7 = 0; PORTDbits.RD4 = 0;
+    PORTDbits.RD3 = 0; PORTDbits.RD4 = 0;
 
 
     if (linea == 1){ Escribir_comandoLCD(0b10000000);}

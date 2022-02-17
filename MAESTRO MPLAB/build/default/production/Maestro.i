@@ -2921,7 +2921,7 @@ int tabla_hex(int a);
 void divisor_hex(uint8_t a, char dig[]);
 void divisor_dec(uint8_t b, char dig1[]);
 # 41 "Maestro.c" 2
-# 51 "Maestro.c"
+# 53 "Maestro.c"
 char val_ADC;
 char ADC_dig[];
 char dig_ADC = 0;
@@ -2944,22 +2944,25 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
-
-
+# 83 "Maestro.c"
     val_ADC = 0;
     while(1){
-# 86 "Maestro.c"
+
+
+
+
+
+
+
         PORTCbits.RC2 = 0;
         _delay((unsigned long)((1)*(4000000/4000.0)));
 
         WriteMSSP(1);
-        val_ADC = ReadMSSP();
+        PORTB = ReadMSSP();
 
         _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTCbits.RC2 = 1;
-
-        PORTB = val_ADC;
-# 122 "Maestro.c"
+# 123 "Maestro.c"
     }
 }
 
@@ -2983,6 +2986,12 @@ void setup(void){
 
     TRISC2 = 0;
     PORTCbits.RC2 = 1;
+
+    TRISC1 = 0;
+    PORTCbits.RC1 = 1;
+
+    TRISC0 = 0;
+    PORTCbits.RC0;
 
 
     initOsc(4);

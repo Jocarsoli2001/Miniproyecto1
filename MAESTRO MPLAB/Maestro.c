@@ -43,7 +43,9 @@
 //-----------------Definición de frecuencia de cristal---------------
 #define _XTAL_FREQ 4000000
 
-#define SS1 PORTCbits.RC2                            // Slave select = pin RC2
+#define SS1 PORTCbits.RC2                           // Slave select 1 = pin RC2
+#define SS2 PORTCbits.RC1                           // Slave select 2 = pin RC1
+#define SS3 PORTCbits.RC0                           // Slave select 3 = pin RC0
 
 //-----------------------Constantes----------------------------------
 
@@ -70,14 +72,18 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-//    Iniciar_LCD();                                  // Se inicializa la LCD en 8 bits
+//    Iniciar_LCD();                                    // Se inicializa la LCD en 8 bits
+//    Limpiar_pantallaLCD();
+//    set_cursor(1,0);
+//    Escribir_stringLCD("Hola");
+//    set_cursor(2,2);
+//    Escribir_stringLCD("Jose Santizo");
+//    __delay_ms(5000);
 //    Limpiar_pantallaLCD();
     val_ADC = 0;
     while(1){
 //        set_cursor(1,0);                            // Setear cursor a primera línea                           
 //        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
-        
-        
         
         //**********************************************************************
         // COMUNICACIÓN CON PRIMER ESCLAVO
@@ -87,16 +93,11 @@ void main(void) {
         __delay_ms(1);
         
         WriteMSSP(1);
-        val_ADC = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        PORTB = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
         
         __delay_ms(1);
         SS1 = 1;
         
-        PORTB = val_ADC;
-//        dig_ADC = tabla_numASCII(val_ADC);
-        
-//        set_cursor(2,0);
-//        Escribir_stringLCD(dig_ADC);
         
 //        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
         
@@ -118,7 +119,7 @@ void main(void) {
 //        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
 //        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
 //        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
-        
+//        
     }
 }
 
@@ -142,6 +143,12 @@ void setup(void){
     //Configuración de Pin de slave select
     TRISC2 = 0;                                     // RC2 como pin para seleccionar esclavo
     PORTCbits.RC2 = 1;                              // RC2 se activa para que el pin RC5 del esclavo 1 lo niegue y esté deseleccionado el mismo
+    
+    TRISC1 = 0;
+    PORTCbits.RC1 = 1;
+    
+    TRISC0 = 0;
+    PORTCbits.RC0;
     
     //Configuración de oscilador
     initOsc(_4MHz);                                 // Oscilador a 4 mega hertz

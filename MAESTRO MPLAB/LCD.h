@@ -46,7 +46,7 @@
 
 // Pines
 #define LCD_EN PORTDbits.RD5                // Enable = RD5
-#define LCD_RS PORTCbits.RC7                // Register Select = RD3
+#define LCD_RS PORTDbits.RD3                // Register Select = RD3
 #define LCD_RW PORTDbits.RD4                // Read/Write = RD4
 
 #define D0 PORTDbits.RD6                    // RD6 = D0

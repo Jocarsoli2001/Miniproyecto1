@@ -2951,11 +2951,22 @@ char ADC_dig[];
 uint8_t uni_ADC = 0;
 uint8_t dec_ADC = 0;
 uint8_t cen_ADC = 0;
+uint8_t num = 0;
+uint8_t trad = 0;
 
 
 void setup(void);
-int tabla_numASCII(int a);
-# 68 "Maestro.c"
+uint8_t tabla_numASCII(uint8_t a);
+
+
+
+
+void __attribute__((picinterrupt(("")))) isr(void){
+
+
+}
+
+
 void main(void) {
     setup();
     Iniciar_LCD();
@@ -2967,6 +2978,9 @@ void main(void) {
     _delay((unsigned long)((5000)*(4000000/4000.0)));
     Limpiar_pantallaLCD();
     while(1){
+        set_cursor(1,0);
+        Escribir_stringLCD("S1:    S2:   S3:");
+
 
 
 
@@ -2984,9 +2998,7 @@ void main(void) {
         uni_ADC = tabla_numASCII(ADC_dig[0]);
         dec_ADC = tabla_numASCII(ADC_dig[1]);
         cen_ADC = tabla_numASCII(ADC_dig[2]);
-# 106 "Maestro.c"
-        set_cursor(1,1);
-        Escribir_stringLCD("ADC:");
+# 112 "Maestro.c"
         set_cursor(2,1);
         Escribir_caracterLCD(uni_ADC);
         Escribir_caracterLCD(dec_ADC);
@@ -3004,11 +3016,13 @@ void setup(void){
 
     TRISA = 0;
     TRISB = 0;
+    TRISC = 0;
     TRISD = 0;
     TRISE = 0;
 
     PORTA = 0;
     PORTD = 0;
+    PORTC = 0;
     PORTE = 0;
     PORTB = 0;
 
@@ -3025,7 +3039,7 @@ void setup(void){
 }
 
 
-int tabla_numASCII(int a){
+uint8_t tabla_numASCII(uint8_t a){
     switch(a){
         case 0:
             return 48;

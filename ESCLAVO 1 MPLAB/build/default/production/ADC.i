@@ -2761,13 +2761,13 @@ void conversion(void){
     if(ADCON0bits.GO == 0){
         if(ADCON0bits.CHS == 1){
             ADCON0bits.CHS = 0;
-            _delay((unsigned long)((50)*(8000000/4000000.0)));
+            _delay((unsigned long)((50)*(4000000/4000000.0)));
         }
         else if(ADCON0bits.CHS == 0){
             ADCON0bits.CHS = 1;
-            _delay((unsigned long)((50)*(8000000/4000000.0)));
+            _delay((unsigned long)((50)*(4000000/4000000.0)));
         }
-        _delay((unsigned long)((50)*(8000000/4000000.0)));
+        _delay((unsigned long)((50)*(4000000/4000000.0)));
         ADCON0bits.GO = 1;
     }
 }
@@ -2780,5 +2780,5 @@ void config_ADC(int channel){
     ADCON0bits.ADCS = 0b01;
     ADCON0bits.CHS = channel;
     ADCON0bits.ADON = 1;
-    _delay((unsigned long)((50)*(8000000/4000000.0)));
+    _delay((unsigned long)((50)*(4000000/4000000.0)));
 }

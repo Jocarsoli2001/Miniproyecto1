@@ -67,7 +67,7 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    ADCON0bits.GO == 1;                             // Iniciar conversión de ADC
+    ADCON0bits.GO = 1;                             // Iniciar conversión de ADC
     while(1){
         //**********************************************************************
         // CONVERSIÓN DE POTENCIÓMETRO DE ADC (VER ADC.C)
@@ -87,9 +87,11 @@ void setup(void){
     TRISA = 0b0001;                                 // PORTA como entradas analógicas
     TRISB = 0;                                      // PORTB como salida
     TRISD = 0;                                      // PORTD como salida
+    TRISC = 0;
     TRISE = 0;                                      // PORTE como salida
     
     PORTD = 0;                                      // Limpiar PORTD
+    PORTC = 0;
     PORTE = 0;                                      // Limpiar PORTE
     PORTB = 0;                                      // Limpiar PORTB
     
@@ -112,8 +114,6 @@ void setup(void){
     PIE1bits.SSPIE = 1;                             // Habilitamos interrupción MSSP
     PIR1bits.ADIF = 0;                              // Limpiar bandera de interrupción del ADC
     PIE1bits.ADIE = 1;                              // Interrupción ADC = enabled
-    PIR1bits.RCIF = 0;
-    PIE1bits.RCIE = 1;
     
 }
 

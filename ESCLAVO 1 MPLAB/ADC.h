@@ -32,7 +32,7 @@
 #define	ADC_H
 
 #ifndef _XTAL_FREQ
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 4000000
 #endif
 
 #include <xc.h> // include processor files - each processor file is guarded.  

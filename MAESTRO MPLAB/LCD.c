@@ -63,9 +63,7 @@ void Escribir_stringLCD(const char *d){
 void Escribir_caracterLCD(uint8_t a){                           // Función para poder escribir un solo caracter en la LCD
     LCD_RS = 1; LCD_RW = 0;
     
-    Escribir_comandoLCD(a);                                     
-    
-    prender_ELCD();
+    Escribir_comandoLCD(a);
 }
 
 void Limpiar_pantallaLCD(void){

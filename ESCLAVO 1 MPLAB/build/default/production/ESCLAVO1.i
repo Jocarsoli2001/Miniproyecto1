@@ -2946,7 +2946,7 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
-    ADCON0bits.GO == 1;
+    ADCON0bits.GO = 1;
     while(1){
 
 
@@ -2966,9 +2966,11 @@ void setup(void){
     TRISA = 0b0001;
     TRISB = 0;
     TRISD = 0;
+    TRISC = 0;
     TRISE = 0;
 
     PORTD = 0;
+    PORTC = 0;
     PORTE = 0;
     PORTB = 0;
 
@@ -2991,7 +2993,5 @@ void setup(void){
     PIE1bits.SSPIE = 1;
     PIR1bits.ADIF = 0;
     PIE1bits.ADIE = 1;
-    PIR1bits.RCIF = 0;
-    PIE1bits.RCIE = 1;
 
 }

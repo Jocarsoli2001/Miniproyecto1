@@ -24,7 +24,7 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_polarity sCl
     SSPCON = sType | sClockIdle;
 }
 
-static void spiReceiveWait()
+static void spiReceiveWait(void)
 {
     while ( !SSPSTATbits.BF );                          // Wait for Data Receive complete
 }

@@ -352,7 +352,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 138 ]
 }
 "27
-[; ;SPI.c: 27: static void spiReceiveWait()
+[; ;SPI.c: 27: static void spiReceiveWait(void)
 [v _spiReceiveWait `(v ~T0 @X0 1 sf ]
 "28
 [; ;SPI.c: 28: {

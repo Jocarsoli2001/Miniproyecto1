@@ -51,18 +51,20 @@ char ADC_dig[];
 uint8_t uni_ADC = 0;
 uint8_t dec_ADC = 0;
 uint8_t cen_ADC = 0;
+uint8_t num = 0;
+uint8_t trad = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
-int tabla_numASCII(int a);
+uint8_t tabla_numASCII(uint8_t a);
 
 //-------------Funciones que retornan variables-----------------------
 
 //----------------------Interrupciones--------------------------------
-//void __interrupt() isr(void){
-//    
-//    
-//}
+void __interrupt() isr(void){
+    
+    
+}
 
 //----------------------Main Loop--------------------------------
 void main(void) {
@@ -76,6 +78,9 @@ void main(void) {
     __delay_ms(5000);
     Limpiar_pantallaLCD();
     while(1){
+        set_cursor(1,0);                            // Setear cursor a primera línea                           
+        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
+        
         //**********************************************************************
         // COMUNICACIÓN CON PRIMER ESCLAVO
         //**********************************************************************
@@ -103,13 +108,12 @@ void main(void) {
         //**********************************************************************
         // IMPRESIÓN DE VALORES A LCD
         //**********************************************************************
-        set_cursor(1,1);                            // Setear cursor a primera línea                           
-        Escribir_stringLCD("ADC:");                 // Escribir el menú
+        
         set_cursor(2,1);                            // Setear cursor a segunda línea
         Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
         Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
         Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
-        
+//        
     }
 }
 
@@ -122,11 +126,13 @@ void setup(void){
     
     TRISA = 0;                                      // PORTA como salida
     TRISB = 0;                                      // PORTB como salida
+    TRISC = 0;
     TRISD = 0;                                      // PORTD como salida
     TRISE = 0;                                      // PORTE como salida
     
     PORTA = 0;                                      // Limpiar PORTA
     PORTD = 0;                                      // Limpiar PORTD
+    PORTC = 0;
     PORTE = 0;                                      // Limpiar PORTE
     PORTB = 0;                                      // Limpiar PORTB
     
@@ -143,7 +149,7 @@ void setup(void){
 }
 
 
-int tabla_numASCII(int a){
+uint8_t tabla_numASCII(uint8_t a){
     switch(a){
         case 0:                                     // Si a = 0
             return 48;                              // devolver valor 48 (0 en ASCII)

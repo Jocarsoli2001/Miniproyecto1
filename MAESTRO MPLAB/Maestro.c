@@ -87,11 +87,12 @@ void main(void) {
         __delay_ms(1);
         
         WriteMSSP(1);
-        PORTB = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        val_ADC = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
         
         __delay_ms(1);
         SS1 = 1;
         
+        PORTB = val_ADC;
 //        dig_ADC = tabla_numASCII(val_ADC);
         
 //        set_cursor(2,0);

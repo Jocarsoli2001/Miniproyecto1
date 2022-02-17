@@ -2953,11 +2953,13 @@ void main(void) {
         _delay((unsigned long)((1)*(4000000/4000.0)));
 
         WriteMSSP(1);
-        PORTB = ReadMSSP();
+        val_ADC = ReadMSSP();
 
         _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTCbits.RC2 = 1;
-# 121 "Maestro.c"
+
+        PORTB = val_ADC;
+# 122 "Maestro.c"
     }
 }
 

@@ -84,8 +84,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59 ./ADC.h
 [; ;./ADC.h: 59: void config_ADC(int channel);
 [v _config_ADC `(v ~T0 @X0 0 ef1`i ]
-"108 ESCLAVO1.c
-[; ;ESCLAVO1.c: 108:     InitMSSP(SPI_SLAVE_SS_EN);
+"110 ESCLAVO1.c
+[; ;ESCLAVO1.c: 110:     InitMSSP(SPI_SLAVE_SS_EN);
 [c E1557 0 1 2 3 4 5 6 7 8 .. ]
 [n E1557 . SPI_MASTER_FOSC4 SPI_MASTER_FOSC16 SPI_MASTER_FOSC64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS I2C_SLAVE_7BIT_AD I2C_SLAVE_10BIT_AD I2C_MASTER_FOSC  ]
 "27 ./SPI.h
@@ -441,74 +441,82 @@ Version 4.0 HI-TECH Software Intermediate Code
 "78
 [; ;ESCLAVO1.c: 78:         read = ReadMSSP();
 [e = _read ( _ReadMSSP ..  ]
+"79
+[; ;ESCLAVO1.c: 79:         if(read == 1){
+[e $ ! == -> _read `i -> 1 `i 149  ]
+{
 "80
-[; ;ESCLAVO1.c: 80:         WriteMSSP(cont1);
+[; ;ESCLAVO1.c: 80:             WriteMSSP(cont1);
 [e ( _WriteMSSP (1 _cont1 ]
-"82
-[; ;ESCLAVO1.c: 82:     }
+"81
+[; ;ESCLAVO1.c: 81:         }
+}
+[e :U 149 ]
+"84
+[; ;ESCLAVO1.c: 84:     }
 }
 [e :U 146 ]
 [e $U 147  ]
 [e :U 148 ]
-"83
-[; ;ESCLAVO1.c: 83: }
+"85
+[; ;ESCLAVO1.c: 85: }
 [e :UE 145 ]
 }
-"86
-[; ;ESCLAVO1.c: 86: void setup(void){
+"88
+[; ;ESCLAVO1.c: 88: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"89
-[; ;ESCLAVO1.c: 89:     ANSEL = 0b0011;
+"91
+[; ;ESCLAVO1.c: 91:     ANSEL = 0b0011;
 [e = _ANSEL -> -> 3 `i `uc ]
-"90
-[; ;ESCLAVO1.c: 90:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
 "92
-[; ;ESCLAVO1.c: 92:     TRISA = 0b0011;
-[e = _TRISA -> -> 3 `i `uc ]
-"93
-[; ;ESCLAVO1.c: 93:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;ESCLAVO1.c: 92:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
 "94
-[; ;ESCLAVO1.c: 94:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;ESCLAVO1.c: 94:     TRISA = 0b0011;
+[e = _TRISA -> -> 3 `i `uc ]
 "95
-[; ;ESCLAVO1.c: 95:     TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;ESCLAVO1.c: 95:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"96
+[; ;ESCLAVO1.c: 96:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "97
-[; ;ESCLAVO1.c: 97:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
-"98
-[; ;ESCLAVO1.c: 98:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;ESCLAVO1.c: 97:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
 "99
-[; ;ESCLAVO1.c: 99:     PORTB = 0;
+[; ;ESCLAVO1.c: 99:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
+"100
+[; ;ESCLAVO1.c: 100:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
+"101
+[; ;ESCLAVO1.c: 101:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"102
-[; ;ESCLAVO1.c: 102:     initOsc(4);
+"104
+[; ;ESCLAVO1.c: 104:     initOsc(4);
 [e ( _initOsc (1 -> -> 4 `i `uc ]
-"105
-[; ;ESCLAVO1.c: 105:     config_ADC(0);
+"107
+[; ;ESCLAVO1.c: 107:     config_ADC(0);
 [e ( _config_ADC (1 -> 0 `i ]
-"108
-[; ;ESCLAVO1.c: 108:     InitMSSP(SPI_SLAVE_SS_EN);
+"110
+[; ;ESCLAVO1.c: 110:     InitMSSP(SPI_SLAVE_SS_EN);
 [e ( _InitMSSP (1 . `E1557 4 ]
-"111
-[; ;ESCLAVO1.c: 111:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"112
-[; ;ESCLAVO1.c: 112:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
 "113
-[; ;ESCLAVO1.c: 113:     PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;ESCLAVO1.c: 113:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "114
-[; ;ESCLAVO1.c: 114:     PIE1bits.ADIE = 1;
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;ESCLAVO1.c: 114:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"115
+[; ;ESCLAVO1.c: 115:     PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
 "116
-[; ;ESCLAVO1.c: 116: }
-[e :UE 149 ]
+[; ;ESCLAVO1.c: 116:     PIE1bits.ADIE = 1;
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+"118
+[; ;ESCLAVO1.c: 118: }
+[e :UE 150 ]
 }

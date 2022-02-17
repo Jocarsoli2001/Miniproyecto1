@@ -2945,8 +2945,10 @@ void main(void) {
 
 
         read = ReadMSSP();
+        if(read == 1){
+            WriteMSSP(cont1);
+        }
 
-        WriteMSSP(cont1);
 
     }
 }

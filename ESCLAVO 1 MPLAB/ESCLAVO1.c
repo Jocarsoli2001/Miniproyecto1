@@ -76,8 +76,10 @@ void main(void) {
         // LECTURA DE MSPP
         //**********************************************************************
         read = ReadMSSP();                          // Read = Lectura de SPI
+        if(read == 1){
+            WriteMSSP(cont1);  
+        }
         
-        WriteMSSP(cont1);
         
     }
 }

@@ -29,7 +29,7 @@ void InitMSSP(MSSP_Mode Modo){
         
     }
     
-    if (Modo == 0b00000100){ TRISAbits.TRISA5 = 0;}     // Si Slave Select = ON entonces SS (RA5) = Output
+    if (Modo == 0b00000100){ TRISAbits.TRISA5 = 1;}     // Si Slave Select = ON entonces SS (RA5) = Output
 
     // Modo de funcionamiento para módulo MSSP
     // Se hace un OR con la variable "Modo" para evitar sobrescribir datos de SSPCON

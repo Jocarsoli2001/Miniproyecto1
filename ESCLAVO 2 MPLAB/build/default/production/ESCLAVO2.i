@@ -2909,7 +2909,22 @@ void main(void) {
     setup();
     read = 0;
     while(1){
-# 73 "ESCLAVO2.c"
+
+
+
+
+        if(PORTEbits.RE2){
+            while(RE2);
+            PORTB--;
+        }
+        else if(PORTEbits.RE3){
+            while(RE3);
+            PORTB++;
+        }
+
+
+
+
         read = ReadMSSP();
         WriteMSSP(PORTB);
 
@@ -2927,7 +2942,7 @@ void setup(void){
     TRISA = 0;
     TRISB = 0;
     TRISD = 0;
-    TRISE = 0;
+    TRISE = 0b00110;
 
     PORTD = 0;
     PORTE = 0;

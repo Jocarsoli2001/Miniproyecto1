@@ -65,7 +65,14 @@ void main(void) {
         //**********************************************************************
         // CONTADOR EN PUERTO B
         //**********************************************************************
-        
+        if(PORTEbits.RE2){
+            while(RE2);
+            PORTB--;
+        }
+        else if(PORTEbits.RE3){
+            while(RE3);
+            PORTB++;
+        }
         
         //**********************************************************************
         // LECTURA DE MSPP
@@ -87,7 +94,7 @@ void setup(void){
     TRISA = 0;                                 // PORTA como entradas analógicas
     TRISB = 0;                                      // PORTB como salida
     TRISD = 0;                                      // PORTD como salida
-    TRISE = 0;                                      // PORTE como salida
+    TRISE = 0b00110;                                      // PORTE como salida
     
     PORTD = 0;                                      // Limpiar PORTD
     PORTE = 0;                                      // Limpiar PORTE

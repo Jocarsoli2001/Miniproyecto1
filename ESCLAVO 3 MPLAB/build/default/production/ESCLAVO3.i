@@ -2924,6 +2924,15 @@ void setup(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+
+
+
+    if(SSPIF == 1){
+        read2 = ReadMSSP();
+        WriteMSSP(temp);
+        SSPIF = 0;
+    }
+
     if(PIR1bits.ADIF){
         ADC();
         PIR1bits.ADIF = 0;
@@ -2942,7 +2951,10 @@ void main(void) {
 
         conversion();
 
-        temp = ((cont1*5000)/1023)/10;
+
+
+
+        temp = (150.0 / 77.0) * (cont1);
 
         if(temp < 24){
             PORTEbits.RE2 = 1;
@@ -2959,18 +2971,6 @@ void main(void) {
             PORTEbits.RE2 = 0;
             PORTEbits.RE0 = 1;
         }
-
-
-
-
-
-
-        if (SSPSTAT & 0b00000001) {
-            read2 = ReadMSSP();
-        }
-        WriteMSSP(temp);
-
-
     }
 }
 
@@ -3004,5 +3004,7 @@ void setup(void){
     INTCONbits.PEIE = 1;
     PIR1bits.ADIF = 0;
     PIE1bits.ADIE = 1;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
 
 }

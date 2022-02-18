@@ -2901,10 +2901,26 @@ void initOsc(uint8_t Valor);
 
 
 char read1;
+char PORT = 0;
 
 
 void setup(void);
-# 60 "ESCLAVO2.c"
+
+
+
+
+void __attribute__((picinterrupt(("")))) isr(void){
+
+
+
+    if(SSPIF == 1){
+        read1 = ReadMSSP();
+        WriteMSSP(PORT);
+        SSPIF = 0;
+    }
+}
+
+
 void main(void) {
     setup();
     read1 = 0;
@@ -2915,13 +2931,14 @@ void main(void) {
 
         if(PORTDbits.RD2){
             while(RD2);
-            PORTB--;
+            PORT--;
         }
         if(PORTDbits.RD3){
             while(RD3);
-            PORTB++;
+            PORT++;
         }
-# 84 "ESCLAVO2.c"
+
+        PORTB = PORT;
     }
 }
 
@@ -2947,5 +2964,11 @@ void setup(void){
 
 
     InitMSSP(SPI_SLAVE_SS_EN);
+
+
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
 
 }

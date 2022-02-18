@@ -1,6 +1,15 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
+"4277 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4277: extern volatile __bit SSPIF __attribute__((address(0x63)));
+[v _SSPIF `Vb ~T0 @X0 0 e@99 ]
+"29 ./SPI.h
+[; ;./SPI.h: 29: char ReadMSSP();
+[v _ReadMSSP `(uc ~T0 @X0 0 e? ]
+"28
+[; ;./SPI.h: 28: void WriteMSSP(char Data);
+[v _WriteMSSP `(v ~T0 @X0 0 ef1`uc ]
 "543 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
 [s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -56,16 +65,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "427
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 427: extern volatile PORTEbits_t PORTEbits __attribute__((address(0x009)));
 [v _PORTEbits `VS13 ~T0 @X0 0 e@9 ]
-"2177
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2177: extern volatile unsigned char SSPSTAT __attribute__((address(0x094)));
-[v _SSPSTAT `Vuc ~T0 @X0 0 e@148 ]
-"29 ./SPI.h
-[; ;./SPI.h: 29: char ReadMSSP();
-[v _ReadMSSP `(uc ~T0 @X0 0 e? ]
-"28
-[; ;./SPI.h: 28: void WriteMSSP(char Data);
-[v _WriteMSSP `(v ~T0 @X0 0 ef1`uc ]
-"3387 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"3387
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "3449
@@ -417,128 +417,131 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _isr ]
 [f ]
-"58
-[; ;ESCLAVO3.c: 58:     if(PIR1bits.ADIF){
-[e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 144  ]
-{
-"59
-[; ;ESCLAVO3.c: 59:         ADC();
-[e ( _ADC ..  ]
-"60
-[; ;ESCLAVO3.c: 60:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
 "61
-[; ;ESCLAVO3.c: 61:     }
+[; ;ESCLAVO3.c: 61:     if(SSPIF == 1){
+[e $ ! == -> _SSPIF `i -> 1 `i 144  ]
+{
+"62
+[; ;ESCLAVO3.c: 62:         read2 = ReadMSSP();
+[e = _read2 ( _ReadMSSP ..  ]
+"63
+[; ;ESCLAVO3.c: 63:         WriteMSSP(temp);
+[e ( _WriteMSSP (1 _temp ]
+"64
+[; ;ESCLAVO3.c: 64:         SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"65
+[; ;ESCLAVO3.c: 65:     }
 }
 [e :U 144 ]
-"62
-[; ;ESCLAVO3.c: 62: }
+"67
+[; ;ESCLAVO3.c: 67:     if(PIR1bits.ADIF){
+[e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 145  ]
+{
+"68
+[; ;ESCLAVO3.c: 68:         ADC();
+[e ( _ADC ..  ]
+"69
+[; ;ESCLAVO3.c: 69:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"70
+[; ;ESCLAVO3.c: 70:     }
+}
+[e :U 145 ]
+"71
+[; ;ESCLAVO3.c: 71: }
 [e :UE 143 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"65
-[; ;ESCLAVO3.c: 65: void main(void) {
+"74
+[; ;ESCLAVO3.c: 74: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"66
-[; ;ESCLAVO3.c: 66:     setup();
+"75
+[; ;ESCLAVO3.c: 75:     setup();
 [e ( _setup ..  ]
-"67
-[; ;ESCLAVO3.c: 67:     ADCON0bits.GO = 1;
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"68
-[; ;ESCLAVO3.c: 68:     read2 = 0;
-[e = _read2 -> -> 0 `i `uc ]
-"69
-[; ;ESCLAVO3.c: 69:     while(1){
-[e :U 147 ]
-{
-"74
-[; ;ESCLAVO3.c: 74:         conversion();
-[e ( _conversion ..  ]
 "76
-[; ;ESCLAVO3.c: 76:         temp = ((cont1*5000)/1023)/10;
-[e = _temp -> / / * -> _cont1 `i -> 5000 `i -> 1023 `i -> 10 `i `uc ]
+[; ;ESCLAVO3.c: 76:     ADCON0bits.GO = 1;
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"77
+[; ;ESCLAVO3.c: 77:     read2 = 0;
+[e = _read2 -> -> 0 `i `uc ]
 "78
-[; ;ESCLAVO3.c: 78:         if(temp < 24){
-[e $ ! < -> _temp `i -> 24 `i 149  ]
+[; ;ESCLAVO3.c: 78:     while(1){
+[e :U 148 ]
 {
-"79
-[; ;ESCLAVO3.c: 79:             PORTEbits.RE2 = 1;
-[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
-"80
-[; ;ESCLAVO3.c: 80:             PORTEbits.RE1 = 0;
-[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
-"81
-[; ;ESCLAVO3.c: 81:             PORTEbits.RE0 = 0;
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-"82
-[; ;ESCLAVO3.c: 82:         }
-}
-[e $U 150  ]
 "83
-[; ;ESCLAVO3.c: 83:         else if (temp > 24 && temp < 27){
-[e :U 149 ]
-[e $ ! && > -> _temp `i -> 24 `i < -> _temp `i -> 27 `i 151  ]
-{
-"84
-[; ;ESCLAVO3.c: 84:             PORTEbits.RE1 = 1;
-[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"85
-[; ;ESCLAVO3.c: 85:             PORTEbits.RE2 = 0;
-[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"86
-[; ;ESCLAVO3.c: 86:             PORTEbits.RE0 = 0;
-[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
-"87
-[; ;ESCLAVO3.c: 87:         }
-}
-[e $U 152  ]
+[; ;ESCLAVO3.c: 83:         conversion();
+[e ( _conversion ..  ]
 "88
-[; ;ESCLAVO3.c: 88:         else if (temp > 27){
-[e :U 151 ]
-[e $ ! > -> _temp `i -> 27 `i 153  ]
-{
-"89
-[; ;ESCLAVO3.c: 89:             PORTEbits.RE1 = 0;
-[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+[; ;ESCLAVO3.c: 88:         temp = (150.0 / 77.0) * (cont1);
+[e = _temp -> * / .150.0 .77.0 -> -> _cont1 `i `d `uc ]
 "90
-[; ;ESCLAVO3.c: 90:             PORTEbits.RE2 = 0;
-[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
-"91
-[; ;ESCLAVO3.c: 91:             PORTEbits.RE0 = 1;
-[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"92
-[; ;ESCLAVO3.c: 92:         }
-}
-[e :U 153 ]
-[e :U 152 ]
-[e :U 150 ]
-"99
-[; ;ESCLAVO3.c: 99:         if (SSPSTAT & 0b00000001) {
-[e $ ! != & -> _SSPSTAT `i -> 1 `i -> 0 `i 154  ]
+[; ;ESCLAVO3.c: 90:         if(temp < 24){
+[e $ ! < -> _temp `i -> 24 `i 150  ]
 {
+"91
+[; ;ESCLAVO3.c: 91:             PORTEbits.RE2 = 1;
+[e = . . _PORTEbits 0 2 -> -> 1 `i `uc ]
+"92
+[; ;ESCLAVO3.c: 92:             PORTEbits.RE1 = 0;
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+"93
+[; ;ESCLAVO3.c: 93:             PORTEbits.RE0 = 0;
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+"94
+[; ;ESCLAVO3.c: 94:         }
+}
+[e $U 151  ]
+"95
+[; ;ESCLAVO3.c: 95:         else if (temp > 24 && temp < 27){
+[e :U 150 ]
+[e $ ! && > -> _temp `i -> 24 `i < -> _temp `i -> 27 `i 152  ]
+{
+"96
+[; ;ESCLAVO3.c: 96:             PORTEbits.RE1 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+"97
+[; ;ESCLAVO3.c: 97:             PORTEbits.RE2 = 0;
+[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
+"98
+[; ;ESCLAVO3.c: 98:             PORTEbits.RE0 = 0;
+[e = . . _PORTEbits 0 0 -> -> 0 `i `uc ]
+"99
+[; ;ESCLAVO3.c: 99:         }
+}
+[e $U 153  ]
 "100
-[; ;ESCLAVO3.c: 100:             read2 = ReadMSSP();
-[e = _read2 ( _ReadMSSP ..  ]
+[; ;ESCLAVO3.c: 100:         else if (temp > 27){
+[e :U 152 ]
+[e $ ! > -> _temp `i -> 27 `i 154  ]
+{
 "101
-[; ;ESCLAVO3.c: 101:         }
+[; ;ESCLAVO3.c: 101:             PORTEbits.RE1 = 0;
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+"102
+[; ;ESCLAVO3.c: 102:             PORTEbits.RE2 = 0;
+[e = . . _PORTEbits 0 2 -> -> 0 `i `uc ]
+"103
+[; ;ESCLAVO3.c: 103:             PORTEbits.RE0 = 1;
+[e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
+"104
+[; ;ESCLAVO3.c: 104:         }
 }
 [e :U 154 ]
-"102
-[; ;ESCLAVO3.c: 102:         WriteMSSP(temp);
-[e ( _WriteMSSP (1 _temp ]
+[e :U 153 ]
+[e :U 151 ]
 "105
 [; ;ESCLAVO3.c: 105:     }
 }
-[e :U 146 ]
-[e $U 147  ]
-[e :U 148 ]
+[e :U 147 ]
+[e $U 148  ]
+[e :U 149 ]
 "106
 [; ;ESCLAVO3.c: 106: }
-[e :UE 145 ]
+[e :UE 146 ]
 }
 "109
 [; ;ESCLAVO3.c: 109: void setup(void){
@@ -594,7 +597,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "137
 [; ;ESCLAVO3.c: 137:     PIE1bits.ADIE = 1;
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+"138
+[; ;ESCLAVO3.c: 138:     PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 "139
-[; ;ESCLAVO3.c: 139: }
+[; ;ESCLAVO3.c: 139:     PIE1bits.SSPIE = 1;
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"141
+[; ;ESCLAVO3.c: 141: }
 [e :UE 155 ]
 }

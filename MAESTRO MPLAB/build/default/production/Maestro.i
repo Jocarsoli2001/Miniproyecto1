@@ -2921,15 +2921,43 @@ int tabla_hex(int a);
 void divisor_hex(uint8_t a, char dig[]);
 void divisor_dec(uint8_t b, char dig1[]);
 # 41 "Maestro.c" 2
-# 53 "Maestro.c"
+
+# 1 "./UART.h" 1
+# 32 "./UART.h"
+void Config_USART(int baud_rate, int Freq);
+int Recibir_dato(int dato);
+void Mandar_dato(int dato);
+# 42 "Maestro.c" 2
+# 54 "Maestro.c"
 int val_ADC;
-char val_ADC_fin;
+int Contador;
+int Temp;
+
+
+int Bandera_s1 = 1;
+int Bandera_s2 = 0;
+int Bandera_s3 = 0;
+
+
 char ADC_dig[];
 char dig_ADC = 0;
 char uni_ADC = 0;
 char dec_ADC = 0;
 char cen_ADC = 0;
-int MSSPin = 0;
+
+
+char Cont_dig[];
+char dig_Cont = 0;
+char uni_Cont = 0;
+char dec_Cont = 0;
+char cen_Cont = 0;
+
+
+char Temp_dig[];
+char dig_Temp = 0;
+char uni_Temp = 0;
+char dec_Temp = 0;
+char cen_Temp = 0;
 
 
 void setup(void);
@@ -2947,6 +2975,11 @@ void __attribute__((picinterrupt(("")))) isr(void){
 void main(void) {
     setup();
     val_ADC = 0;
+    Contador = 0;
+    Temp = 0;
+    PORTCbits.RC2 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC0 = 1;
     while(1){
         set_cursor(1,0);
         Escribir_stringLCD("S1:    S2:   S3:");
@@ -2954,17 +2987,76 @@ void main(void) {
 
 
 
-
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC0 = 1;
         PORTCbits.RC2 = 0;
-        _delay((unsigned long)((10)*(4000000/4000000.0)));
+
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
 
         WriteMSSP(1);
 
 
         val_ADC = ReadMSSP();
 
-        _delay((unsigned long)((10)*(4000000/4000000.0)));
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
+
         PORTCbits.RC2 = 1;
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC0 = 1;
+
+
+
+
+
+        PORTCbits.RC2 = 1;
+        PORTCbits.RC1 = 0;
+        PORTCbits.RC0 = 1;
+
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
+
+        WriteMSSP(1);
+
+
+        Contador = ReadMSSP();
+
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
+
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC0 = 1;
+
+
+
+
+
+        PORTCbits.RC2 = 1;
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC0 = 0;
+
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
+
+        WriteMSSP(1);
+
+
+        Temp = ReadMSSP();
+
+        _delay((unsigned long)((5)*(4000000/4000000.0)));
+
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC1 = 1;
+        PORTCbits.RC0 = 1;
+
+
+
+
+
+
+        divisor_dec(Contador, Cont_dig);
+
+        uni_Cont = tabla_numASCII(Cont_dig[2]);
+        dec_Cont = tabla_numASCII(Cont_dig[1]);
+        cen_Cont = tabla_numASCII(Cont_dig[0]);
+
 
         divisor_dec(val_ADC, ADC_dig);
 
@@ -2972,11 +3064,33 @@ void main(void) {
         dec_ADC = tabla_numASCII(ADC_dig[1]);
         cen_ADC = tabla_numASCII(ADC_dig[0]);
 
+
+        divisor_dec(Temp, Temp_dig);
+
+        uni_Temp = tabla_numASCII(Temp_dig[0]);
+        dec_Temp = tabla_numASCII(Temp_dig[1]);
+
+
+
+
+
+
+
+        set_cursor(2,7);
+        Escribir_caracterLCD(uni_Cont);
+        Escribir_caracterLCD(dec_Cont);
+        Escribir_caracterLCD(cen_Cont);
+
+        set_cursor(2,13);
+        Escribir_caracterLCD(dec_Temp);
+        Escribir_caracterLCD(uni_Temp);
+        Escribir_stringLCD("C");
+
         set_cursor(2,0);
         Escribir_caracterLCD(uni_ADC);
         Escribir_caracterLCD(dec_ADC);
         Escribir_caracterLCD(cen_ADC);
-# 117 "Maestro.c"
+# 224 "Maestro.c"
     }
 }
 
@@ -3023,6 +3137,9 @@ void setup(void){
     Escribir_stringLCD("Jose Santizo");
     _delay((unsigned long)((5000)*(4000000/4000.0)));
     Limpiar_pantallaLCD();
+
+
+    Config_USART(9600,4);
 
 }
 

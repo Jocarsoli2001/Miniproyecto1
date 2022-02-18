@@ -8,6 +8,10 @@
 #include "SPI.h"
 
 void InitMSSP(MSSP_Mode Modo){
+    
+    SSPSTAT = 0b00000000;
+    SSPCON = 0b00000000;
+    
     // Habilitar pines de transmisión
     // Modo I2C: 1 = Habilita los pines SDA y SCL para transmisión
     // Modo SPI: 1 = Habilita los pines SCK, SDO, SDI y SS para transmisión
@@ -35,7 +39,7 @@ void InitMSSP(MSSP_Mode Modo){
     // Se hace un OR con la variable "Modo" para evitar sobrescribir datos de SSPCON
     SSPCON = SSPCON |  Modo;
     
-    PIE1bits.SSPIE = 0;                                 // Interrupciones por MSSP = OFF
+    //PIE1bits.SSPIE = 0;                                 // Interrupciones por MSSP = OFF
     
     // Polaridad de reloj
     // NOTA: Efectos de configuración varían según el modo (SPI o I2C)

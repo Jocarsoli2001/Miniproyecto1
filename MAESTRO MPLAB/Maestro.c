@@ -39,6 +39,7 @@
 #include "LCD.h"
 #include "Oscilador.h"
 #include "7SEG-hex.h"
+#include "UART.h"
 
 //-----------------Definición de frecuencia de cristal---------------
 #define _XTAL_FREQ 4000000
@@ -51,13 +52,34 @@
 
 //-----------------------Variables------------------------------------
 int val_ADC;
-char val_ADC_fin;
+int Contador;
+int Temp;
+
+// Banderas
+int Bandera_s1 = 1;
+int Bandera_s2 = 0;
+int Bandera_s3 = 0;
+
+// Variables para ADC
 char ADC_dig[];
 char dig_ADC = 0;
 char uni_ADC = 0;
 char dec_ADC = 0;
 char cen_ADC = 0;
-int MSSPin = 0;
+
+// Variables para Contador
+char Cont_dig[];
+char dig_Cont = 0;
+char uni_Cont = 0;
+char dec_Cont = 0;
+char cen_Cont = 0;
+
+// Variables para temperatura
+char Temp_dig[];
+char dig_Temp = 0;
+char uni_Temp = 0;
+char dec_Temp = 0;
+char cen_Temp = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -74,42 +96,127 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    val_ADC = 0;
+    val_ADC = 0;                                        // Setear variable que guardará el valor del ADC en 0
+    Contador = 0;                                       // Setear variable que guardará el valor del contador en 0
+    Temp = 0;                                           // Setear variable que guardará el valor de la temperatura en 0
+    SS1 = 1;
+    SS2 = 1;
+    SS3 = 1;
     while(1){
-        set_cursor(1,0);                            // Setear cursor a primera línea                           
-        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
+        set_cursor(1,0);                                // Setear cursor a primera línea                           
+        Escribir_stringLCD("S1:    S2:   S3:");         // Escribir menú en primera línea
         
         //**********************************************************************
         // COMUNICACIÓN Y ESCRITURA DE VALORES DE PRIMER ESCLAVO EN LCD
         //**********************************************************************
-        
-        SS1 = 0;                                    // Se selecciona el esclavo 1
-        __delay_us(10);
-        
+        SS2 = 1;
+        SS3 = 1;
+        SS1 = 0; 
+        // Se selecciona el esclavo 1
+        __delay_us(5);
+
         WriteMSSP(1);
-        
+
         //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
-        val_ADC = ReadMSSP();                         // El valor del ADC traducido por el esclavo, es enviado al maestro
-        
-        __delay_us(10);
+        val_ADC = ReadMSSP();                           // El valor del ADC traducido por el esclavo, es enviado al maestro
+
+        __delay_us(5);
+
         SS1 = 1;
-        
-        divisor_dec(val_ADC, ADC_dig);                // Se divide en dígitos hexadecimales, el valor del ADC 
-        
-        uni_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de unidades a caracter ASCII
-        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
-        cen_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de centenas a caracter ASCII
-        
-        set_cursor(2,0);                            // Setear cursor a segunda línea
-        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
-        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
-        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
-        
+        SS2 = 1;
+        SS3 = 1;
+            
         
         //**********************************************************************
         // COMUNICACIÓN CON SEGUNDO ESCLAVO
         //**********************************************************************
+        SS1 = 1;
+        SS2 = 0;
+        SS3 = 1;
+
+        __delay_us(5);
+
+        WriteMSSP(1);
+
+        //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
+        Contador = ReadMSSP();                             // El valor del ADC traducido por el esclavo, es enviado al maestro
+
+        __delay_us(5);
+
+        SS2 = 1;
+        SS2 = 1;
+        SS3 = 1;
         
+        
+        //**********************************************************************
+        // COMUNICACIÓN CON TERCER ESCLAVO
+        //**********************************************************************
+        SS1 = 1;
+        SS2 = 1;
+        SS3 = 0;
+
+        __delay_us(5);
+
+        WriteMSSP(1);
+
+        //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
+        Temp = ReadMSSP();                             // El valor del ADC traducido por el esclavo, es enviado al maestro
+
+        __delay_us(5);
+
+        SS2 = 1;
+        SS2 = 1;
+        SS3 = 1;
+
+         
+        //**********************************************************************
+        // PREPARACIÓN DE DATOS PARA ESCRITURA EN LCD
+        //**********************************************************************
+        
+        divisor_dec(Contador, Cont_dig);                // Se divide en dígitos decimales, el valor del Contador 
+        
+        uni_Cont = tabla_numASCII(Cont_dig[2]);         // Traducir dígito de unidades a caracter ASCII
+        dec_Cont = tabla_numASCII(Cont_dig[1]);         // Traducir dígito de decenas a caracter ASCII
+        cen_Cont = tabla_numASCII(Cont_dig[0]);         // Traducir dígito de centenas a caracter ASCII
+        
+        
+        divisor_dec(val_ADC, ADC_dig);                  // Se divide en dígitos hexadecimales, el valor del ADC 
+        
+        uni_ADC = tabla_numASCII(ADC_dig[2]);           // Traducir dígito de unidades a caracter ASCII
+        dec_ADC = tabla_numASCII(ADC_dig[1]);           // Traducir dígito de decenas a caracter ASCII
+        cen_ADC = tabla_numASCII(ADC_dig[0]);           // Traducir dígito de centenas a caracter ASCII
+        
+        
+        divisor_dec(Temp, Temp_dig);                    // Se divide en dígitos hexadecimales, el valor de la temperatura
+        
+        uni_Temp = tabla_numASCII(Temp_dig[0]);         // Traducir dígito de unidades a caracter ASCII
+        dec_Temp = tabla_numASCII(Temp_dig[1]);         // Traducir dígito de decenas a caracter ASCII
+        
+        
+        
+        //**********************************************************************
+        // ESCRITURA EN LCD
+        //**********************************************************************
+        
+        set_cursor(2,7);                                // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_Cont);                 // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_Cont);                 // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_Cont);                 // Imprimir valor de centenas de número de ADC
+        
+        set_cursor(2,13);                                // Setear cursor a segunda línea
+        Escribir_caracterLCD(dec_Temp);                  // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(uni_Temp);                  // Imprimir valor de decenas de número de ADC
+        Escribir_stringLCD("C");
+        
+        set_cursor(2,0);                                // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_ADC);                  // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_ADC);                  // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_ADC);                  // Imprimir valor de centenas de número de ADC
+        
+        
+        //**********************************************************************
+        // COMUNICACIÓN USART
+        //**********************************************************************
         
         
         
@@ -160,6 +267,9 @@ void setup(void){
     Escribir_stringLCD("Jose Santizo");
     __delay_ms(5000);
     Limpiar_pantallaLCD();
+    
+    //Configuración de TX y RX
+    Config_USART(9600,4);
     
 }
 

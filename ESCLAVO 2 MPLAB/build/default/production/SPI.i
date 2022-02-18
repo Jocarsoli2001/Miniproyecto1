@@ -2521,6 +2521,10 @@ char ReadMSSP();
 
 void InitMSSP(MSSP_Mode Modo){
 
+    SSPSTAT = 0b00000000;
+    SSPCON = 0b00000000;
+
+
 
 
     SSPCONbits.SSPEN = 0;
@@ -2547,7 +2551,7 @@ void InitMSSP(MSSP_Mode Modo){
 
     SSPCON = SSPCON | Modo;
 
-    PIE1bits.SSPIE = 0;
+
 
 
 

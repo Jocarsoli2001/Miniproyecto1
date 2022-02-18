@@ -45,6 +45,7 @@
 
 //-----------------------Variables------------------------------------
 char read1;
+char PORT = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -52,9 +53,16 @@ void setup(void);                                   // Función de setup
 //-------------Funciones que retornan variables-----------------------
 
 //----------------------Interrupciones--------------------------------
-//void __interrupt() isr(void){
-//    
-//}
+void __interrupt() isr(void){
+    //**********************************************************************
+    // LECTURA DE MSSP
+    //**********************************************************************
+    if(SSPIF == 1){
+        read1 = ReadMSSP();                         // Read = Lectura de SPI 
+        WriteMSSP(PORT);                           // Mandar datos del PORTB
+        SSPIF = 0;
+    }
+}
 
 //----------------------Main Loop--------------------------------
 void main(void) {
@@ -65,24 +73,16 @@ void main(void) {
         //**********************************************************************
         // CONTADOR EN PUERTO B
         //**********************************************************************
-        if(PORTDbits.RD2){
+        if(PORTDbits.RD2){                          // Si botón en RD2 es presionado, disminuir puerto B
             while(RD2);
-            PORTB--;
+            PORT--;
         }
-        if(PORTDbits.RD3){
-            while(RD3);
-            PORTB++;
+        if(PORTDbits.RD3){                          // Si botón en RD2 es presionado, aumentar puerto B
+            while(RD3); 
+            PORT++;
         }
         
-        //**********************************************************************
-        // LECTURA DE MSPP
-        //**********************************************************************
-        if (SSPSTAT & 0b00000001) {                     // Solo leer si el buffer del SSP está lleno
-            read1 = ReadMSSP();                          // Read = Lectura de SPI 
-        }
-        WriteMSSP(PORTB);  
-        
-        
+        PORTB = PORT;
     }
 }
 
@@ -90,17 +90,17 @@ void main(void) {
 void setup(void){
     
     //Configuración de entradas y salidas
-    ANSEL = 0;                                 // Pines digitales
+    ANSEL = 0;                                      // Pines digitales
     ANSELH = 0;
     
-    TRISA = 0;                                 // PORTA como entradas analógicas
+    TRISA = 0;                                      // PORTA como entradas analógicas
     TRISB = 0;                                      // PORTB como salida
-    TRISD = 0b01100;                                      // PORTD como salida
+    TRISD = 0b01100;                                // PORTD como salida
     TRISE = 0;                                      // PORTE como salida
     
-    PORTE = 0;
-    PORTD = 0;
-    PORTA = 0;
+    PORTE = 0;                                      // Limpiar PORTE
+    PORTD = 0;                                      // Limpiar PORTD
+    PORTA = 0;                                      // Limpiar PORTA
     PORTB = 0;                                      // Limpiar PORTB
     
     //Configuración de oscilador
@@ -108,5 +108,11 @@ void setup(void){
     
     //Config de SPI (Configuración de esclavo activada, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
     InitMSSP(SPI_SLAVE_SS_EN);
+    
+    //Configuración de interrupciones
+    INTCONbits.GIE = 1;                             // Habilitamos interrupciones
+    INTCONbits.PEIE = 1;                            // Habilitamos interrupciones PEIE
+    PIR1bits.SSPIF = 0;                             // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;                             // Habilitamos interrupción MSSP
     
 }

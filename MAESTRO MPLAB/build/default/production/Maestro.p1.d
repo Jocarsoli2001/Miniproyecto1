@@ -3,4 +3,5 @@ Maestro.c  \
 SPI.h  \
 LCD.h  \
 Oscilador.h  \
-7SEG-hex.h 
+7SEG-hex.h  \
+UART.h 

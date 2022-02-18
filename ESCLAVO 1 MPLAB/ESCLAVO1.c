@@ -114,8 +114,8 @@ void setup(void){
     INTCONbits.PEIE = 1;                            // Habilitamos interrupciones PEIE
     PIR1bits.ADIF = 0;                              // Limpiar bandera de interrupción del ADC
     PIE1bits.ADIE = 1;                              // Interrupción ADC = enabled
-    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
-    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
+    PIR1bits.SSPIF = 0;                             // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;                             // Habilitamos interrupción MSSP
     
 }
 

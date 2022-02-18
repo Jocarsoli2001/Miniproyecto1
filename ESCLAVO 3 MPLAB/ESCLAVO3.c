@@ -55,6 +55,15 @@ void setup(void);                                   // Función de setup
 
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
+    //**********************************************************************
+    // LECTURA DE MSSP
+    //**********************************************************************
+    if(SSPIF == 1){
+        read2 = ReadMSSP();                         // Read = Lectura de SPI 
+        WriteMSSP(temp);                            // Mandar datos del PORTB
+        SSPIF = 0;
+    }
+    
     if(PIR1bits.ADIF){                              // Interrupción de ADC
         ADC();                                      // Guarda valor de ADRESH en cont1 o cont2, dependiendo del canal seleccionado
         PIR1bits.ADIF = 0;                          // Apagar bandera de interrupción de ADC
@@ -73,7 +82,10 @@ void main(void) {
         //**********************************************************************
         conversion();                               // Rutin para obtener valores de ADC
         
-        temp = ((cont1*5000)/1023)/10;
+        // Output -> 0 hasta 150 (temperatura)
+        // Input (rango) -> 0 hasta 77 (ADC)
+        // Input = lectura de ADC
+        temp = (150.0 / 77.0) * (cont1);
         
         if(temp < 24){
             PORTEbits.RE2 = 1;
@@ -90,18 +102,6 @@ void main(void) {
             PORTEbits.RE2 = 0;
             PORTEbits.RE0 = 1;
         }
-        
-        
-        
-        //**********************************************************************
-        // LECTURA DE MSPP
-        //**********************************************************************
-        if (SSPSTAT & 0b00000001) {                     // Solo leer si el buffer del SSP está lleno
-            read2 = ReadMSSP();                          // Read = Lectura de SPI 
-        }
-        WriteMSSP(temp);  
-//        
-        
     }
 }
 
@@ -135,5 +135,7 @@ void setup(void){
     INTCONbits.PEIE = 1;                            // Habilitamos interrupciones PEIE
     PIR1bits.ADIF = 0;                              // Limpiar bandera de interrupción del ADC
     PIE1bits.ADIE = 1;                              // Interrupción ADC = enabled
+    PIR1bits.SSPIF = 0;                             // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;                             // Habilitamos interrupción MSSP
     
 }

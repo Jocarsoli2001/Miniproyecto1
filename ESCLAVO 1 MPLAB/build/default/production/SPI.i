@@ -2551,7 +2551,7 @@ void InitMSSP(MSSP_Mode Modo){
 
     SSPCON = SSPCON | Modo;
 
-    PIE1bits.SSPIE = 0;
+
 
 
 

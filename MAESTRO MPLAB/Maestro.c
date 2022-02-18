@@ -51,6 +51,7 @@
 
 //-----------------------Variables------------------------------------
 char val_ADC;
+char val_ADC_fin;
 char ADC_dig[];
 char dig_ADC = 0;
 char uni_ADC = 0;
@@ -73,7 +74,6 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    
     val_ADC = 0;
     while(1){
         set_cursor(1,0);                            // Setear cursor a primera línea                           
@@ -83,24 +83,22 @@ void main(void) {
         // COMUNICACIÓN CON PRIMER ESCLAVO
         //**********************************************************************
         
-        SS1 = 0;                          // Se selecciona el esclavo 1
-        __delay_ms(10);
+        SS1 = 0;                                    // Se selecciona el esclavo 1
+        __delay_us(10);
         
         WriteMSSP(1);
-        if (SSPSTAT & 0b00000001) {
-            MSSPin = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
-        }
         
-        __delay_ms(10);
+        //NOTA: El valor del SPI funciona solamente cuando se guarda en un puerto.
+        PORTA = ReadMSSP();                         // El valor del ADC traducido por el esclavo, es enviado al maestro
+        
+        __delay_us(10);
         SS1 = 1;
         
-        Escribir_stringLCD(MSSPin);
+        divisor_dec(PORTA, ADC_dig);                // Se divide en dígitos hexadecimales, el valor del ADC 
         
-//        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
-        
-//        uni_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de unidades a caracter ASCII
-//        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
-//        cen_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de centenas a caracter ASCII
+        uni_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de unidades a caracter ASCII
+        dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
+        cen_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de centenas a caracter ASCII
         
         
         //**********************************************************************
@@ -112,11 +110,11 @@ void main(void) {
         // IMPRESIÓN DE VALORES A LCD
         //**********************************************************************
         
-//        set_cursor(2,0);                            // Setear cursor a segunda línea
-//        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
-//        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
-//        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
-//        
+        set_cursor(2,0);                            // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
+        
     }
 }
 

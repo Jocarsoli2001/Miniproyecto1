@@ -2921,6 +2921,11 @@ void setup(void);
 
 
 void __attribute__((picinterrupt(("")))) isr(void){
+    if(SSPIF == 1){
+        read = ReadMSSP();
+        WriteMSSP(cont1);
+        SSPIF = 0;
+    }
     if(PIR1bits.ADIF){
         ADC();
         PIR1bits.ADIF = 0;
@@ -2938,8 +2943,11 @@ void main(void) {
 
 
         conversion();
-# 82 "ESCLAVO1.c"
-        PORTB = cont1;
+
+
+
+
+
 
 
     }
@@ -2975,5 +2983,7 @@ void setup(void){
     INTCONbits.PEIE = 1;
     PIR1bits.ADIF = 0;
     PIE1bits.ADIE = 1;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
 
 }

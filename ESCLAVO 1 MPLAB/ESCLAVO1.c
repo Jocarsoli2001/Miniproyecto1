@@ -52,6 +52,11 @@ void setup(void);                                   // Función de setup
 
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
+    if(SSPIF == 1){
+        read = ReadMSSP();                          // Read = Lectura de SPI 
+        WriteMSSP(cont1);
+        SSPIF = 0;
+    }
     if(PIR1bits.ADIF){                              // Interrupción de ADC
         ADC();                                      // Guarda valor de ADRESH en cont1 o cont2, dependiendo del canal seleccionado
         PIR1bits.ADIF = 0;                          // Apagar bandera de interrupción de ADC
@@ -73,13 +78,7 @@ void main(void) {
         //**********************************************************************
         // LECTURA DE MSPP
         //**********************************************************************
-//        if (SSPSTAT & 0b00000001) {                     // Solo leer si el buffer del SSP está lleno
-//            read = ReadMSSP();                          // Read = Lectura de SPI 
-//            
-//        }
-//        
-//        WriteMSSP(cont1);
-        PORTB = cont1;
+        
         
         
     }
@@ -115,6 +114,8 @@ void setup(void){
     INTCONbits.PEIE = 1;                            // Habilitamos interrupciones PEIE
     PIR1bits.ADIF = 0;                              // Limpiar bandera de interrupción del ADC
     PIE1bits.ADIE = 1;                              // Interrupción ADC = enabled
+    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
     
 }
 

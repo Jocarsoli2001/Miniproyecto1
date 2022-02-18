@@ -2928,6 +2928,7 @@ char dig_ADC = 0;
 char uni_ADC = 0;
 char dec_ADC = 0;
 char cen_ADC = 0;
+int MSSPin = 0;
 
 
 void setup(void);
@@ -2944,11 +2945,11 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
 void main(void) {
     setup();
-# 83 "Maestro.c"
+
     val_ADC = 0;
     while(1){
-
-
+        set_cursor(1,0);
+        Escribir_stringLCD("S1:    S2:   S3:");
 
 
 
@@ -2958,11 +2959,16 @@ void main(void) {
         _delay((unsigned long)((1)*(4000000/4000.0)));
 
         WriteMSSP(1);
-        PORTB = ReadMSSP();
+        _delay((unsigned long)((100)*(4000000/4000.0)));
+        if (SSPSTAT & 0b00000001) {
+            MSSPin = ReadMSSP();
+        }
 
         _delay((unsigned long)((1)*(4000000/4000.0)));
         PORTCbits.RC2 = 1;
-# 123 "Maestro.c"
+
+        Escribir_stringLCD(MSSPin);
+# 121 "Maestro.c"
     }
 }
 
@@ -2982,6 +2988,7 @@ void setup(void){
     PORTD = 0;
     PORTE = 0;
     PORTB = 0;
+    PORTC = 0;
 
 
     TRISC2 = 0;
@@ -2991,13 +2998,23 @@ void setup(void){
     PORTCbits.RC1 = 1;
 
     TRISC0 = 0;
-    PORTCbits.RC0;
+    PORTCbits.RC0 = 1;
 
 
     initOsc(4);
 
 
     InitMSSP(SPI_MASTER_FOSC4);
+
+
+    Iniciar_LCD();
+    Limpiar_pantallaLCD();
+    set_cursor(1,0);
+    Escribir_stringLCD("Hola");
+    set_cursor(2,2);
+    Escribir_stringLCD("Jose Santizo");
+    _delay((unsigned long)((5000)*(4000000/4000.0)));
+    Limpiar_pantallaLCD();
 
 }
 

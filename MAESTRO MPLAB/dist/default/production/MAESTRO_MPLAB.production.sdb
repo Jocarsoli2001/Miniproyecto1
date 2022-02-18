@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"157 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"156 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [e E1557 . `uc
 SPI_MASTER_FOSC4 0
 SPI_MASTER_FOSC16 1
@@ -43,25 +43,33 @@ I2C_MASTER_FOSC 8
 [v _prender_ELCD prender_ELCD `(v  1 e 1 0 ]
 "17
 [v _Escribir_comandoLCD Escribir_comandoLCD `(v  1 e 1 0 ]
-"67 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"30
+[v _Iniciar_LCD Iniciar_LCD `(v  1 e 1 0 ]
+"55
+[v _Escribir_stringLCD Escribir_stringLCD `(v  1 e 1 0 ]
+"69
+[v _Limpiar_pantallaLCD Limpiar_pantallaLCD `(v  1 e 1 0 ]
+"77
+[v _set_cursor set_cursor `(v  1 e 1 0 ]
+"68 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [v _isr isr `II(v  1 e 1 0 ]
-"73
+"74
 [v _main main `(v  1 e 1 0 ]
-"127
+"125
 [v _setup setup `(v  1 e 1 0 ]
 "12 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Oscilador.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
 "10 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\SPI.c
 [v _InitMSSP InitMSSP `(v  1 e 1 0 ]
-"51
+"55
 [v _WriteMSSP WriteMSSP `(v  1 e 1 0 ]
-"59
+"63
 [v _ReadMSSP ReadMSSP `(uc  1 e 1 0 ]
 "166 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S374 . 1 `uc 1 RB0 1 0 :1:0 
+[s S401 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -71,9 +79,11 @@ I2C_MASTER_FOSC 8
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S383 . 1 `S374 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES383  1 e 1 @6 ]
-[s S26 . 1 `uc 1 RC0 1 0 :1:0 
+[u S410 . 1 `S401 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES410  1 e 1 @6 ]
+"290
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S37 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -83,11 +93,11 @@ I2C_MASTER_FOSC 8
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S35 . 1 `S26 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES35  1 e 1 @7 ]
+[u S46 . 1 `S37 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES46  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S351 . 1 `uc 1 RD0 1 0 :1:0 
+[s S378 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -97,31 +107,31 @@ I2C_MASTER_FOSC 8
 `uc 1 RD7 1 0 :1:7 
 ]
 "369
-[u S360 . 1 `S351 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES360  1 e 1 @8 ]
+[u S387 . 1 `S378 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES387  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S132 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S160 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "870
-[s S138 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S166 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S143 . 1 `S132 1 . 1 0 `S138 1 . 1 0 ]
-[v _SSPCONbits SSPCONbits `VES143  1 e 1 @20 ]
+[u S171 . 1 `S160 1 . 1 0 `S166 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES171  1 e 1 @20 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
-[s S179 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S207 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -131,11 +141,11 @@ I2C_MASTER_FOSC 8
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1433
-[u S188 . 1 `S179 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES188  1 e 1 @133 ]
+[u S216 . 1 `S207 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES216  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S158 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S186 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -145,13 +155,13 @@ I2C_MASTER_FOSC 8
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1557
-[u S167 . 1 `S158 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES167  1 e 1 @135 ]
+[u S195 . 1 `S186 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES195  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S201 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S228 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -160,23 +170,25 @@ I2C_MASTER_FOSC 8
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S209 . 1 `S201 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES209  1 e 1 @140 ]
-[s S426 . 1 `uc 1 SCS 1 0 :1:0 
+[u S236 . 1 `S228 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES236  1 e 1 @140 ]
+[s S453 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S432 . 1 `uc 1 . 1 0 :4:0 
+[s S459 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S437 . 1 `S426 1 . 1 0 `S432 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES437  1 e 1 @143 ]
-[s S220 . 1 `uc 1 BF 1 0 :1:0 
+[u S464 . 1 `S453 1 . 1 0 `S459 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES464  1 e 1 @143 ]
+"2177
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+[s S247 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -186,39 +198,39 @@ I2C_MASTER_FOSC 8
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S229 . 1 `uc 1 . 1 0 :2:0 
+[s S256 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S234 . 1 `uc 1 . 1 0 :2:0 
+[s S261 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S240 . 1 `uc 1 . 1 0 :2:0 
+[s S267 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S245 . 1 `uc 1 . 1 0 :2:0 
+[s S272 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S250 . 1 `uc 1 . 1 0 :2:0 
+[s S277 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S255 . 1 `uc 1 . 1 0 :2:0 
+[s S282 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S260 . 1 `S220 1 . 1 0 `S229 1 . 1 0 `S234 1 . 1 0 `S240 1 . 1 0 `S245 1 . 1 0 `S250 1 . 1 0 `S255 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES260  1 e 1 @148 ]
+[u S287 . 1 `S247 1 . 1 0 `S256 1 . 1 0 `S261 1 . 1 0 `S267 1 . 1 0 `S272 1 . 1 0 `S277 1 . 1 0 `S282 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES287  1 e 1 @148 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -231,15 +243,26 @@ I2C_MASTER_FOSC 8
 [v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
 "53 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [v _val_ADC val_ADC `uc  1 e 1 0 ]
-"73
+"59
+[v _MSSPin MSSPin `i  1 e 2 0 ]
+"74
 [v _main main `(v  1 e 1 0 ]
 {
-"124
+"122
 } 0
-"127
+"125
 [v _setup setup `(v  1 e 1 0 ]
 {
-"159
+"168
+} 0
+"77 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
+[v _set_cursor set_cursor `(v  1 e 1 0 ]
+{
+[v set_cursor@linea linea `uc  1 a 1 wreg ]
+[v set_cursor@linea linea `uc  1 a 1 wreg ]
+[v set_cursor@posicion posicion `uc  1 p 1 4 ]
+[v set_cursor@linea linea `uc  1 a 1 7 ]
+"95
 } 0
 "12 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Oscilador.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -250,31 +273,65 @@ I2C_MASTER_FOSC 8
 [v initOsc@Valor Valor `uc  1 a 1 2 ]
 "38
 } 0
+"69 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
+[v _Limpiar_pantallaLCD Limpiar_pantallaLCD `(v  1 e 1 0 ]
+{
+"75
+} 0
 "10 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\SPI.c
 [v _InitMSSP InitMSSP `(v  1 e 1 0 ]
 {
 [v InitMSSP@Modo Modo `E1264  1 a 1 wreg ]
 [v InitMSSP@Modo Modo `E1264  1 a 1 wreg ]
-"14
+"12
 [v InitMSSP@Modo Modo `E1264  1 a 1 2 ]
-"48
+"52
 } 0
-"51
+"30 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
+[v _Iniciar_LCD Iniciar_LCD `(v  1 e 1 0 ]
+{
+"53
+} 0
+"55
+[v _Escribir_stringLCD Escribir_stringLCD `(v  1 e 1 0 ]
+{
+[v Escribir_stringLCD@d d `*.24DCuc  1 a 1 wreg ]
+"58
+[v Escribir_stringLCD@i i `uc  1 a 1 5 ]
+"55
+[v Escribir_stringLCD@d d `*.24DCuc  1 a 1 wreg ]
+[v Escribir_stringLCD@d d `*.24DCuc  1 a 1 6 ]
+"61
+} 0
+"17
+[v _Escribir_comandoLCD Escribir_comandoLCD `(v  1 e 1 0 ]
+{
+[v Escribir_comandoLCD@Comando Comando `uc  1 a 1 wreg ]
+[v Escribir_comandoLCD@Comando Comando `uc  1 a 1 wreg ]
+[v Escribir_comandoLCD@Comando Comando `uc  1 a 1 3 ]
+"28
+} 0
+"11
+[v _prender_ELCD prender_ELCD `(v  1 e 1 0 ]
+{
+"15
+} 0
+"55 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\SPI.c
 [v _WriteMSSP WriteMSSP `(v  1 e 1 0 ]
 {
 [v WriteMSSP@Data Data `uc  1 a 1 wreg ]
 [v WriteMSSP@Data Data `uc  1 a 1 wreg ]
-"55
-[v WriteMSSP@Data Data `uc  1 a 1 2 ]
-"56
-} 0
 "59
+[v WriteMSSP@Data Data `uc  1 a 1 2 ]
+"60
+} 0
+"63
 [v _ReadMSSP ReadMSSP `(uc  1 e 1 0 ]
 {
-"62
+"66
 } 0
-"67 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"68 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"70
+"71
 } 0

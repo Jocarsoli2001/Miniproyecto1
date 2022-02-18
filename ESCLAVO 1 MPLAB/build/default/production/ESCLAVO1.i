@@ -2920,8 +2920,6 @@ char read;
 void setup(void);
 
 
-
-
 void __attribute__((picinterrupt(("")))) isr(void){
     if(PIR1bits.ADIF){
         ADC();
@@ -2940,12 +2938,8 @@ void main(void) {
 
 
         conversion();
-
-
-
-
-        read = ReadMSSP();
-        WriteMSSP(cont1);
+# 82 "ESCLAVO1.c"
+        PORTB = cont1;
 
 
     }

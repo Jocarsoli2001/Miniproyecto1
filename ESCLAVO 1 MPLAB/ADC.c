@@ -13,7 +13,7 @@ void ADC(void) {
         cont1 = ADRESH;
     }
     else if(ADCON0bits.CHS == 1){
-        cont2 = ADRESH;
+        cont1 = ADRESH;
     }
     
 }

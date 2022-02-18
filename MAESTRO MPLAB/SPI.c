@@ -8,6 +8,10 @@
 #include "SPI.h"
 
 void InitMSSP(MSSP_Mode Modo){
+    
+    SSPSTAT = 0b00000000;
+    SSPCON = 0b00000000;
+    
     // Habilitar pines de transmisión
     // Modo I2C: 1 = Habilita los pines SDA y SCL para transmisión
     // Modo SPI: 1 = Habilita los pines SCK, SDO, SDI y SS para transmisión
@@ -42,7 +46,7 @@ void InitMSSP(MSSP_Mode Modo){
     SSPCONbits.CKP = 0;                                 // Estado "Idle" del reloj = LOW
     
     // Configuración de flanco de reloj
-    SSPSTATbits.CKE = 1;                                // Dado que CKP = 0, los datos se transmiten luego de un flanco positivo 
+    SSPSTATbits.CKE = 0;                                // Dado que CKP = 0, los datos se transmiten luego de un flanco positivo 
     
     SSPSTATbits.SMP = 0;                                // Información sampleada al final del tiempo de salida
 }

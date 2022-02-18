@@ -2920,8 +2920,6 @@ char read;
 void setup(void);
 
 
-
-
 void __attribute__((picinterrupt(("")))) isr(void){
     if(PIR1bits.ADIF){
         ADC();
@@ -2944,8 +2942,13 @@ void main(void) {
 
 
 
-        read = ReadMSSP();
+        if (SSPSTAT & 0b00000001) {
+            read = ReadMSSP();
+        }
+
+        _delay((unsigned long)((10)*(4000000/4000.0)));
         WriteMSSP(cont1);
+
 
 
     }

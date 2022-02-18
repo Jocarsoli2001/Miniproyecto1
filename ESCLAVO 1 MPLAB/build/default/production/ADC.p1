@@ -309,8 +309,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 1 `i 142  ]
 {
 "16
-[; ;ADC.c: 16:         cont2 = ADRESH;
-[e = _cont2 -> _ADRESH `uc ]
+[; ;ADC.c: 16:         cont1 = ADRESH;
+[e = _cont1 -> _ADRESH `uc ]
 "17
 [; ;ADC.c: 17:     }
 }

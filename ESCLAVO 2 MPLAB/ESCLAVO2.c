@@ -44,7 +44,7 @@
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-char read;
+char read1;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -59,25 +59,27 @@ void setup(void);                                   // Función de setup
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-    read = 0;
+    read1 = 0;
     while(1){
         
         //**********************************************************************
         // CONTADOR EN PUERTO B
         //**********************************************************************
-        if(PORTEbits.RE2){
-            while(RE2);
+        if(PORTDbits.RD2){
+            while(RD2);
             PORTB--;
         }
-        else if(PORTEbits.RE3){
-            while(RE3);
+        if(PORTDbits.RD3){
+            while(RD3);
             PORTB++;
         }
         
         //**********************************************************************
         // LECTURA DE MSPP
         //**********************************************************************
-        read = ReadMSSP();                          // Read = Lectura de SPI
+        if (SSPSTAT & 0b00000001) {                     // Solo leer si el buffer del SSP está lleno
+            read1 = ReadMSSP();                          // Read = Lectura de SPI 
+        }
         WriteMSSP(PORTB);  
         
         
@@ -93,11 +95,12 @@ void setup(void){
     
     TRISA = 0;                                 // PORTA como entradas analógicas
     TRISB = 0;                                      // PORTB como salida
-    TRISD = 0;                                      // PORTD como salida
-    TRISE = 0b00110;                                      // PORTE como salida
+    TRISD = 0b01100;                                      // PORTD como salida
+    TRISE = 0;                                      // PORTE como salida
     
-    PORTD = 0;                                      // Limpiar PORTD
-    PORTE = 0;                                      // Limpiar PORTE
+    PORTE = 0;
+    PORTD = 0;
+    PORTA = 0;
     PORTB = 0;                                      // Limpiar PORTB
     
     //Configuración de oscilador

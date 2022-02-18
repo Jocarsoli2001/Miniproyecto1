@@ -13,21 +13,19 @@
 %PSECTS
 $dist/default/production\ESCLAVO_1_MPLAB.production.o
 cinit CODE 0 F F 7 2
-text1 CODE 0 75 75 2E 2
-text2 CODE 0 16 16 30 2
-text3 CODE 0 10F 10F 1B 2
-text4 CODE 0 46 46 2F 2
-text5 CODE 0 A3 A3 2E 2
-text6 CODE 0 149 149 6 2
-text7 CODE 0 13F 13F A 2
-text8 CODE 0 12A 12A 15 2
-text9 CODE 0 F1 F1 1E 2
-maintext CODE 0 D1 D1 20 2
-cstackCOMMON COMMON 1 70 70 7 1
+text1 CODE 0 79 79 2E 2
+text2 CODE 0 49 49 30 2
+text3 CODE 0 D5 D5 1B 2
+text4 CODE 0 16 16 33 2
+text5 CODE 0 A7 A7 2E 2
+text6 CODE 0 121 121 15 2
+text7 CODE 0 F0 F0 1B 2
+maintext CODE 0 10B 10B 16 2
+cstackCOMMON COMMON 1 70 70 6 1
 intentry CODE 0 4 4 8 2
-bssCOMMON COMMON 1 77 77 3 1
+bssCOMMON COMMON 1 76 76 3 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
+$C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -46,23 +44,23 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 14F-1FFF 2
+CONST 136-1FFF 2
 ENTRY 3-3 2
-ENTRY 14F-1FFF 2
+ENTRY 136-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 14F-1FFF 2
+CODE 136-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
 SFR3 180-18F 1
-COMMON 7A-7D 1
+COMMON 79-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 14F-1FFF 2
+STRCODE 136-1FFF 2
 STRING 3-3 2
-STRING 14F-1FFF 2
+STRING 136-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -77,123 +75,116 @@ STRING 14F-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\ESCLAVO_1_MPLAB.production.o
-F cinit CODE >950:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-F cinit CODE >953:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-F cinit CODE >970:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-10 cinit CODE >971:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-11 cinit CODE >972:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-12 cinit CODE >978:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-12 cinit CODE >980:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-13 cinit CODE >981:C:\Users\jocar\AppData\Local\Temp\xcAsem4.s
-4 intentry CODE >56:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-F1 text9 CODE >11:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-F1 text9 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-F8 text9 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-FC text9 CODE >13:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-100 text9 CODE >14:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-101 text9 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-106 text9 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-10A text9 CODE >16:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-10E text9 CODE >19:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-12A text8 CODE >56:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-12A text8 CODE >57:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-130 text8 CODE >58:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-135 text8 CODE >59:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-138 text8 CODE >61:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-13F text7 CODE >59:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-13F text7 CODE >60:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-145 text7 CODE >61:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-148 text7 CODE >62:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-149 text6 CODE >51:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-14A text6 CODE >55:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-14E text6 CODE >56:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-A3 text5 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-A3 text5 CODE >22:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-A9 text5 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-AE text5 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-B2 text5 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-B4 text5 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-B9 text5 CODE >26:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-BA text5 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-BF text5 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-C3 text5 CODE >28:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-C8 text5 CODE >31:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-CD text5 CODE >32:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-D0 text5 CODE >34:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-46 text4 CODE >10:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-47 text4 CODE >14:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-4A text4 CODE >16:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-4B text4 CODE >19:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-4E text4 CODE >20:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-4F text4 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-51 text4 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-55 text4 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-57 text4 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-5B text4 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-5C text4 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-5D text4 CODE >26:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-5D text4 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-5E text4 CODE >32:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-65 text4 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-6A text4 CODE >38:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-6D text4 CODE >42:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-70 text4 CODE >45:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-73 text4 CODE >47:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-74 text4 CODE >48:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
-10F text3 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-10F text3 CODE >37:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-112 text3 CODE >38:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-113 text3 CODE >39:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-114 text3 CODE >41:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-11A text3 CODE >42:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-123 text3 CODE >43:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-124 text3 CODE >44:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-129 text3 CODE >45:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
-16 text2 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-17 text2 CODE >14:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-1D text2 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-20 text2 CODE >16:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-21 text2 CODE >17:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-22 text2 CODE >19:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-28 text2 CODE >20:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-2B text2 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-2C text2 CODE >22:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-2D text2 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-33 text2 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-36 text2 CODE >26:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-37 text2 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-38 text2 CODE >29:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-3D text2 CODE >30:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-40 text2 CODE >31:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-41 text2 CODE >32:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-42 text2 CODE >33:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-42 text2 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-45 text2 CODE >38:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
-75 text1 CODE >86:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-75 text1 CODE >89:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-79 text1 CODE >90:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-7A text1 CODE >92:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-7E text1 CODE >93:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-7F text1 CODE >94:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-80 text1 CODE >95:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-81 text1 CODE >97:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+F cinit CODE >949:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+F cinit CODE >952:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+F cinit CODE >969:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+10 cinit CODE >970:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+11 cinit CODE >971:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+12 cinit CODE >977:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+12 cinit CODE >979:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+13 cinit CODE >980:C:\Users\jocar\AppData\Local\Temp\xcAs2uo.s
+4 intentry CODE >54:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+F0 text7 CODE >11:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+F0 text7 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+F7 text7 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+FB text7 CODE >13:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+FF text7 CODE >14:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+100 text7 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+105 text7 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+10A text7 CODE >19:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+121 text6 CODE >54:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+121 text6 CODE >55:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+127 text6 CODE >56:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+12C text6 CODE >57:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+12F text6 CODE >59:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+A7 text5 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+A7 text5 CODE >22:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+AD text5 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+B2 text5 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+B6 text5 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+B8 text5 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+BD text5 CODE >26:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+BE text5 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+C3 text5 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+C7 text5 CODE >28:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+CC text5 CODE >31:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+D1 text5 CODE >32:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+D4 text5 CODE >34:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+16 text4 CODE >10:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+17 text4 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+1A text4 CODE >13:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+1D text4 CODE >18:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+1E text4 CODE >20:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+1F text4 CODE >23:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+22 text4 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+23 text4 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+25 text4 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+29 text4 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+2B text4 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+2F text4 CODE >28:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+30 text4 CODE >29:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+31 text4 CODE >30:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+31 text4 CODE >31:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+32 text4 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+39 text4 CODE >40:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+3E text4 CODE >42:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+41 text4 CODE >46:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+44 text4 CODE >49:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+47 text4 CODE >51:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+48 text4 CODE >52:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\SPI.c
+D5 text3 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+D5 text3 CODE >37:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+D8 text3 CODE >38:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+D9 text3 CODE >39:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+DA text3 CODE >41:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+E0 text3 CODE >42:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+E9 text3 CODE >43:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+EA text3 CODE >44:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+EF text3 CODE >45:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ADC.c
+49 text2 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+4A text2 CODE >14:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+50 text2 CODE >15:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+53 text2 CODE >16:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+54 text2 CODE >17:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+55 text2 CODE >19:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+5B text2 CODE >20:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+5E text2 CODE >21:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+5F text2 CODE >22:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+60 text2 CODE >24:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+66 text2 CODE >25:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+69 text2 CODE >26:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+6A text2 CODE >27:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+6B text2 CODE >29:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+70 text2 CODE >30:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+73 text2 CODE >31:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+74 text2 CODE >32:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+75 text2 CODE >33:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+75 text2 CODE >36:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+78 text2 CODE >38:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\Oscilador.c
+79 text1 CODE >89:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+79 text1 CODE >92:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+7D text1 CODE >93:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+7E text1 CODE >95:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+82 text1 CODE >96:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+83 text1 CODE >97:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
 84 text1 CODE >98:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-85 text1 CODE >99:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-86 text1 CODE >102:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-8C text1 CODE >105:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-94 text1 CODE >108:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-9A text1 CODE >111:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-9B text1 CODE >112:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-9C text1 CODE >113:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-9F text1 CODE >114:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-A2 text1 CODE >116:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-D1 maintext CODE >64:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-D1 maintext CODE >65:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-D6 maintext CODE >66:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-D9 maintext CODE >67:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-DA maintext CODE >73:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-DF maintext CODE >78:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
-E7 maintext CODE >79:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+85 text1 CODE >100:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+88 text1 CODE >101:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+89 text1 CODE >102:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+8A text1 CODE >105:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+90 text1 CODE >108:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+98 text1 CODE >111:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+9E text1 CODE >114:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+9F text1 CODE >115:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+A0 text1 CODE >116:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+A3 text1 CODE >117:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+A6 text1 CODE >119:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+10B maintext CODE >62:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+10B maintext CODE >63:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+110 maintext CODE >64:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+113 maintext CODE >65:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+114 maintext CODE >71:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
+119 maintext CODE >82:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 1 MPLAB\ESCLAVO1.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -207,55 +198,49 @@ E7 maintext CODE >79:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Prime
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 ___latbits 2 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__size_of_ReadMSSP 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__Hspace_0 14F 0 ABS 0 - -
-__Hspace_1 7A 0 ABS 0 - -
+__Hspace_0 136 0 ABS 0 - -
+__Hspace_1 79 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 config_ADC@channel 73 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-_main 1A2 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
-_read 77 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
+___sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+_main 216 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
+_read 76 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 btemp 7E 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-start 18 0 CODE 0 init C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
+start 18 0 CODE 0 init C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
 __size_of_main 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __size_of_config_ADC 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_WriteMSSP 29E 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-__size_of_WriteMSSP 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-_ReadMSSP 27E 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
-__end_of_ReadMSSP 292 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
-_WriteMSSP 292 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
 _ADRESH 1E 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _SSPCONbits 14 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __size_of_initOsc 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-___stacklo 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
+___stackhi 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+___stacklo 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\ESCLAVO_1_MPLAB.production.o
 _TRISAbits 85 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_initOsc 8C 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
+__end_of_initOsc F2 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -265,7 +250,7 @@ __Hstack 0 0 STACK 2 stack -
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 4 config -
-_conversion 146 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
+_conversion 14E 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -291,25 +276,25 @@ __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __size_of_InitMSSP 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-_ADC 1E2 0 CODE 0 text9 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__S0 14F 0 ABS 0 - -
-__S1 7A 0 ABS 0 - -
+_ADC 1E0 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__S0 136 0 ABS 0 - -
+__S1 79 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr 254 0 CODE 0 text8 dist/default/production\ESCLAVO_1_MPLAB.production.o
+_isr 242 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_ADC 21E 0 CODE 0 text9 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_isr 27E 0 CODE 0 text8 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_ADC 216 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_isr 26C 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\jocar\AppData\Local\Temp\xcAsem4.o
-__end_of_conversion 1A2 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\jocar\AppData\Local\Temp\xcAs2uo.o
+__end_of_conversion 1AA 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-_InitMSSP 8C 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__pmaintext 1A2 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
+_InitMSSP 2C 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__pmaintext 216 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
-__end_of_InitMSSP EA 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
-_config_ADC 21E 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_InitMSSP 92 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
+_config_ADC 1AA 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
 _ADCON0bits 1F 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _ADCON1bits 9F 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lspace_0 0 0 ABS 0 - -
@@ -317,7 +302,7 @@ __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-__pbssCOMMON 77 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
+__pbssCOMMON 76 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 _PIR1bits C 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lend_init 18 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
@@ -325,17 +310,15 @@ end_of_initialization 24 0 CODE 0 cinit dist/default/production\ESCLAVO_1_MPLAB.
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
-_initOsc 2C 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext1 EA 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext2 2C 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext3 21E 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext4 8C 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext5 146 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext6 292 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext7 27E 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext8 254 0 CODE 0 text8 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__ptext9 1E2 0 CODE 0 text9 dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_config_ADC 254 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
+_initOsc 92 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext1 F2 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext2 92 0 CODE 0 text2 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext3 1AA 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext4 2C 0 CODE 0 text4 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext5 14E 0 CODE 0 text5 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext6 242 0 CODE 0 text6 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__ptext7 1E0 0 CODE 0 text7 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_config_ADC 1E0 0 CODE 0 text3 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
@@ -344,8 +327,9 @@ __Lfunctab 0 0 ENTRY 0 functab -
 __Lclrtext 0 0 ABS 0 clrtext -
 __size_of_conversion 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
+_SSPSTAT 94 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 1E2 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_main 242 0 CODE 0 maintext dist/default/production\ESCLAVO_1_MPLAB.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
@@ -354,20 +338,18 @@ _TRISA 85 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _TRISB 86 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 _TRISE 89 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
-__end_of_setup 146 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
+__end_of_setup 14E 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_cont1 79 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
-_cont2 78 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
+_cont1 78 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 interrupt_function 8 0 CODE 0 intentry dist/default/production\ESCLAVO_1_MPLAB.production.o
-_setup EA 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
+_setup F2 0 CODE 0 text1 dist/default/production\ESCLAVO_1_MPLAB.production.o
 _SSPSTATbits 94 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\ESCLAVO_1_MPLAB.production.o
 __size_of_ADC 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __size_of_isr 0 0 ABS 0 - dist/default/production\ESCLAVO_1_MPLAB.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\ESCLAVO_1_MPLAB.production.o
 InitMSSP@Modo 73 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
-WriteMSSP@Data 73 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 initOsc@Valor 73 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
@@ -394,8 +376,8 @@ initOsc@Valor 73 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_1_MPLAB
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackCOMMON 1 70 70 A 1
-intentry 0 4 8 14B 2
+cstackCOMMON 1 70 70 9 1
+intentry 0 4 8 132 2
 reset_vec 0 0 0 3 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section

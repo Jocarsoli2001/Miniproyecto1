@@ -56,6 +56,7 @@ char dig_ADC = 0;
 char uni_ADC = 0;
 char dec_ADC = 0;
 char cen_ADC = 0;
+int MSSPin = 0;
 
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
@@ -72,32 +73,28 @@ void __interrupt() isr(void){
 //----------------------Main Loop--------------------------------
 void main(void) {
     setup();
-//    Iniciar_LCD();                                    // Se inicializa la LCD en 8 bits
-//    Limpiar_pantallaLCD();
-//    set_cursor(1,0);
-//    Escribir_stringLCD("Hola");
-//    set_cursor(2,2);
-//    Escribir_stringLCD("Jose Santizo");
-//    __delay_ms(5000);
-//    Limpiar_pantallaLCD();
+    
     val_ADC = 0;
     while(1){
-//        set_cursor(1,0);                            // Setear cursor a primera línea                           
-//        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
+        set_cursor(1,0);                            // Setear cursor a primera línea                           
+        Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
         
         //**********************************************************************
         // COMUNICACIÓN CON PRIMER ESCLAVO
         //**********************************************************************
         
         SS1 = 0;                          // Se selecciona el esclavo 1
-        __delay_ms(1);
+        __delay_ms(10);
         
         WriteMSSP(1);
-        PORTB = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        if (SSPSTAT & 0b00000001) {
+            MSSPin = ReadMSSP();                        // El valor del ADC traducido por el esclavo, es enviado al maestro
+        }
         
-        __delay_ms(1);
+        __delay_ms(10);
         SS1 = 1;
         
+        Escribir_stringLCD(MSSPin);
         
 //        divisor_dec(val_ADC, ADC_dig);              // Se divide en dígitos hexadecimales, el valor del ADC 
         
@@ -139,6 +136,7 @@ void setup(void){
     PORTD = 0;                                      // Limpiar PORTD
     PORTE = 0;                                      // Limpiar PORTE
     PORTB = 0;                                      // Limpiar PORTB
+    PORTC = 0;
     
     //Configuración de Pin de slave select
     TRISC2 = 0;                                     // RC2 como pin para seleccionar esclavo
@@ -148,13 +146,23 @@ void setup(void){
     PORTCbits.RC1 = 1;
     
     TRISC0 = 0;
-    PORTCbits.RC0;
+    PORTCbits.RC0 = 1;
     
     //Configuración de oscilador
     initOsc(_4MHz);                                 // Oscilador a 4 mega hertz
     
     //Config de SPI (Configuración de maestro a 4 MHz, datos de entrada enviados a mitad de entrega de datos, polaridad en falling edge y clock rate en rising edge)
     InitMSSP(SPI_MASTER_FOSC4);
+    
+    // Configuración LCD
+    Iniciar_LCD();                                    // Se inicializa la LCD en 8 bits
+    Limpiar_pantallaLCD();
+    set_cursor(1,0);
+    Escribir_stringLCD("Hola");
+    set_cursor(2,2);
+    Escribir_stringLCD("Jose Santizo");
+    __delay_ms(5000);
+    Limpiar_pantallaLCD();
     
 }
 

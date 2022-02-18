@@ -50,8 +50,6 @@ char read;
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
 
-//-------------Funciones que retornan variables-----------------------
-
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
     if(PIR1bits.ADIF){                              // Interrupción de ADC
@@ -75,8 +73,13 @@ void main(void) {
         //**********************************************************************
         // LECTURA DE MSPP
         //**********************************************************************
-        read = ReadMSSP();                          // Read = Lectura de SPI
-        WriteMSSP(cont1);  
+//        if (SSPSTAT & 0b00000001) {                     // Solo leer si el buffer del SSP está lleno
+//            read = ReadMSSP();                          // Read = Lectura de SPI 
+//            
+//        }
+//        
+//        WriteMSSP(cont1);
+        PORTB = cont1;
         
         
     }

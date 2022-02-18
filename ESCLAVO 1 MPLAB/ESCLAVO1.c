@@ -52,11 +52,18 @@ void setup(void);                                   // Función de setup
 
 //----------------------Interrupciones--------------------------------
 void __interrupt() isr(void){
+    //**********************************************************************
+    // LECTURA DE MSSP
+    //**********************************************************************
     if(SSPIF == 1){
         read = ReadMSSP();                          // Read = Lectura de SPI 
         WriteMSSP(cont1);
         SSPIF = 0;
     }
+    
+    //**********************************************************************
+    // GUARDAR ADRESH EN VARIABLE CONT1
+    //**********************************************************************
     if(PIR1bits.ADIF){                              // Interrupción de ADC
         ADC();                                      // Guarda valor de ADRESH en cont1 o cont2, dependiendo del canal seleccionado
         PIR1bits.ADIF = 0;                          // Apagar bandera de interrupción de ADC
@@ -74,13 +81,6 @@ void main(void) {
         // CONVERSIÓN DE POTENCIÓMETRO DE ADC (VER ADC.C)
         //**********************************************************************
         conversion();                               // Rutin para obtener valores de ADC
-        
-        //**********************************************************************
-        // LECTURA DE MSPP
-        //**********************************************************************
-        
-        
-        
     }
 }
 

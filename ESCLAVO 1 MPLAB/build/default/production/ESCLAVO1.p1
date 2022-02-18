@@ -400,63 +400,63 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _isr ]
 [f ]
-"55
-[; ;ESCLAVO1.c: 55:     if(SSPIF == 1){
+"58
+[; ;ESCLAVO1.c: 58:     if(SSPIF == 1){
 [e $ ! == -> _SSPIF `i -> 1 `i 144  ]
 {
-"56
-[; ;ESCLAVO1.c: 56:         read = ReadMSSP();
-[e = _read ( _ReadMSSP ..  ]
-"57
-[; ;ESCLAVO1.c: 57:         WriteMSSP(cont1);
-[e ( _WriteMSSP (1 _cont1 ]
-"58
-[; ;ESCLAVO1.c: 58:         SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
 "59
-[; ;ESCLAVO1.c: 59:     }
+[; ;ESCLAVO1.c: 59:         read = ReadMSSP();
+[e = _read ( _ReadMSSP ..  ]
+"60
+[; ;ESCLAVO1.c: 60:         WriteMSSP(cont1);
+[e ( _WriteMSSP (1 _cont1 ]
+"61
+[; ;ESCLAVO1.c: 61:         SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"62
+[; ;ESCLAVO1.c: 62:     }
 }
 [e :U 144 ]
-"60
-[; ;ESCLAVO1.c: 60:     if(PIR1bits.ADIF){
+"67
+[; ;ESCLAVO1.c: 67:     if(PIR1bits.ADIF){
 [e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 145  ]
 {
-"61
-[; ;ESCLAVO1.c: 61:         ADC();
+"68
+[; ;ESCLAVO1.c: 68:         ADC();
 [e ( _ADC ..  ]
-"62
-[; ;ESCLAVO1.c: 62:         PIR1bits.ADIF = 0;
+"69
+[; ;ESCLAVO1.c: 69:         PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"63
-[; ;ESCLAVO1.c: 63:     }
+"70
+[; ;ESCLAVO1.c: 70:     }
 }
 [e :U 145 ]
-"64
-[; ;ESCLAVO1.c: 64: }
+"71
+[; ;ESCLAVO1.c: 71: }
 [e :UE 143 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"67
-[; ;ESCLAVO1.c: 67: void main(void) {
+"74
+[; ;ESCLAVO1.c: 74: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"68
-[; ;ESCLAVO1.c: 68:     setup();
+"75
+[; ;ESCLAVO1.c: 75:     setup();
 [e ( _setup ..  ]
-"69
-[; ;ESCLAVO1.c: 69:     ADCON0bits.GO = 1;
+"76
+[; ;ESCLAVO1.c: 76:     ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"70
-[; ;ESCLAVO1.c: 70:     read = 0;
+"77
+[; ;ESCLAVO1.c: 77:     read = 0;
 [e = _read -> -> 0 `i `uc ]
-"71
-[; ;ESCLAVO1.c: 71:     while(1){
+"78
+[; ;ESCLAVO1.c: 78:     while(1){
 [e :U 148 ]
 {
-"76
-[; ;ESCLAVO1.c: 76:         conversion();
+"83
+[; ;ESCLAVO1.c: 83:         conversion();
 [e ( _conversion ..  ]
 "84
 [; ;ESCLAVO1.c: 84:     }

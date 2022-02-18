@@ -50,7 +50,7 @@
 //-----------------------Constantes----------------------------------
 
 //-----------------------Variables------------------------------------
-char val_ADC;
+int val_ADC;
 char val_ADC_fin;
 char ADC_dig[];
 char dig_ADC = 0;
@@ -80,7 +80,7 @@ void main(void) {
         Escribir_stringLCD("S1:    S2:   S3:");     // Escribir menú en primera línea
         
         //**********************************************************************
-        // COMUNICACIÓN CON PRIMER ESCLAVO
+        // COMUNICACIÓN Y ESCRITURA DE VALORES DE PRIMER ESCLAVO EN LCD
         //**********************************************************************
         
         SS1 = 0;                                    // Se selecciona el esclavo 1
@@ -88,17 +88,22 @@ void main(void) {
         
         WriteMSSP(1);
         
-        //NOTA: El valor del SPI funciona solamente cuando se guarda en un puerto.
-        PORTA = ReadMSSP();                         // El valor del ADC traducido por el esclavo, es enviado al maestro
+        //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
+        val_ADC = ReadMSSP();                         // El valor del ADC traducido por el esclavo, es enviado al maestro
         
         __delay_us(10);
         SS1 = 1;
         
-        divisor_dec(PORTA, ADC_dig);                // Se divide en dígitos hexadecimales, el valor del ADC 
+        divisor_dec(val_ADC, ADC_dig);                // Se divide en dígitos hexadecimales, el valor del ADC 
         
         uni_ADC = tabla_numASCII(ADC_dig[2]);       // Traducir dígito de unidades a caracter ASCII
         dec_ADC = tabla_numASCII(ADC_dig[1]);       // Traducir dígito de decenas a caracter ASCII
         cen_ADC = tabla_numASCII(ADC_dig[0]);       // Traducir dígito de centenas a caracter ASCII
+        
+        set_cursor(2,0);                            // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
         
         
         //**********************************************************************
@@ -106,14 +111,8 @@ void main(void) {
         //**********************************************************************
         
         
-        //**********************************************************************
-        // IMPRESIÓN DE VALORES A LCD
-        //**********************************************************************
         
-        set_cursor(2,0);                            // Setear cursor a segunda línea
-        Escribir_caracterLCD(uni_ADC);              // Imprimir valor de unidades de número de ADC
-        Escribir_caracterLCD(dec_ADC);              // Imprimir valor de decenas de número de ADC
-        Escribir_caracterLCD(cen_ADC);              // Imprimir valor de centenas de número de ADC
+        
         
     }
 }

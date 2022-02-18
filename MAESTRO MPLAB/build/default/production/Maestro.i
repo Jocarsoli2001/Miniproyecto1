@@ -2922,7 +2922,7 @@ void divisor_hex(uint8_t a, char dig[]);
 void divisor_dec(uint8_t b, char dig1[]);
 # 41 "Maestro.c" 2
 # 53 "Maestro.c"
-char val_ADC;
+int val_ADC;
 char val_ADC_fin;
 char ADC_dig[];
 char dig_ADC = 0;
@@ -2961,22 +2961,22 @@ void main(void) {
         WriteMSSP(1);
 
 
-        PORTA = ReadMSSP();
+        val_ADC = ReadMSSP();
 
         _delay((unsigned long)((10)*(4000000/4000000.0)));
         PORTCbits.RC2 = 1;
 
-        divisor_dec(PORTA, ADC_dig);
+        divisor_dec(val_ADC, ADC_dig);
 
         uni_ADC = tabla_numASCII(ADC_dig[2]);
         dec_ADC = tabla_numASCII(ADC_dig[1]);
         cen_ADC = tabla_numASCII(ADC_dig[0]);
-# 113 "Maestro.c"
+
         set_cursor(2,0);
         Escribir_caracterLCD(uni_ADC);
         Escribir_caracterLCD(dec_ADC);
         Escribir_caracterLCD(cen_ADC);
-
+# 117 "Maestro.c"
     }
 }
 

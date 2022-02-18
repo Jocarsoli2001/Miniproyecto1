@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"153 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
+"152 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
 [e E1557 . `uc
 SPI_MASTER_FOSC4 0
 SPI_MASTER_FOSC16 1
@@ -59,9 +59,9 @@ I2C_MASTER_FOSC 8
 [v _isr isr `II(v  1 e 1 0 ]
 "75
 [v _main main `(v  1 e 1 0 ]
-"122
+"121
 [v _setup setup `(v  1 e 1 0 ]
-"168
+"167
 [v _tabla_numASCII tabla_numASCII `(uc  1 e 1 0 ]
 "12 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Oscilador.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -248,7 +248,7 @@ I2C_MASTER_FOSC 8
 "4454
 [v _TRISC2 TRISC2 `VEb  1 e 0 @1082 ]
 "53 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\Maestro.c
-[v _val_ADC val_ADC `uc  1 e 1 0 ]
+[v _val_ADC val_ADC `i  1 e 2 0 ]
 "55
 [v _ADC_dig ADC_dig `[1]uc  1 e 1 0 ]
 "57
@@ -260,20 +260,20 @@ I2C_MASTER_FOSC 8
 "75
 [v _main main `(v  1 e 1 0 ]
 {
-"119
+"118
 } 0
-"168
+"167
 [v _tabla_numASCII tabla_numASCII `(uc  1 e 1 0 ]
 {
 [v tabla_numASCII@a a `uc  1 a 1 wreg ]
 [v tabla_numASCII@a a `uc  1 a 1 wreg ]
 [v tabla_numASCII@a a `uc  1 a 1 4 ]
-"203
+"202
 } 0
-"122
+"121
 [v _setup setup `(v  1 e 1 0 ]
 {
-"165
+"164
 } 0
 "77 D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\MAESTRO MPLAB\LCD.c
 [v _set_cursor set_cursor `(v  1 e 1 0 ]

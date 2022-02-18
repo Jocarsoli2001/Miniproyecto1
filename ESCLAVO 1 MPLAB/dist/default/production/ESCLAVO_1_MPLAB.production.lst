@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Thu Feb 17 21:57:33 2022
+                                                                                               Fri Feb 18 08:03:26 2022
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -592,7 +592,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    578 ;;
    579 ;; *************** function _main *****************
    580 ;; Defined at:
-   581 ;;		line 67 in file "ESCLAVO1.c"
+   581 ;;		line 74 in file "ESCLAVO1.c"
    582 ;; Parameters:    Size  Location     Type
    583 ;;		None
    584 ;; Auto vars:     Size  Location     Type
@@ -628,21 +628,21 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    614                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
    615                           
    616                           
-   617                           ;ESCLAVO1.c: 68:     setup();
+   617                           ;ESCLAVO1.c: 75:     setup();
    618  0136  120A  118A  2016  120A  118A  	fcall	_setup
    619  013B                     l893:
    620                           
-   621                           ;ESCLAVO1.c: 69:     ADCON0bits.GO = 1;
+   621                           ;ESCLAVO1.c: 76:     ADCON0bits.GO = 1;
    622  013B  1283               	bcf	3,5	;RP0=0, select bank0
    623  013C  1303               	bcf	3,6	;RP1=0, select bank0
    624  013D  149F               	bsf	31,1	;volatile
    625  013E                     l895:
    626                           
-   627                           ;ESCLAVO1.c: 70:     read = 0;
+   627                           ;ESCLAVO1.c: 77:     read = 0;
    628  013E  01F7               	clrf	_read
    629  013F                     l897:
    630                           
-   631                           ;ESCLAVO1.c: 76:         conversion();
+   631                           ;ESCLAVO1.c: 83:         conversion();
    632  013F  120A  118A  20A8  120A  118A  	fcall	_conversion
    633  0144  293F               	goto	l897
    634  0145  120A  118A  280C   	ljmp	start
@@ -1310,7 +1310,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1296  00D6                     _isr:
   1297  00D6                     i1l837:
   1298                           
-  1299                           ;ESCLAVO1.c: 55:     if(SSPIF == 1){
+  1299                           ;ESCLAVO1.c: 58:     if(SSPIF == 1){
   1300  00D6  1283               	bcf	3,5	;RP0=0, select bank0
   1301  00D7  1303               	bcf	3,6	;RP1=0, select bank0
   1302  00D8  1D8C               	btfss	12,3	;volatile
@@ -1321,25 +1321,25 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1307  00DC                     u14_20:
   1308  00DC                     i1l839:
   1309                           
-  1310                           ;ESCLAVO1.c: 56:         read = ReadMSSP();
+  1310                           ;ESCLAVO1.c: 59:         read = ReadMSSP();
   1311  00DC  120A  118A  2148  120A  118A  	fcall	_ReadMSSP
   1312  00E1  00F1               	movwf	??_isr
   1313  00E2  0871               	movf	??_isr,w
   1314  00E3  00F7               	movwf	_read
   1315  00E4                     i1l841:
   1316                           
-  1317                           ;ESCLAVO1.c: 57:         WriteMSSP(cont1);
+  1317                           ;ESCLAVO1.c: 60:         WriteMSSP(cont1);
   1318  00E4  0879               	movf	_cont1,w
   1319  00E5  120A  118A  2152  120A  118A  	fcall	_WriteMSSP
   1320  00EA                     i1l843:
   1321                           
-  1322                           ;ESCLAVO1.c: 58:         SSPIF = 0;
+  1322                           ;ESCLAVO1.c: 61:         SSPIF = 0;
   1323  00EA  1283               	bcf	3,5	;RP0=0, select bank0
   1324  00EB  1303               	bcf	3,6	;RP1=0, select bank0
   1325  00EC  118C               	bcf	12,3	;volatile
   1326  00ED                     i1l845:
   1327                           
-  1328                           ;ESCLAVO1.c: 60:     if(PIR1bits.ADIF){
+  1328                           ;ESCLAVO1.c: 67:     if(PIR1bits.ADIF){
   1329  00ED  1F0C               	btfss	12,6	;volatile
   1330  00EE  28F0               	goto	u15_21
   1331  00EF  28F1               	goto	u15_20
@@ -1348,11 +1348,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1334  00F1                     u15_20:
   1335  00F1                     i1l847:
   1336                           
-  1337                           ;ESCLAVO1.c: 61:         ADC();
+  1337                           ;ESCLAVO1.c: 68:         ADC();
   1338  00F1  120A  118A  211B  120A  118A  	fcall	_ADC
   1339  00F6                     i1l849:
   1340                           
-  1341                           ;ESCLAVO1.c: 62:         PIR1bits.ADIF = 0;
+  1341                           ;ESCLAVO1.c: 69:         PIR1bits.ADIF = 0;
   1342  00F6  1283               	bcf	3,5	;RP0=0, select bank0
   1343  00F7  1303               	bcf	3,6	;RP1=0, select bank0
   1344  00F8  130C               	bcf	12,6	;volatile
@@ -1759,7 +1759,7 @@ DATA                 0      0       A      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Thu Feb 17 21:57:33 2022
+Symbol Table                                                                                   Fri Feb 18 08:03:26 2022
 
             _SSPSTATbits 0094                       l68 0049                       l93 00D5  
                      l96 011A                       u10 0051                       u11 0050  

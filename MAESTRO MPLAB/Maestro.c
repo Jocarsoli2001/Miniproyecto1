@@ -53,7 +53,15 @@
 //-----------------------Variables------------------------------------
 int val_ADC;
 int Contador;
-int Temp;
+char Temp;
+
+//USART
+char i = 0;
+int dato_escrito[];
+const char msg[] = "S1:    S2:   S3:\n\r";
+int n = sizeof(msg);
+int direc = 0;
+char data[];
 
 // Banderas
 int Bandera_s1 = 1;
@@ -84,6 +92,10 @@ char cen_Temp = 0;
 //------------Funciones sin retorno de variables----------------------
 void setup(void);                                   // Función de setup
 char tabla_numASCII(char a);
+void imprimir_cadena(void);
+void TXREG_char (uint8_t *direccion,uint8_t uni1, uint8_t dec1, uint8_t cen1, 
+                 uint8_t e1,uint8_t uni2, uint8_t dec2, uint8_t cen2, uint8_t e2, uint8_t uni3,
+                 uint8_t dec3, uint8_t cen3, uint8_t e3, uint8_t *data);
 
 //-------------Funciones que retornan variables-----------------------
 
@@ -102,9 +114,15 @@ void main(void) {
     SS1 = 1;
     SS2 = 1;
     SS3 = 1;
+    
     while(1){
         set_cursor(1,0);                                // Setear cursor a primera línea                           
         Escribir_stringLCD("S1:    S2:   S3:");         // Escribir menú en primera línea
+        
+        //**********************************************************************
+        // COMUNICACIÓN USART
+        //**********************************************************************
+        imprimir_cadena();
         
         //**********************************************************************
         // COMUNICACIÓN Y ESCRITURA DE VALORES DE PRIMER ESCLAVO EN LCD
@@ -139,7 +157,7 @@ void main(void) {
         WriteMSSP(1);
 
         //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
-        Contador = ReadMSSP();                             // El valor del ADC traducido por el esclavo, es enviado al maestro
+        Contador = ReadMSSP();                           // El valor del ADC traducido por el esclavo, es enviado al maestro
 
         __delay_us(5);
 
@@ -160,7 +178,7 @@ void main(void) {
         WriteMSSP(1);
 
         //NOTA: El valor del SPI funciona solamente cuando se guarda en una variable tipo int.
-        Temp = ReadMSSP();                             // El valor del ADC traducido por el esclavo, es enviado al maestro
+        Temp = ReadMSSP();                              // El valor del ADC traducido por el esclavo, es enviado al maestro
 
         __delay_us(5);
 
@@ -189,8 +207,9 @@ void main(void) {
         
         divisor_dec(Temp, Temp_dig);                    // Se divide en dígitos hexadecimales, el valor de la temperatura
         
-        uni_Temp = tabla_numASCII(Temp_dig[0]);         // Traducir dígito de unidades a caracter ASCII
+        uni_Temp = tabla_numASCII(Temp_dig[2]);         // Traducir dígito de unidades a caracter ASCII
         dec_Temp = tabla_numASCII(Temp_dig[1]);         // Traducir dígito de decenas a caracter ASCII
+        cen_Temp = tabla_numASCII(Temp_dig[0]);         // Traducir dígito de decenas a caracter ASCII
         
         
         
@@ -203,24 +222,16 @@ void main(void) {
         Escribir_caracterLCD(dec_Cont);                 // Imprimir valor de decenas de número de ADC
         Escribir_caracterLCD(cen_Cont);                 // Imprimir valor de centenas de número de ADC
         
-        set_cursor(2,13);                                // Setear cursor a segunda línea
-        Escribir_caracterLCD(dec_Temp);                  // Imprimir valor de unidades de número de ADC
-        Escribir_caracterLCD(uni_Temp);                  // Imprimir valor de decenas de número de ADC
-        Escribir_stringLCD("C");
-        
         set_cursor(2,0);                                // Setear cursor a segunda línea
         Escribir_caracterLCD(uni_ADC);                  // Imprimir valor de unidades de número de ADC
         Escribir_caracterLCD(dec_ADC);                  // Imprimir valor de decenas de número de ADC
         Escribir_caracterLCD(cen_ADC);                  // Imprimir valor de centenas de número de ADC
         
-        
-        //**********************************************************************
-        // COMUNICACIÓN USART
-        //**********************************************************************
-        
-        
-        
-        
+        set_cursor(2,13);                               // Setear cursor a segunda línea
+        Escribir_caracterLCD(uni_Temp);                 // Imprimir valor de unidades de número de ADC
+        Escribir_caracterLCD(dec_Temp);                 // Imprimir valor de decenas de número de ADC
+        Escribir_caracterLCD(cen_Temp);                 // Imprimir valor de decenas de número de ADC
+
     }
 }
 
@@ -307,6 +318,67 @@ char tabla_numASCII(char a){
             return 57;                              // devolver valor 57 (9 en ASCII)
             break;
         default:
+            break;
+    }
+}
+
+void imprimir_cadena(void){
+    if(PIR1bits.TXIF){               
+        for (i = 0; i<= n; i++){                    // For de i = 0 hasta el largo de la variable msg
+            TXREG = data;                           // TXREG = datos
+
+            TXREG_char(direc,cen_ADC,dec_ADC,uni_ADC,"   ",cen_Cont,dec_Cont,uni_Cont,"   ",cen_Temp,dec_Temp,uni_Temp,"C",data);
+
+            direc = direc++;
+        }
+    }
+}
+
+void TXREG_char (uint8_t *direccion,uint8_t uni1, uint8_t dec1, uint8_t cen1, 
+                        uint8_t e1,uint8_t uni2, uint8_t dec2, uint8_t cen2, uint8_t e2, uint8_t uni3,
+                        uint8_t dec3, uint8_t cen3, uint8_t e3, uint8_t *data){
+    switch(*direccion){
+        case 0:
+            *data = msg;
+            break;
+        case 1:
+            *data = uni1;
+            break;
+        case 2:
+            *data = dec1;
+            break;
+        case 3:
+            *data = cen1;
+            break;
+        case 4:
+            *data = e1;
+            break;
+        case 5:
+            *data = uni2;
+            break;
+        case 6:
+            *data = dec2;
+            break;
+        case 7:
+            *data = cen2;
+            break;
+        case 8: 
+            *data = e2;
+            break;
+        case 9:
+            *data = uni3;
+            break;
+        case 10: 
+            *data = dec3;
+            break;
+        case 11:
+            *data = cen3;
+            break;
+        case 12:
+            *data = e3;
+            break;
+        default:
+            *data = 13;
             break;
     }
 }

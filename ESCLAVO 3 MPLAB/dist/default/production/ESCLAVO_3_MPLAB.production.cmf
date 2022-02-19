@@ -32,7 +32,7 @@ cstackBANK0 BANK0 1 20 20 38 1
 intentry CODE 0 4 4 8 2
 bssCOMMON COMMON 1 76 76 4 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+$C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -82,15 +82,15 @@ STRING 685-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\ESCLAVO_3_MPLAB.production.o
-F cinit CODE >961:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-F cinit CODE >964:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-F cinit CODE >984:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-10 cinit CODE >985:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-11 cinit CODE >986:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-12 cinit CODE >987:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-13 cinit CODE >993:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-13 cinit CODE >995:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
-14 cinit CODE >996:C:\Users\jocar\AppData\Local\Temp\xcAshus.s
+F cinit CODE >961:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+F cinit CODE >964:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+F cinit CODE >984:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+10 cinit CODE >985:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+11 cinit CODE >986:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+12 cinit CODE >987:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+13 cinit CODE >993:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+13 cinit CODE >995:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
+14 cinit CODE >996:C:\Users\jocar\AppData\Local\Temp\xcAs4j0.s
 4 intentry CODE >57:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 3 MPLAB\ESCLAVO3.c
 63A text13 CODE >11:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 3 MPLAB\ADC.c
 63A text13 CODE >12:D:\Archivos\Documentos\Universidad y colegio\UVG\2022\Primer Semestre\Electrónica digital 2\Proyectos\Miniproyecto1\ESCLAVO 3 MPLAB\ADC.c
@@ -538,11 +538,11 @@ __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 config_ADC@channel 74 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_3_MPLAB.production.o
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+___sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 _main 960 0 CODE 0 maintext dist/default/production\ESCLAVO_3_MPLAB.production.o
 _temp 76 0 COMMON 1 bssCOMMON dist/default/production\ESCLAVO_3_MPLAB.production.o
 btemp 7E 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
-start 18 0 CODE 0 init C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+start 18 0 CODE 0 init C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 ___flmul@aexp 3C 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.production.o
 ___flmul@bexp 41 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.production.o
 ___flmul@prod 42 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.production.o
@@ -557,12 +557,12 @@ __end_of_WriteMSSP D0A 0 CODE 0 text11 dist/default/production\ESCLAVO_3_MPLAB.p
 __Hpowerup 0 0 CODE 0 powerup -
 __size_of_WriteMSSP 0 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
 _ReadMSSP CEA 0 CODE 0 text12 dist/default/production\ESCLAVO_3_MPLAB.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
@@ -581,8 +581,8 @@ __Umul8_16 C22 0 CODE 0 text9 dist/default/production\ESCLAVO_3_MPLAB.production
 __end_of___flmul 6F0 0 CODE 0 text8 dist/default/production\ESCLAVO_3_MPLAB.production.o
 __end_of___fltol 960 0 CODE 0 text7 dist/default/production\ESCLAVO_3_MPLAB.production.o
 __Umul8_16@multiplicand 74 0 COMMON 1 cstackCOMMON dist/default/production\ESCLAVO_3_MPLAB.production.o
-___stackhi 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAshus.o
-___stacklo 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+___stackhi 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
+___stacklo 0 0 ABS 0 - C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
 ___flmul@a 32 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.production.o
 ___flmul@b 2E 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.production.o
@@ -593,7 +593,7 @@ __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\ESCLAVO_3_MPLAB.
 _SSPBUF 13 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o
 __end_of_initOsc B16 0 CODE 0 text2 dist/default/production\ESCLAVO_3_MPLAB.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+___int_sp 0 0 STACK 2 stack C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -647,7 +647,7 @@ ___xxtofl 6F0 0 CODE 0 text6 dist/default/production\ESCLAVO_3_MPLAB.production.
 __end_of_ADC CB0 0 CODE 0 text13 dist/default/production\ESCLAVO_3_MPLAB.production.o
 __end_of_isr C22 0 CODE 0 text10 dist/default/production\ESCLAVO_3_MPLAB.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\jocar\AppData\Local\Temp\xcAshus.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\jocar\AppData\Local\Temp\xcAs4j0.o
 __end_of_conversion BCE 0 CODE 0 text5 dist/default/production\ESCLAVO_3_MPLAB.production.o
 __end_of___xxtofl 868 0 CODE 0 text6 dist/default/production\ESCLAVO_3_MPLAB.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\ESCLAVO_3_MPLAB.production.o

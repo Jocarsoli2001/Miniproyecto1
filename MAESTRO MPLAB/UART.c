@@ -76,4 +76,5 @@ void Config_USART(int baud_rate, int Freq){
     RCSTAbits.CREN = 1;                                 // Recepci�n continua habilitada
     
     TXSTAbits.TXEN = 1;                                 // Transmisiones habilitadas
+    PIE1bits.RCIE = 0;
 }

@@ -2572,4 +2572,5 @@ void Config_USART(int baud_rate, int Freq){
     RCSTAbits.CREN = 1;
 
     TXSTAbits.TXEN = 1;
+    PIE1bits.RCIE = 0;
 }

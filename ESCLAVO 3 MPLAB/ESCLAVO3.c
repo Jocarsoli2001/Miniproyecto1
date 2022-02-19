@@ -60,7 +60,7 @@ void __interrupt() isr(void){
     //**********************************************************************
     if(SSPIF == 1){
         read2 = ReadMSSP();                         // Read = Lectura de SPI 
-        WriteMSSP(temp);                            // Mandar datos del PORTB
+        WriteMSSP(cont1);                            // Mandar datos del PORTB
         SSPIF = 0;
     }
     

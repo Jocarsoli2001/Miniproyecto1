@@ -2929,7 +2929,7 @@ void __attribute__((picinterrupt(("")))) isr(void){
 
     if(SSPIF == 1){
         read2 = ReadMSSP();
-        WriteMSSP(temp);
+        WriteMSSP(cont1);
         SSPIF = 0;
     }
 

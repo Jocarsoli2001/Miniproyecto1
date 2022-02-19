@@ -425,8 +425,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ESCLAVO3.c: 62:         read2 = ReadMSSP();
 [e = _read2 ( _ReadMSSP ..  ]
 "63
-[; ;ESCLAVO3.c: 63:         WriteMSSP(temp);
-[e ( _WriteMSSP (1 _temp ]
+[; ;ESCLAVO3.c: 63:         WriteMSSP(cont1);
+[e ( _WriteMSSP (1 _cont1 ]
 "64
 [; ;ESCLAVO3.c: 64:         SSPIF = 0;
 [e = _SSPIF -> -> 0 `i `b ]

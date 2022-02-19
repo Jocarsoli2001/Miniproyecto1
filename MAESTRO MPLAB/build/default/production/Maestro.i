@@ -2931,7 +2931,15 @@ void Mandar_dato(int dato);
 # 54 "Maestro.c"
 int val_ADC;
 int Contador;
-int Temp;
+char Temp;
+
+
+char i = 0;
+int dato_escrito[];
+const char msg[] = "S1:    S2:   S3:\n\r";
+int n = sizeof(msg);
+int direc = 0;
+char data[];
 
 
 int Bandera_s1 = 1;
@@ -2962,6 +2970,10 @@ char cen_Temp = 0;
 
 void setup(void);
 char tabla_numASCII(char a);
+void imprimir_cadena(void);
+void TXREG_char (uint8_t *direccion,uint8_t uni1, uint8_t dec1, uint8_t cen1,
+                 uint8_t e1,uint8_t uni2, uint8_t dec2, uint8_t cen2, uint8_t e2, uint8_t uni3,
+                 uint8_t dec3, uint8_t cen3, uint8_t e3, uint8_t *data);
 
 
 
@@ -2980,9 +2992,15 @@ void main(void) {
     PORTCbits.RC2 = 1;
     PORTCbits.RC1 = 1;
     PORTCbits.RC0 = 1;
+
     while(1){
         set_cursor(1,0);
         Escribir_stringLCD("S1:    S2:   S3:");
+
+
+
+
+        imprimir_cadena();
 
 
 
@@ -3067,8 +3085,9 @@ void main(void) {
 
         divisor_dec(Temp, Temp_dig);
 
-        uni_Temp = tabla_numASCII(Temp_dig[0]);
+        uni_Temp = tabla_numASCII(Temp_dig[2]);
         dec_Temp = tabla_numASCII(Temp_dig[1]);
+        cen_Temp = tabla_numASCII(Temp_dig[0]);
 
 
 
@@ -3081,16 +3100,16 @@ void main(void) {
         Escribir_caracterLCD(dec_Cont);
         Escribir_caracterLCD(cen_Cont);
 
-        set_cursor(2,13);
-        Escribir_caracterLCD(dec_Temp);
-        Escribir_caracterLCD(uni_Temp);
-        Escribir_stringLCD("C");
-
         set_cursor(2,0);
         Escribir_caracterLCD(uni_ADC);
         Escribir_caracterLCD(dec_ADC);
         Escribir_caracterLCD(cen_ADC);
-# 224 "Maestro.c"
+
+        set_cursor(2,13);
+        Escribir_caracterLCD(uni_Temp);
+        Escribir_caracterLCD(dec_Temp);
+        Escribir_caracterLCD(cen_Temp);
+
     }
 }
 
@@ -3177,6 +3196,67 @@ char tabla_numASCII(char a){
             return 57;
             break;
         default:
+            break;
+    }
+}
+
+void imprimir_cadena(void){
+    if(PIR1bits.TXIF){
+        for (i = 0; i<= n; i++){
+            TXREG = data;
+
+            TXREG_char(direc,cen_ADC,dec_ADC,uni_ADC,"   ",cen_Cont,dec_Cont,uni_Cont,"   ",cen_Temp,dec_Temp,uni_Temp,"C",data);
+
+            direc = direc++;
+        }
+    }
+}
+
+void TXREG_char (uint8_t *direccion,uint8_t uni1, uint8_t dec1, uint8_t cen1,
+                        uint8_t e1,uint8_t uni2, uint8_t dec2, uint8_t cen2, uint8_t e2, uint8_t uni3,
+                        uint8_t dec3, uint8_t cen3, uint8_t e3, uint8_t *data){
+    switch(*direccion){
+        case 0:
+            *data = msg;
+            break;
+        case 1:
+            *data = uni1;
+            break;
+        case 2:
+            *data = dec1;
+            break;
+        case 3:
+            *data = cen1;
+            break;
+        case 4:
+            *data = e1;
+            break;
+        case 5:
+            *data = uni2;
+            break;
+        case 6:
+            *data = dec2;
+            break;
+        case 7:
+            *data = cen2;
+            break;
+        case 8:
+            *data = e2;
+            break;
+        case 9:
+            *data = uni3;
+            break;
+        case 10:
+            *data = dec3;
+            break;
+        case 11:
+            *data = cen3;
+            break;
+        case 12:
+            *data = e3;
+            break;
+        default:
+            *data = 13;
             break;
     }
 }
